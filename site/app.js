@@ -969,10 +969,17 @@
   // a card over it listing everything on that day (openDayPop).
   var boardEnd = null; // the first of the last month on the grid
   function monthOpen() { return document.documentElement.classList.contains('month-open'); }
+  function placeKnob() { // the ink knob measured under the lit stop: the stops are as wide as their words, when shown (styles.css .vt-label; Steve, 2026-10-24)
+    var t = $('viewToggle'), b = t && t.querySelector('button[aria-checked="true"]');
+    if (!b) return;
+    t.style.setProperty('--knob-x', b.offsetLeft + 'px'); t.style.setProperty('--knob-w', b.offsetWidth + 'px');
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeKnob); // the words' width settles when the face loads
   function syncViewSwitch() { // the knob and the stops follow the view on show
     var v = !$('teamsView').hidden ? 'teams' : monthOpen() ? 'month' : 'events';
     $('viewToggle').dataset.active = v;
     $('viewToggle').querySelectorAll('button[data-view]').forEach(function (b) { b.setAttribute('aria-checked', String(b.dataset.view === v)); });
+    placeKnob();
   }
   // the TODAY tab hangs from the mini calendar's foot; in the month view, from the sticky header's
   // the TODAY tab hangs from the mini calendar's foot; in the month view it rises from the sticky header — or, on a centred board with no header, floats as a chip under the filter bar
@@ -1213,6 +1220,7 @@
     if (document.documentElement.classList.contains('teams-open')) { fitTeamStrip(); return; } // the Teams view folds in its own order (the strip scrolls, so the bar never measures as tight)
     bar.classList.remove('is-tight');
     if (bar.scrollWidth > bar.clientWidth + 1) bar.classList.add('is-tight');
+    placeKnob(); // the stops words come and go with is-tight
   }
   fitFilterBar();
   window.addEventListener('resize', fitFilterBar);
@@ -3777,6 +3785,7 @@
     if (over()) bar.classList.add('is-tight');
     if (over()) strip.classList.add('is-crests');
     stripEdge();
+    placeKnob();
   }
   // more crests beyond the strip's right edge: a fade says so, lifted once scrolled to the end
   // the preset strip's own fade (same rule as the team strip's)

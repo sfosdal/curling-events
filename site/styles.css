@@ -17,7 +17,7 @@
      blue and violet to magenta, neighbors alternating light and dark */
   /* all three families sit a step back from the pure primaries: the same
      hues, less glare, so the stripes and ticks read after the titles */
-  --v-usac: #2d619f; --v-wcf: #9f442d; --v-gsoc: #9f8e2d; --v-granite: #2d9f6d; --v-evergreen: #4f9f2d;
+  --v-usac: #2d619f; --v-wcf: #9f442d; --v-gsoc: #9f8e2d; --v-tour: #2d9f9f; --v-canada: #9f2d2d; --v-granite: #2d9f6d; --v-evergreen: #4f9f2d;
   --v-northwest: #2d8f9f; --v-midwest: #712d9f; --v-northeast: #9f2d66; --v-south: #9f662d; --v-mountain: #819f2d;
   --venue-text: 72%;     /* how much of the venue hue the card's venue label keeps (light mode) */
   --tint: 26%;           /* the venue wash behind each card (light mode; 13% in the dark palette) */
@@ -55,7 +55,7 @@
     color-scheme: dark;
     --sky: #141a20; --mist: #1d252e; --ink: #e8edf1; --ink-soft: #9aa7b2; --ink-bright: #ffffff;
     --line: #333f4a; --gold: #f08a33; --gold-soft: #3a2a1a;
-    --v-usac: #86b4ea; --v-wcf: #ea9a86; --v-gsoc: #eadb86; --v-granite: #86eabe; --v-evergreen: #a4ea86;
+    --v-usac: #86b4ea; --v-wcf: #ea9a86; --v-gsoc: #eadb86; --v-tour: #86eaea; --v-canada: #ea8686; --v-granite: #86eabe; --v-evergreen: #a4ea86;
     --v-northwest: #86dcea; --v-midwest: #c286ea; --v-northeast: #ea86b8; --v-south: #eab886; --v-mountain: #d0ea86;
     --venue-text: 100%; --tint: 13%;
     --t-concert: #f0806a; --t-sports: #f2d21b; --t-arts: #d63a4f;
@@ -71,7 +71,7 @@
   color-scheme: dark;
   --sky: #141a20; --mist: #1d252e; --ink: #e8edf1; --ink-soft: #9aa7b2; --ink-bright: #ffffff;
   --line: #333f4a; --gold: #f08a33; --gold-soft: #3a2a1a;
-  --v-usac: #86b4ea; --v-wcf: #ea9a86; --v-gsoc: #eadb86; --v-granite: #86eabe; --v-evergreen: #a4ea86;
+  --v-usac: #86b4ea; --v-wcf: #ea9a86; --v-gsoc: #eadb86; --v-tour: #86eaea; --v-canada: #ea8686; --v-granite: #86eabe; --v-evergreen: #a4ea86;
   --v-northwest: #86dcea; --v-midwest: #c286ea; --v-northeast: #ea86b8; --v-south: #eab886; --v-mountain: #d0ea86;
   --venue-text: 100%; --tint: 13%;
   --t-concert: #f0806a; --t-sports: #f2d21b; --t-arts: #d63a4f;
@@ -257,7 +257,7 @@ html.teams-open #calToday { display: none; }
 .cal-side:not(.is-float) .cal { margin-bottom: 1.6rem; } /* room for the TODAY tab below the docked card */
 /* the search box: a chip that takes typing, a magnifier at its right end and
    no placeholder; it gives up width first when the row gets tight */
-.filterbar .search-wrap { position: relative; display: flex; flex: 1 1 10rem; min-width: 10rem; max-width: 28rem; } /* max-width: never the whole of a wide page (Steve, 2026-09-15) */ /* takes whatever room the row has left, never less than a word's worth: the chips drop their labels first (is-tight) */
+.filterbar .search-wrap { position: relative; display: flex; flex: 1 1 10rem; min-width: 10rem; max-width: none; } /* the whole of the row's slack (Steve, 2026-10-24, "span the full width"; capped at 28rem from 2026-09-15 until then) */ /* takes whatever room the row has left, never less than a word's worth: the chips drop their labels first (is-tight) */
 #searchBox {
   width: 100%; font: 500 .85rem/1 var(--body); color: var(--ink); background: var(--mist);
   border: 1px solid var(--line); border-radius: 999px; padding: .5em 2.4em .5em .95em; min-height: 2.25rem;
@@ -300,6 +300,17 @@ html.teams-open #calToday { display: none; }
 .theme-toggle[data-active="dark"] .theme-knob { left: calc(3px + var(--tt)); }
 .theme-toggle[data-active="system"] .theme-knob { left: calc(3px + 2 * var(--tt)); }
 @media (prefers-reduced-motion: reduce) { .theme-knob { transition: none; } }
+/* the view stops carry their words — List · Month · Teams — while the bar has room (Steve, 2026-10-24,
+   "span the full width … display text for the icons if there is space"; Kona first, every city the same day):
+   is-tight (app.js fitFilterBar / fitTeamStrip) drops them back to icons, and the ink knob is measured under
+   the lit stop by app.js placeKnob (--knob-x/--knob-w), whatever its width. After the .theme-toggle rules so
+   width: auto wins. */
+.view-toggle button { width: auto; min-width: var(--tt); padding: 0 .7rem 0 .55rem; gap: .4rem; display: inline-flex; align-items: center; justify-content: center; }
+.view-toggle .vt-label { font: 500 .8rem/1 var(--body); letter-spacing: .01em; white-space: nowrap; }
+.filterbar.is-tight .view-toggle button { padding: 0; width: var(--tt); }
+.filterbar.is-tight .vt-label { display: none; }
+.view-toggle[data-active] .theme-knob { left: var(--knob-x, 3px); width: var(--knob-w, var(--tt)); transition: left .18s, width .18s; }
+@media (prefers-reduced-motion: reduce) { .view-toggle[data-active] .theme-knob { transition: none; } }
 /* the bar stays pinned at the top while the list scrolls (--barh is its
    height — the month dividers and the calendar strip stick just below it);
    the panel floats open under it, over the content, which stays put */
