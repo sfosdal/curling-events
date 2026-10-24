@@ -3387,6 +3387,7 @@
     $('teamsView').style.setProperty('--focus-h', (bar.offsetHeight + 8) + 'px'); // the month rows stick below it
   }
   $('viewToggle').addEventListener('click', function (e) { // the stop tapped is the view: List, Month (the list with the calendar), Teams — a press on the lit stop, the knob or the rim steps to the next
+    if (e.target.closest('#filterToggle')) return; // the Filter button rides in the pill but is not a stop (its own click opens the panel)
     var b = e.target.closest('button[data-view]'), cur = $('viewToggle').dataset.active;
     var view = b && b.dataset.view !== cur ? b.dataset.view : nextStop($('viewToggle'), 'data-view', cur);
     b = $('viewToggle').querySelector('button[data-view="' + view + '"]');

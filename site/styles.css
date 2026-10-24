@@ -239,11 +239,11 @@ h1 {
 /* The bar can't wrap. When its content wouldn't fit — app.js measures and
    sets .is-tight — the labeled chips keep just their icons; the labels stay
    for screen readers. */
-.filterbar.is-tight #subscribeBtn span, .filterbar.is-tight #filterToggle span {
+.filterbar.is-tight #subscribeBtn span {
   position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 }
-.filterbar.is-tight #subscribeBtn, .filterbar.is-tight #filterToggle { padding: .5em .7em; }
-.filterbar.is-tight #subscribeBtn svg, .filterbar.is-tight #filterToggle svg { width: 1.1rem; height: 1.1rem; }
+.filterbar.is-tight #subscribeBtn { padding: .5em .7em; }
+.filterbar.is-tight #subscribeBtn svg { width: 1.1rem; height: 1.1rem; }
 /* the Teams chip is a switch: solid while its view is on show */
 /* the view switch: list | month | home teams, a three-stop pill like the theme's (same rules, .view-toggle) */
 .view-toggle[data-active="month"] .theme-knob { left: calc(3px + var(--tt)); }
@@ -251,7 +251,7 @@ h1 {
 .view-toggle button[aria-checked="true"] { color: var(--sky); }
 /* while the Teams view is up the agenda's own controls step aside — the
    filters, search, the Today floater, Add To Calendar and the phone's calendar chip */
-html.teams-open #filterToggle, html.teams-open .search-wrap,
+html.teams-open .search-wrap,
 html.teams-open .cal-toggle { display: none; } /* Add To Calendar stays: in Teams mode it offers the club's season feed */
 html.teams-open #calToday { display: none; }
 .cal-side:not(.is-float) .cal { margin-bottom: 1.6rem; } /* room for the TODAY tab below the docked card */
@@ -311,6 +311,12 @@ html.teams-open #calToday { display: none; }
 .filterbar.is-tight .vt-label { display: none; }
 .view-toggle[data-active] .theme-knob { left: var(--knob-x, 3px); width: var(--knob-w, var(--tt)); transition: left .18s, width .18s; }
 @media (prefers-reduced-motion: reduce) { .view-toggle[data-active] .theme-knob { transition: none; } }
+/* the Filter button rides at the end of the view pill, past a hairline, in every mode (Steve, 2026-10-24,
+   "for all sites, and modes combine these"): icon + word like the stops, the word going with is-tight; while
+   the panel is open it wears the ink like a knob of its own. It is not a stop: the knob never moves to it. */
+.view-toggle .vt-filter { width: auto; min-width: var(--tt); margin-left: 3px; padding: 0 .75rem 0 .7rem; border-left: 1px solid var(--line); border-radius: 0 999px 999px 0; }
+.filterbar.is-tight .view-toggle .vt-filter { width: auto; padding: 0 .35rem 0 .4rem; }
+.view-toggle .vt-filter[aria-expanded="true"], .view-toggle .vt-filter[aria-expanded="true"]:hover { background: var(--ink); color: var(--sky); border-radius: 999px; border-left-color: transparent; }
 /* the bar stays pinned at the top while the list scrolls (--barh is its
    height — the month dividers and the calendar strip stick just below it);
    the panel floats open under it, over the content, which stays put */
@@ -1905,9 +1911,9 @@ body.sheet-open { overflow: hidden; }
   .filterbar .search-wrap.is-open { position: absolute; left: 0; right: 0; width: auto; z-index: 20; }
   .filterbar .search-wrap.is-open #searchBox { background: var(--sky); border-color: var(--ink); } /* opaque over the chips beneath */
   /* a phone's bar is always the icon-only row: measured, the labelled one runs past the edge and the view switch with it */
-  .filterbar #filterToggle span, .filterbar #subscribeBtn span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .filterbar #filterToggle, .filterbar #subscribeBtn { padding: .5em .7em; } /* phones: icons only (the chips moved into the bar 2026-09-16) */
-  .filterbar #filterToggle svg, .filterbar #subscribeBtn svg { width: 1.1rem; height: 1.1rem; }
+  .filterbar #subscribeBtn span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .filterbar #subscribeBtn { padding: .5em .7em; } /* phones: icons only (the chips moved into the bar 2026-09-16) */
+  .filterbar #subscribeBtn svg { width: 1.1rem; height: 1.1rem; }
   /* the tools sit at the top right, on the eyebrow's line (short, so the room is there), clear of the title below; a flex row would cost the phone a line */
   .bar-title .masthead-tools { display: none; }
   .masthead > .masthead-tools { position: absolute; top: 2.5rem; right: 0; margin: 0; } /* the More Cities pill alone, at the top right on the eyebrow's line (short, so the room is there) */

@@ -105,10 +105,6 @@
 <!-- the masthead, folded into one line once it has scrolled off: eyebrow, title, stamp -->
 <div class="bar-title" hidden><span class="bar-eyebrow" data-teams="Curling"></span><span class="bar-name">Curling</span><span class="bar-eyebrow" id="barUpdated"></span></div>
 <nav class="filterbar" aria-label="Filters">
-  <button id="filterToggle" class="chip" type="button" aria-expanded="false" aria-controls="filterPanel" title="Filters">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></svg>
-    <span>Filter</span>
-  </button>
   <label class="search-wrap">
     <input id="searchBox" type="search" placeholder="Search…" aria-label="Search events by venue, team, or type" autocomplete="off">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -123,6 +119,10 @@
     </button>
     <button id="teamsBtn" type="button" role="radio" aria-checked="false" data-view="teams" aria-controls="clubsView" title="Local Clubs — the curling clubs nearest you, with their next events"><!-- a sport has no home teams: the stop opens the club finder (clubs.js) -->
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span class="vt-label">Clubs</span>
+    </button>
+    <button id="filterToggle" class="vt-filter" type="button" aria-expanded="false" aria-controls="filterPanel" title="Filters">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></svg>
+      <span class="vt-label">Filter</span>
     </button>
     <span class="theme-knob" aria-hidden="true"></span>
   </div>
