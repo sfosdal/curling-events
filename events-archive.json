@@ -1,12 +1,1577 @@
 {
  "events": [
   {
+   "venue": "World Tour",
+   "title": "Australia Mens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9615",
+   "type": "sports",
+   "date": "2026-05-17",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Womens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9614",
+   "type": "sports",
+   "date": "2026-05-17",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Mens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9615",
+   "type": "sports",
+   "date": "2026-05-18",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Womens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9614",
+   "type": "sports",
+   "date": "2026-05-18",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Mens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9615",
+   "type": "sports",
+   "date": "2026-05-19",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Womens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9614",
+   "type": "sports",
+   "date": "2026-05-19",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Mens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9615",
+   "type": "sports",
+   "date": "2026-05-20",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Womens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9614",
+   "type": "sports",
+   "date": "2026-05-20",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Mens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9615",
+   "type": "sports",
+   "date": "2026-05-21",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Womens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9614",
+   "type": "sports",
+   "date": "2026-05-21",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Mens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9615",
+   "type": "sports",
+   "date": "2026-05-22",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Womens Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9614",
+   "type": "sports",
+   "date": "2026-05-22",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Mixed Doubles Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9626",
+   "type": "sports",
+   "date": "2026-05-24",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Mixed Doubles Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9626",
+   "type": "sports",
+   "date": "2026-05-25",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Mixed Doubles Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9626",
+   "type": "sports",
+   "date": "2026-05-26",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Australia Mixed Doubles Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9626",
+   "type": "sports",
+   "date": "2026-05-27",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Denver Mixed Doubles Cash Spiel — Denver, CO",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9406",
+   "type": "sports",
+   "date": "2026-06-04",
+   "time": "",
+   "place": "Denver, CO",
+   "geo": [
+    39.7392,
+    -104.9849
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Denver Mixed Doubles Cash Spiel — Denver, CO",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9406",
+   "type": "sports",
+   "date": "2026-06-05",
+   "time": "",
+   "place": "Denver, CO",
+   "geo": [
+    39.7392,
+    -104.9849
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Denver Mixed Doubles Cash Spiel — Denver, CO",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9406",
+   "type": "sports",
+   "date": "2026-06-06",
+   "time": "",
+   "place": "Denver, CO",
+   "geo": [
+    39.7392,
+    -104.9849
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Yokohama 2026: Japan Curling Championships — Yokohama, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9644",
+   "type": "sports",
+   "date": "2026-06-07",
+   "time": "",
+   "place": "Yokohama, Japan",
+   "geo": [
+    35.4503,
+    139.6344
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Denver Mixed Doubles Cash Spiel — Denver, CO",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9406",
+   "type": "sports",
+   "date": "2026-06-07",
+   "time": "",
+   "place": "Denver, CO",
+   "geo": [
+    39.7392,
+    -104.9849
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Yokohama 2026: Japan Curling Championships — Yokohama, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9644",
+   "type": "sports",
+   "date": "2026-06-08",
+   "time": "",
+   "place": "Yokohama, Japan",
+   "geo": [
+    35.4503,
+    139.6344
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Yokohama 2026: Japan Curling Championships — Yokohama, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9644",
+   "type": "sports",
+   "date": "2026-06-09",
+   "time": "",
+   "place": "Yokohama, Japan",
+   "geo": [
+    35.4503,
+    139.6344
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Yokohama 2026: Japan Curling Championships — Yokohama, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9644",
+   "type": "sports",
+   "date": "2026-06-10",
+   "time": "",
+   "place": "Yokohama, Japan",
+   "geo": [
+    35.4503,
+    139.6344
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Yokohama 2026: Japan Curling Championships — Yokohama, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9644",
+   "type": "sports",
+   "date": "2026-06-11",
+   "time": "",
+   "place": "Yokohama, Japan",
+   "geo": [
+    35.4503,
+    139.6344
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Curling Championships — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9695",
+   "type": "sports",
+   "date": "2026-06-11",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Yokohama 2026: Japan Curling Championships — Yokohama, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9644",
+   "type": "sports",
+   "date": "2026-06-12",
+   "time": "",
+   "place": "Yokohama, Japan",
+   "geo": [
+    35.4503,
+    139.6344
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Curling Championships — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9695",
+   "type": "sports",
+   "date": "2026-06-12",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Yokohama 2026: Japan Curling Championships — Yokohama, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9644",
+   "type": "sports",
+   "date": "2026-06-13",
+   "time": "",
+   "place": "Yokohama, Japan",
+   "geo": [
+    35.4503,
+    139.6344
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Curling Championships — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9695",
+   "type": "sports",
+   "date": "2026-06-13",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Yokohama 2026: Japan Curling Championships — Yokohama, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9644",
+   "type": "sports",
+   "date": "2026-06-14",
+   "time": "",
+   "place": "Yokohama, Japan",
+   "geo": [
+    35.4503,
+    139.6344
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Curling Championships — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9695",
+   "type": "sports",
+   "date": "2026-06-14",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Curling Championships — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9695",
+   "type": "sports",
+   "date": "2026-06-15",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Curling Championships — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9695",
+   "type": "sports",
+   "date": "2026-06-16",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand Mixed Doubles Championship — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9708",
+   "type": "sports",
+   "date": "2026-06-18",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand Mixed Doubles Championship — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9708",
+   "type": "sports",
+   "date": "2026-06-19",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Mixed Doubles Curling Championship — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9709",
+   "type": "sports",
+   "date": "2026-06-19",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand Mixed Doubles Championship — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9708",
+   "type": "sports",
+   "date": "2026-06-20",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Mixed Doubles Curling Championship — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9709",
+   "type": "sports",
+   "date": "2026-06-20",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand Mixed Doubles Championship — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9708",
+   "type": "sports",
+   "date": "2026-06-21",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Mixed Doubles Curling Championship — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9709",
+   "type": "sports",
+   "date": "2026-06-21",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Mixed Doubles Curling Championship — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9709",
+   "type": "sports",
+   "date": "2026-06-22",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Korean Mixed Doubles Curling Championship — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9709",
+   "type": "sports",
+   "date": "2026-06-23",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Obihiro Spring Cup — Obihiro, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9566",
+   "type": "sports",
+   "date": "2026-06-26",
+   "time": "",
+   "place": "Obihiro, Japan",
+   "geo": [
+    42.9238,
+    143.1966
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Obihiro Spring Cup — Obihiro, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9566",
+   "type": "sports",
+   "date": "2026-06-27",
+   "time": "",
+   "place": "Obihiro, Japan",
+   "geo": [
+    42.9238,
+    143.1966
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Obihiro Spring Cup — Obihiro, Japan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9566",
+   "type": "sports",
+   "date": "2026-06-28",
+   "time": "",
+   "place": "Obihiro, Japan",
+   "geo": [
+    42.9238,
+    143.1966
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand National Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9712",
+   "type": "sports",
+   "date": "2026-07-01",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand National Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9712",
+   "type": "sports",
+   "date": "2026-07-02",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand National Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9712",
+   "type": "sports",
+   "date": "2026-07-03",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand National Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9712",
+   "type": "sports",
+   "date": "2026-07-04",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand National Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9712",
+   "type": "sports",
+   "date": "2026-07-05",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curling Stadium North Bay Summer Cash — North Bay, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=8995",
+   "type": "sports",
+   "date": "2026-07-10",
+   "time": "",
+   "place": "North Bay, Ontario",
+   "geo": [
+    46.3092,
+    -79.4608
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curling Stadium North Bay Summer Cash — North Bay, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=8995",
+   "type": "sports",
+   "date": "2026-07-11",
+   "time": "",
+   "place": "North Bay, Ontario",
+   "geo": [
+    46.3092,
+    -79.4608
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curling Stadium North Bay Summer Cash — North Bay, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=8995",
+   "type": "sports",
+   "date": "2026-07-12",
+   "time": "",
+   "place": "North Bay, Ontario",
+   "geo": [
+    46.3092,
+    -79.4608
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curling Stadium North Bay Summer Cash — North Bay, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=8995",
+   "type": "sports",
+   "date": "2026-07-13",
+   "time": "",
+   "place": "North Bay, Ontario",
+   "geo": [
+    46.3092,
+    -79.4608
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Curling1spoon Elite 8 — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9671",
+   "type": "sports",
+   "date": "2026-07-30",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Curling1spoon Elite 8 — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9671",
+   "type": "sports",
+   "date": "2026-07-31",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Curling1spoon Elite 8 — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9671",
+   "type": "sports",
+   "date": "2026-08-01",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Curling1spoon Elite 8 — Uiseong, Korea",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9671",
+   "type": "sports",
+   "date": "2026-08-02",
+   "time": "",
+   "place": "Uiseong, Korea",
+   "geo": [
+    36.3524,
+    128.697
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Baden Masters — Baden, Switzerland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9467",
+   "type": "sports",
+   "date": "2026-08-13",
+   "time": "",
+   "place": "Baden, Switzerland",
+   "geo": [
+    47.4737,
+    8.3087
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Baden Masters — Baden, Switzerland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9467",
+   "type": "sports",
+   "date": "2026-08-14",
+   "time": "",
+   "place": "Baden, Switzerland",
+   "geo": [
+    47.4737,
+    8.3087
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Baden Masters — Baden, Switzerland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9467",
+   "type": "sports",
+   "date": "2026-08-15",
+   "time": "",
+   "place": "Baden, Switzerland",
+   "geo": [
+    47.4737,
+    8.3087
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Baden Masters — Baden, Switzerland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9467",
+   "type": "sports",
+   "date": "2026-08-16",
+   "time": "",
+   "place": "Baden, Switzerland",
+   "geo": [
+    47.4737,
+    8.3087
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand Junior Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9813",
+   "type": "sports",
+   "date": "2026-08-21",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand Junior Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9813",
+   "type": "sports",
+   "date": "2026-08-22",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "New Zealand Junior Curling Championships — Naseby, New Zealand",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9813",
+   "type": "sports",
+   "date": "2026-08-23",
+   "time": "",
+   "place": "Naseby, New Zealand",
+   "geo": [
+    -45.025,
+    170.146
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "U25 NextGen Classic Mixed Doubles — Edmonton, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9790",
+   "type": "sports",
+   "date": "2026-08-23",
+   "time": "",
+   "place": "Edmonton, Alberta",
+   "geo": [
+    53.5462,
+    -113.4912
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "U25 NextGen Classic Mixed Doubles — Edmonton, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9790",
+   "type": "sports",
+   "date": "2026-08-24",
+   "time": "",
+   "place": "Edmonton, Alberta",
+   "geo": [
+    53.5462,
+    -113.4912
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "U25 NextGen Classic Mixed Doubles — Edmonton, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9790",
+   "type": "sports",
+   "date": "2026-08-25",
+   "time": "",
+   "place": "Edmonton, Alberta",
+   "geo": [
+    53.5462,
+    -113.4912
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U20 Mens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9660",
+   "type": "sports",
+   "date": "2026-09-04",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U18 Mens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9662",
+   "type": "sports",
+   "date": "2026-09-04",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U20 Womens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9661",
+   "type": "sports",
+   "date": "2026-09-04",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U18 Womens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9663",
+   "type": "sports",
+   "date": "2026-09-04",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U20 Mens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9660",
+   "type": "sports",
+   "date": "2026-09-05",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U18 Mens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9662",
+   "type": "sports",
+   "date": "2026-09-05",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U20 Womens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9661",
+   "type": "sports",
+   "date": "2026-09-05",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U18 Womens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9663",
+   "type": "sports",
+   "date": "2026-09-05",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U20 Mens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9660",
+   "type": "sports",
+   "date": "2026-09-06",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U18 Mens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9662",
+   "type": "sports",
+   "date": "2026-09-06",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U20 Womens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9661",
+   "type": "sports",
+   "date": "2026-09-06",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curlers Corner U18 Womens Junior Bonspiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9663",
+   "type": "sports",
+   "date": "2026-09-06",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Mixed Doubles International — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9607",
+   "type": "sports",
+   "date": "2026-09-10",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Mixed Doubles International — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9607",
+   "type": "sports",
+   "date": "2026-09-11",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Mixed Doubles International — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9607",
+   "type": "sports",
+   "date": "2026-09-12",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Mixed Doubles International — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9607",
+   "type": "sports",
+   "date": "2026-09-13",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Try Curling in Jackson! — East Lansing, MI",
+   "date": "2026-09-13",
+   "time": "18:00",
+   "url": "https://www.eventbrite.com/e/try-curling-in-jackson-tickets-1997065587933",
+   "type": "expo",
+   "place": "East Lansing, MI",
+   "geo": [
+    42.732,
+    -84.4722
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "AMJ Shorty Jenkins Classic — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9472",
+   "type": "sports",
+   "date": "2026-09-16",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "AMJ Shorty Jenkins Classic — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9472",
+   "type": "sports",
+   "date": "2026-09-17",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "City View Mixed Doubles Kickoff — Nepean, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9635",
+   "type": "sports",
+   "date": "2026-09-17",
+   "time": "",
+   "place": "Nepean, Ontario",
+   "geo": [
+    45.2862,
+    -75.7512
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "AMJ Shorty Jenkins Classic — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9472",
+   "type": "sports",
+   "date": "2026-09-18",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Saville Grand Prix — Edmonton, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9577",
+   "type": "sports",
+   "date": "2026-09-18",
+   "time": "",
+   "place": "Edmonton, Alberta",
+   "geo": [
+    53.5462,
+    -113.4912
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Tournoi Equinoxe Open — Montreal, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9715",
+   "type": "sports",
+   "date": "2026-09-18",
+   "time": "",
+   "place": "Montreal, Quebec",
+   "geo": [
+    45.5032,
+    -73.5698
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "City View Mixed Doubles Kickoff — Nepean, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9635",
+   "type": "sports",
+   "date": "2026-09-18",
+   "time": "",
+   "place": "Nepean, Ontario",
+   "geo": [
+    45.2862,
+    -75.7512
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "AMJ Shorty Jenkins Classic — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9472",
+   "type": "sports",
+   "date": "2026-09-19",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Saville Grand Prix — Edmonton, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9577",
+   "type": "sports",
+   "date": "2026-09-19",
+   "time": "",
+   "place": "Edmonton, Alberta",
+   "geo": [
+    53.5462,
+    -113.4912
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Tournoi Equinoxe Open — Montreal, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9715",
+   "type": "sports",
+   "date": "2026-09-19",
+   "time": "",
+   "place": "Montreal, Quebec",
+   "geo": [
+    45.5032,
+    -73.5698
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "City View Mixed Doubles Kickoff — Nepean, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9635",
+   "type": "sports",
+   "date": "2026-09-19",
+   "time": "",
+   "place": "Nepean, Ontario",
+   "geo": [
+    45.2862,
+    -75.7512
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "AMJ Shorty Jenkins Classic — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9472",
+   "type": "sports",
+   "date": "2026-09-20",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Saville Grand Prix — Edmonton, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9577",
+   "type": "sports",
+   "date": "2026-09-20",
+   "time": "",
+   "place": "Edmonton, Alberta",
+   "geo": [
+    53.5462,
+    -113.4912
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Tournoi Equinoxe Open — Montreal, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9715",
+   "type": "sports",
+   "date": "2026-09-20",
+   "time": "",
+   "place": "Montreal, Quebec",
+   "geo": [
+    45.5032,
+    -73.5698
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "City View Mixed Doubles Kickoff — Nepean, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9635",
+   "type": "sports",
+   "date": "2026-09-20",
+   "time": "",
+   "place": "Nepean, Ontario",
+   "geo": [
+    45.2862,
+    -75.7512
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Saville Grand Prix — Edmonton, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9577",
+   "type": "sports",
+   "date": "2026-09-21",
+   "time": "",
+   "place": "Edmonton, Alberta",
+   "geo": [
+    53.5462,
+    -113.4912
+   ]
+  },
+  {
    "venue": "Granite Curling Club",
    "title": "Ice-In Party! (w/ practice ice)",
    "date": "2026-09-21",
    "time": "18:00",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "community",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Mother Club Fall Curling Classic — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9778",
+   "type": "sports",
+   "date": "2026-09-24",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Shorty Jenkins Junior Classic - U20 — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9648",
+   "type": "sports",
+   "date": "2026-09-24",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Shorty Jenkins Junior Classic - U18 — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9649",
+   "type": "sports",
+   "date": "2026-09-24",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Colorado Curling Cup — Lafayette, CO",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9640",
+   "type": "sports",
+   "date": "2026-09-24",
+   "time": "",
+   "place": "Lafayette, CO",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Mother Club Fall Curling Classic — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9778",
+   "type": "sports",
+   "date": "2026-09-25",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Shorty Jenkins Junior Classic - U20 — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9648",
+   "type": "sports",
+   "date": "2026-09-25",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Shorty Jenkins Junior Classic - U18 — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9649",
+   "type": "sports",
+   "date": "2026-09-25",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Hack2House U20 Junior Classic — Beaumont, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9639",
+   "type": "sports",
+   "date": "2026-09-25",
+   "time": "",
+   "place": "Beaumont, Alberta",
+   "geo": [
+    53.3525,
+    -113.4151
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Colorado Curling Cup — Lafayette, CO",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9640",
+   "type": "sports",
+   "date": "2026-09-25",
+   "time": "",
+   "place": "Lafayette, CO",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Sask Cup #1 - U20 Mixed Doubles Curling Tour — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9845",
+   "type": "sports",
+   "date": "2026-09-25",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Guelph Mixed Doubles Early Bird — Guelph, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9636",
+   "type": "sports",
+   "date": "2026-09-25",
+   "time": "",
+   "place": "Guelph, Ontario",
+   "geo": [
+    43.5461,
+    -80.2493
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Mother Club Fall Curling Classic — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9778",
+   "type": "sports",
+   "date": "2026-09-26",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Shorty Jenkins Junior Classic - U20 — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9648",
+   "type": "sports",
+   "date": "2026-09-26",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Shorty Jenkins Junior Classic - U18 — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9649",
+   "type": "sports",
+   "date": "2026-09-26",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Hack2House U20 Junior Classic — Beaumont, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9639",
+   "type": "sports",
+   "date": "2026-09-26",
+   "time": "",
+   "place": "Beaumont, Alberta",
+   "geo": [
+    53.3525,
+    -113.4151
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Colorado Curling Cup — Lafayette, CO",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9640",
+   "type": "sports",
+   "date": "2026-09-26",
+   "time": "",
+   "place": "Lafayette, CO",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Sask Cup #1 - U20 Mixed Doubles Curling Tour — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9845",
+   "type": "sports",
+   "date": "2026-09-26",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Guelph Mixed Doubles Early Bird — Guelph, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9636",
+   "type": "sports",
+   "date": "2026-09-26",
+   "time": "",
+   "place": "Guelph, Ontario",
+   "geo": [
+    43.5461,
+    -80.2493
+   ]
   },
   {
    "venue": "Granite Curling Club",
@@ -14,7 +1579,12 @@
    "date": "2026-09-26",
    "time": "09:00",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "community",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
   },
   {
    "venue": "Granite Curling Club",
@@ -22,7 +1592,12 @@
    "date": "2026-09-26",
    "time": "18:00",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "community",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
   },
   {
    "venue": "Granite Curling Club",
@@ -30,7 +1605,103 @@
    "date": "2026-09-26",
    "time": "19:00",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "community",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Mother Club Fall Curling Classic — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9778",
+   "type": "sports",
+   "date": "2026-09-27",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Shorty Jenkins Junior Classic - U20 — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9648",
+   "type": "sports",
+   "date": "2026-09-27",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Shorty Jenkins Junior Classic - U18 — Cornwall, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9649",
+   "type": "sports",
+   "date": "2026-09-27",
+   "time": "",
+   "place": "Cornwall, Ontario",
+   "geo": [
+    45.047,
+    -74.7334
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Hack2House U20 Junior Classic — Beaumont, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9639",
+   "type": "sports",
+   "date": "2026-09-27",
+   "time": "",
+   "place": "Beaumont, Alberta",
+   "geo": [
+    53.3525,
+    -113.4151
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Colorado Curling Cup — Lafayette, CO",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9640",
+   "type": "sports",
+   "date": "2026-09-27",
+   "time": "",
+   "place": "Lafayette, CO",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Sask Cup #1 - U20 Mixed Doubles Curling Tour — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9845",
+   "type": "sports",
+   "date": "2026-09-27",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Guelph Mixed Doubles Early Bird — Guelph, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9636",
+   "type": "sports",
+   "date": "2026-09-27",
+   "time": "",
+   "place": "Guelph, Ontario",
+   "geo": [
+    43.5461,
+    -80.2493
+   ]
   },
   {
    "venue": "Granite Curling Club",
@@ -38,7 +1709,51 @@
    "date": "2026-09-27",
    "time": "09:00",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "expo",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Mixed Doubles Super Series - Moncton — Moncton, New Brunswick",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9558",
+   "type": "sports",
+   "date": "2026-10-01",
+   "time": "",
+   "place": "Moncton, New Brunswick",
+   "geo": [
+    46.0986,
+    -64.8004
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Rice Lake Superspiel — Rice Lake, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9563",
+   "type": "sports",
+   "date": "2026-10-01",
+   "time": "",
+   "place": "Rice Lake, WI",
+   "geo": [
+    45.5028,
+    -91.7334
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Ambassador Cruise Line Scottish Mixed Doubles — Aberdeen, Scotland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9853",
+   "type": "sports",
+   "date": "2026-10-01",
+   "time": "",
+   "place": "Aberdeen, Scotland",
+   "geo": [
+    57.1482,
+    -2.0928
+   ]
   },
   {
    "venue": "World Curling",
@@ -46,7 +1761,116 @@
    "url": "https://results.worldcurling.org/Championship/Year/2026",
    "type": "sports",
    "date": "2026-10-02",
-   "time": ""
+   "time": "",
+   "place": "Lafayette, Colorado",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "McKee Homes Fall Curling Classic — Airdrie, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9601",
+   "type": "sports",
+   "date": "2026-10-02",
+   "time": "",
+   "place": "Airdrie, Alberta",
+   "geo": [
+    51.286,
+    -114.0106
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rideau Trillium U20 — Ottawa, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9652",
+   "type": "sports",
+   "date": "2026-10-02",
+   "time": "",
+   "place": "Ottawa, Ontario",
+   "geo": [
+    45.4209,
+    -75.6901
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rideau Trillium U18 — Ottawa, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9653",
+   "type": "sports",
+   "date": "2026-10-02",
+   "time": "",
+   "place": "Ottawa, Ontario",
+   "geo": [
+    45.4209,
+    -75.6901
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Mixed Doubles Super Series - Moncton — Moncton, New Brunswick",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9558",
+   "type": "sports",
+   "date": "2026-10-02",
+   "time": "",
+   "place": "Moncton, New Brunswick",
+   "geo": [
+    46.0986,
+    -64.8004
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Rice Lake Superspiel — Rice Lake, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9563",
+   "type": "sports",
+   "date": "2026-10-02",
+   "time": "",
+   "place": "Rice Lake, WI",
+   "geo": [
+    45.5028,
+    -91.7334
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Ambassador Cruise Line Scottish Mixed Doubles — Aberdeen, Scotland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9853",
+   "type": "sports",
+   "date": "2026-10-02",
+   "time": "",
+   "place": "Aberdeen, Scotland",
+   "geo": [
+    57.1482,
+    -2.0928
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Kemptville Mixed Doubles Fall Classic — Kemptville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9549",
+   "type": "sports",
+   "date": "2026-10-02",
+   "time": "",
+   "place": "Kemptville, Ontario",
+   "geo": [
+    45.0154,
+    -75.6446
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "GOLDLINE Mixed Doubles Chicoutimi — Chicoutimi, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9585",
+   "type": "sports",
+   "date": "2026-10-02",
+   "time": "",
+   "place": "Chicoutimi, Quebec",
+   "geo": [
+    48.4286,
+    -71.0637
+   ]
   },
   {
    "venue": "World Curling",
@@ -54,7 +1878,116 @@
    "url": "https://results.worldcurling.org/Championship/Year/2026",
    "type": "sports",
    "date": "2026-10-03",
-   "time": ""
+   "time": "",
+   "place": "Lafayette, Colorado",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "McKee Homes Fall Curling Classic — Airdrie, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9601",
+   "type": "sports",
+   "date": "2026-10-03",
+   "time": "",
+   "place": "Airdrie, Alberta",
+   "geo": [
+    51.286,
+    -114.0106
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rideau Trillium U20 — Ottawa, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9652",
+   "type": "sports",
+   "date": "2026-10-03",
+   "time": "",
+   "place": "Ottawa, Ontario",
+   "geo": [
+    45.4209,
+    -75.6901
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rideau Trillium U18 — Ottawa, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9653",
+   "type": "sports",
+   "date": "2026-10-03",
+   "time": "",
+   "place": "Ottawa, Ontario",
+   "geo": [
+    45.4209,
+    -75.6901
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Mixed Doubles Super Series - Moncton — Moncton, New Brunswick",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9558",
+   "type": "sports",
+   "date": "2026-10-03",
+   "time": "",
+   "place": "Moncton, New Brunswick",
+   "geo": [
+    46.0986,
+    -64.8004
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Rice Lake Superspiel — Rice Lake, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9563",
+   "type": "sports",
+   "date": "2026-10-03",
+   "time": "",
+   "place": "Rice Lake, WI",
+   "geo": [
+    45.5028,
+    -91.7334
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Ambassador Cruise Line Scottish Mixed Doubles — Aberdeen, Scotland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9853",
+   "type": "sports",
+   "date": "2026-10-03",
+   "time": "",
+   "place": "Aberdeen, Scotland",
+   "geo": [
+    57.1482,
+    -2.0928
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Kemptville Mixed Doubles Fall Classic — Kemptville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9549",
+   "type": "sports",
+   "date": "2026-10-03",
+   "time": "",
+   "place": "Kemptville, Ontario",
+   "geo": [
+    45.0154,
+    -75.6446
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "GOLDLINE Mixed Doubles Chicoutimi — Chicoutimi, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9585",
+   "type": "sports",
+   "date": "2026-10-03",
+   "time": "",
+   "place": "Chicoutimi, Quebec",
+   "geo": [
+    48.4286,
+    -71.0637
+   ]
   },
   {
    "venue": "World Curling",
@@ -62,7 +1995,116 @@
    "url": "https://results.worldcurling.org/Championship/Year/2026",
    "type": "sports",
    "date": "2026-10-04",
-   "time": ""
+   "time": "",
+   "place": "Lafayette, Colorado",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "McKee Homes Fall Curling Classic — Airdrie, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9601",
+   "type": "sports",
+   "date": "2026-10-04",
+   "time": "",
+   "place": "Airdrie, Alberta",
+   "geo": [
+    51.286,
+    -114.0106
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rideau Trillium U20 — Ottawa, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9652",
+   "type": "sports",
+   "date": "2026-10-04",
+   "time": "",
+   "place": "Ottawa, Ontario",
+   "geo": [
+    45.4209,
+    -75.6901
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rideau Trillium U18 — Ottawa, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9653",
+   "type": "sports",
+   "date": "2026-10-04",
+   "time": "",
+   "place": "Ottawa, Ontario",
+   "geo": [
+    45.4209,
+    -75.6901
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Mixed Doubles Super Series - Moncton — Moncton, New Brunswick",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9558",
+   "type": "sports",
+   "date": "2026-10-04",
+   "time": "",
+   "place": "Moncton, New Brunswick",
+   "geo": [
+    46.0986,
+    -64.8004
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Rice Lake Superspiel — Rice Lake, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9563",
+   "type": "sports",
+   "date": "2026-10-04",
+   "time": "",
+   "place": "Rice Lake, WI",
+   "geo": [
+    45.5028,
+    -91.7334
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Ambassador Cruise Line Scottish Mixed Doubles — Aberdeen, Scotland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9853",
+   "type": "sports",
+   "date": "2026-10-04",
+   "time": "",
+   "place": "Aberdeen, Scotland",
+   "geo": [
+    57.1482,
+    -2.0928
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Kemptville Mixed Doubles Fall Classic — Kemptville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9549",
+   "type": "sports",
+   "date": "2026-10-04",
+   "time": "",
+   "place": "Kemptville, Ontario",
+   "geo": [
+    45.0154,
+    -75.6446
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "GOLDLINE Mixed Doubles Chicoutimi — Chicoutimi, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9585",
+   "type": "sports",
+   "date": "2026-10-04",
+   "time": "",
+   "place": "Chicoutimi, Quebec",
+   "geo": [
+    48.4286,
+    -71.0637
+   ]
   },
   {
    "venue": "World Curling",
@@ -70,7 +2112,12 @@
    "url": "https://results.worldcurling.org/Championship/Year/2026",
    "type": "sports",
    "date": "2026-10-05",
-   "time": ""
+   "time": "",
+   "place": "Lafayette, Colorado",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
   },
   {
    "venue": "World Curling",
@@ -78,7 +2125,12 @@
    "url": "https://results.worldcurling.org/Championship/Year/2026",
    "type": "sports",
    "date": "2026-10-06",
-   "time": ""
+   "time": "",
+   "place": "Lafayette, Colorado",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
   },
   {
    "venue": "World Curling",
@@ -86,7 +2138,12 @@
    "url": "https://results.worldcurling.org/Championship/Year/2026",
    "type": "sports",
    "date": "2026-10-07",
-   "time": ""
+   "time": "",
+   "place": "Lafayette, Colorado",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
   },
   {
    "venue": "World Curling",
@@ -94,7 +2151,51 @@
    "url": "https://results.worldcurling.org/Championship/Year/2026",
    "type": "sports",
    "date": "2026-10-08",
-   "time": ""
+   "time": "",
+   "place": "Lafayette, Colorado",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U18 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9521",
+   "type": "sports",
+   "date": "2026-10-08",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U20 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9524",
+   "type": "sports",
+   "date": "2026-10-08",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Madtown Doubledown — Madison, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9633",
+   "type": "sports",
+   "date": "2026-10-08",
+   "time": "",
+   "place": "Madison, WI",
+   "geo": [
+    43.0747,
+    -89.3842
+   ]
   },
   {
    "venue": "World Curling",
@@ -102,7 +2203,194 @@
    "url": "https://results.worldcurling.org/Championship/Year/2026",
    "type": "sports",
    "date": "2026-10-09",
-   "time": ""
+   "time": "",
+   "place": "Lafayette, Colorado",
+   "geo": [
+    39.9936,
+    -105.0897
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Challenge — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9780",
+   "type": "sports",
+   "date": "2026-10-09",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "IcePad Tournoi Elite de Trois-Rivieres — Trois-Rivieres, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9665",
+   "type": "sports",
+   "date": "2026-10-09",
+   "time": "",
+   "place": "Trois-Rivieres, Quebec",
+   "geo": [
+    46.3432,
+    -72.5428
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Regina Highland Rocktoberfest — Regina, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9718",
+   "type": "sports",
+   "date": "2026-10-09",
+   "time": "",
+   "place": "Regina, Saskatchewan",
+   "geo": [
+    50.448,
+    -104.6159
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U18 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9521",
+   "type": "sports",
+   "date": "2026-10-09",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U20 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9524",
+   "type": "sports",
+   "date": "2026-10-09",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Madtown Doubledown — Madison, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9633",
+   "type": "sports",
+   "date": "2026-10-09",
+   "time": "",
+   "place": "Madison, WI",
+   "geo": [
+    43.0747,
+    -89.3842
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Cloverdale Thanksgiving Mixed Doubles Curling Classic — Surrey, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9679",
+   "type": "sports",
+   "date": "2026-10-09",
+   "time": "",
+   "place": "Surrey, British Columbia",
+   "geo": [
+    49.1913,
+    -122.8491
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Challenge — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9780",
+   "type": "sports",
+   "date": "2026-10-10",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "IcePad Tournoi Elite de Trois-Rivieres — Trois-Rivieres, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9665",
+   "type": "sports",
+   "date": "2026-10-10",
+   "time": "",
+   "place": "Trois-Rivieres, Quebec",
+   "geo": [
+    46.3432,
+    -72.5428
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Regina Highland Rocktoberfest — Regina, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9718",
+   "type": "sports",
+   "date": "2026-10-10",
+   "time": "",
+   "place": "Regina, Saskatchewan",
+   "geo": [
+    50.448,
+    -104.6159
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U18 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9521",
+   "type": "sports",
+   "date": "2026-10-10",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U20 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9524",
+   "type": "sports",
+   "date": "2026-10-10",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Madtown Doubledown — Madison, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9633",
+   "type": "sports",
+   "date": "2026-10-10",
+   "time": "",
+   "place": "Madison, WI",
+   "geo": [
+    43.0747,
+    -89.3842
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Cloverdale Thanksgiving Mixed Doubles Curling Classic — Surrey, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9679",
+   "type": "sports",
+   "date": "2026-10-10",
+   "time": "",
+   "place": "Surrey, British Columbia",
+   "geo": [
+    49.1913,
+    -122.8491
+   ]
   },
   {
    "venue": "Granite Curling Club",
@@ -110,7 +2398,103 @@
    "date": "2026-10-10",
    "time": "12:00",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "expo",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Challenge — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9780",
+   "type": "sports",
+   "date": "2026-10-11",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "IcePad Tournoi Elite de Trois-Rivieres — Trois-Rivieres, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9665",
+   "type": "sports",
+   "date": "2026-10-11",
+   "time": "",
+   "place": "Trois-Rivieres, Quebec",
+   "geo": [
+    46.3432,
+    -72.5428
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Regina Highland Rocktoberfest — Regina, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9718",
+   "type": "sports",
+   "date": "2026-10-11",
+   "time": "",
+   "place": "Regina, Saskatchewan",
+   "geo": [
+    50.448,
+    -104.6159
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U18 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9521",
+   "type": "sports",
+   "date": "2026-10-11",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U20 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9524",
+   "type": "sports",
+   "date": "2026-10-11",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Madtown Doubledown — Madison, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9633",
+   "type": "sports",
+   "date": "2026-10-11",
+   "time": "",
+   "place": "Madison, WI",
+   "geo": [
+    43.0747,
+    -89.3842
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Cloverdale Thanksgiving Mixed Doubles Curling Classic — Surrey, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9679",
+   "type": "sports",
+   "date": "2026-10-11",
+   "time": "",
+   "place": "Surrey, British Columbia",
+   "geo": [
+    49.1913,
+    -122.8491
+   ]
   },
   {
    "venue": "Granite Curling Club",
@@ -118,7 +2502,90 @@
    "date": "2026-10-11",
    "time": "09:00",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "expo",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Challenge — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9780",
+   "type": "sports",
+   "date": "2026-10-12",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "IcePad Tournoi Elite de Trois-Rivieres — Trois-Rivieres, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9665",
+   "type": "sports",
+   "date": "2026-10-12",
+   "time": "",
+   "place": "Trois-Rivieres, Quebec",
+   "geo": [
+    46.3432,
+    -72.5428
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Regina Highland Rocktoberfest — Regina, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9718",
+   "type": "sports",
+   "date": "2026-10-12",
+   "time": "",
+   "place": "Regina, Saskatchewan",
+   "geo": [
+    50.448,
+    -104.6159
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U18 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9521",
+   "type": "sports",
+   "date": "2026-10-12",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stu Sells U20 Junior Spiel — Oakville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9524",
+   "type": "sports",
+   "date": "2026-10-12",
+   "time": "",
+   "place": "Oakville, Ontario",
+   "geo": [
+    43.4474,
+    -79.6667
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Cloverdale Thanksgiving Mixed Doubles Curling Classic — Surrey, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9679",
+   "type": "sports",
+   "date": "2026-10-12",
+   "time": "",
+   "place": "Surrey, British Columbia",
+   "geo": [
+    49.1913,
+    -122.8491
+   ]
   },
   {
    "venue": "Grand Slam of Curling",
@@ -126,7 +2593,12 @@
    "url": "https://www.thegrandslamofcurling.com/events/co-op-invitational-19",
    "type": "sports",
    "date": "2026-10-13",
-   "time": ""
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
   },
   {
    "venue": "Grand Slam of Curling",
@@ -134,7 +2606,12 @@
    "url": "https://www.thegrandslamofcurling.com/events/co-op-invitational-19",
    "type": "sports",
    "date": "2026-10-14",
-   "time": ""
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
   },
   {
    "venue": "Grand Slam of Curling",
@@ -142,7 +2619,38 @@
    "url": "https://www.thegrandslamofcurling.com/events/co-op-invitational-19",
    "type": "sports",
    "date": "2026-10-15",
-   "time": ""
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Island Shootout — Victoria, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9688",
+   "type": "sports",
+   "date": "2026-10-15",
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stroud Sleeman Cash Spiel — Stroud, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9604",
+   "type": "sports",
+   "date": "2026-10-15",
+   "time": "",
+   "place": "Stroud, Ontario",
+   "geo": [
+    44.3244,
+    -79.6193
+   ]
   },
   {
    "venue": "Grand Slam of Curling",
@@ -150,7 +2658,90 @@
    "url": "https://www.thegrandslamofcurling.com/events/co-op-invitational-19",
    "type": "sports",
    "date": "2026-10-16",
-   "time": ""
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Island Shootout — Victoria, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9688",
+   "type": "sports",
+   "date": "2026-10-16",
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Curling Cup — Brandon, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9782",
+   "type": "sports",
+   "date": "2026-10-16",
+   "time": "",
+   "place": "Brandon, Manitoba",
+   "geo": [
+    49.8511,
+    -99.9609
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stroud Sleeman Cash Spiel — Stroud, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9604",
+   "type": "sports",
+   "date": "2026-10-16",
+   "time": "",
+   "place": "Stroud, Ontario",
+   "geo": [
+    44.3244,
+    -79.6193
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curling Stadium Martensville Mixed Doubles — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9728",
+   "type": "sports",
+   "date": "2026-10-16",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Keith Martin Memorial Mixed Doubles — Arthur, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9550",
+   "type": "sports",
+   "date": "2026-10-16",
+   "time": "",
+   "place": "Arthur, Ontario",
+   "geo": [
+    43.8309,
+    -80.5356
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "GOLDLINE Mixed Doubles Mont-Bruno — Mont-Bruno, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9586",
+   "type": "sports",
+   "date": "2026-10-16",
+   "time": "",
+   "place": "Mont-Bruno, Quebec",
+   "geo": [
+    45.5333,
+    -73.35
+   ]
   },
   {
    "venue": "Grand Slam of Curling",
@@ -158,7 +2749,90 @@
    "url": "https://www.thegrandslamofcurling.com/events/co-op-invitational-19",
    "type": "sports",
    "date": "2026-10-17",
-   "time": ""
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Island Shootout — Victoria, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9688",
+   "type": "sports",
+   "date": "2026-10-17",
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Curling Cup — Brandon, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9782",
+   "type": "sports",
+   "date": "2026-10-17",
+   "time": "",
+   "place": "Brandon, Manitoba",
+   "geo": [
+    49.8511,
+    -99.9609
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stroud Sleeman Cash Spiel — Stroud, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9604",
+   "type": "sports",
+   "date": "2026-10-17",
+   "time": "",
+   "place": "Stroud, Ontario",
+   "geo": [
+    44.3244,
+    -79.6193
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curling Stadium Martensville Mixed Doubles — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9728",
+   "type": "sports",
+   "date": "2026-10-17",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Keith Martin Memorial Mixed Doubles — Arthur, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9550",
+   "type": "sports",
+   "date": "2026-10-17",
+   "time": "",
+   "place": "Arthur, Ontario",
+   "geo": [
+    43.8309,
+    -80.5356
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "GOLDLINE Mixed Doubles Mont-Bruno — Mont-Bruno, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9586",
+   "type": "sports",
+   "date": "2026-10-17",
+   "time": "",
+   "place": "Mont-Bruno, Quebec",
+   "geo": [
+    45.5333,
+    -73.35
+   ]
   },
   {
    "venue": "Granite Curling Club",
@@ -166,7 +2840,12 @@
    "date": "2026-10-17",
    "time": "16:30",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "community",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
   },
   {
    "venue": "Grand Slam of Curling",
@@ -174,7 +2853,168 @@
    "url": "https://www.thegrandslamofcurling.com/events/co-op-invitational-19",
    "type": "sports",
    "date": "2026-10-18",
-   "time": ""
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Island Shootout — Victoria, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9688",
+   "type": "sports",
+   "date": "2026-10-18",
+   "time": "",
+   "place": "Victoria, British Columbia",
+   "geo": [
+    48.4283,
+    -123.365
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Curling Cup — Brandon, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9782",
+   "type": "sports",
+   "date": "2026-10-18",
+   "time": "",
+   "place": "Brandon, Manitoba",
+   "geo": [
+    49.8511,
+    -99.9609
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Stroud Sleeman Cash Spiel — Stroud, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9604",
+   "type": "sports",
+   "date": "2026-10-18",
+   "time": "",
+   "place": "Stroud, Ontario",
+   "geo": [
+    44.3244,
+    -79.6193
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curling Stadium Martensville Mixed Doubles — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9728",
+   "type": "sports",
+   "date": "2026-10-18",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Keith Martin Memorial Mixed Doubles — Arthur, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9550",
+   "type": "sports",
+   "date": "2026-10-18",
+   "time": "",
+   "place": "Arthur, Ontario",
+   "geo": [
+    43.8309,
+    -80.5356
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "GOLDLINE Mixed Doubles Mont-Bruno — Mont-Bruno, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9586",
+   "type": "sports",
+   "date": "2026-10-18",
+   "time": "",
+   "place": "Mont-Bruno, Quebec",
+   "geo": [
+    45.5333,
+    -73.35
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Wheelchair Mixed Doubles — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9609",
+   "type": "sports",
+   "date": "2026-10-19",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Wheelchair Mixed Doubles — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9609",
+   "type": "sports",
+   "date": "2026-10-20",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Wheelchair Mixed Doubles — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9609",
+   "type": "sports",
+   "date": "2026-10-21",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Sundbyberg Open — Sundbyberg, Sweden",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9803",
+   "type": "sports",
+   "date": "2026-10-22",
+   "time": "",
+   "place": "Sundbyberg, Sweden",
+   "geo": [
+    59.3629,
+    17.9681
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Abbotsford Elite Mixed Doubles Classic — Abbotsford, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9593",
+   "type": "sports",
+   "date": "2026-10-22",
+   "time": "",
+   "place": "Abbotsford, British Columbia",
+   "geo": [
+    49.0521,
+    -122.3295
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Wheelchair Mixed Doubles — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9609",
+   "type": "sports",
+   "date": "2026-10-22",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
   },
   {
    "venue": "South",
@@ -182,7 +3022,103 @@
    "url": "https://www.usacurling.org/bonspiel-calendar",
    "type": "sports",
    "date": "2026-10-23",
-   "time": ""
+   "time": "",
+   "place": "Irving, TX",
+   "geo": [
+    32.8295,
+    -96.9442
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Sundbyberg Open — Sundbyberg, Sweden",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9803",
+   "type": "sports",
+   "date": "2026-10-23",
+   "time": "",
+   "place": "Sundbyberg, Sweden",
+   "geo": [
+    59.3629,
+    17.9681
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Clarion Cup — Rimbey, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9704",
+   "type": "sports",
+   "date": "2026-10-23",
+   "time": "",
+   "place": "Rimbey, Alberta",
+   "geo": [
+    52.6434,
+    -114.2297
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Lloydminster SaskTour Spiel — Lloydminster, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9716",
+   "type": "sports",
+   "date": "2026-10-23",
+   "time": "",
+   "place": "Lloydminster, Saskatchewan",
+   "geo": [
+    53.2817,
+    -109.9863
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Abbotsford Elite Mixed Doubles Classic — Abbotsford, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9593",
+   "type": "sports",
+   "date": "2026-10-23",
+   "time": "",
+   "place": "Abbotsford, British Columbia",
+   "geo": [
+    49.0521,
+    -122.3295
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Gage Mixed Doubles Warm-Up Spiel — Oromocto, New Brunswick",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9597",
+   "type": "sports",
+   "date": "2026-10-23",
+   "time": "",
+   "place": "Oromocto, New Brunswick",
+   "geo": [
+    45.8474,
+    -66.4712
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Bern — Bern, Switzerland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9622",
+   "type": "sports",
+   "date": "2026-10-23",
+   "time": "",
+   "place": "Bern, Switzerland",
+   "geo": [
+    46.9485,
+    7.4522
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Wheelchair Mixed Doubles — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9609",
+   "type": "sports",
+   "date": "2026-10-23",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
   },
   {
    "venue": "South",
@@ -190,7 +3126,103 @@
    "url": "https://www.usacurling.org/bonspiel-calendar",
    "type": "sports",
    "date": "2026-10-24",
-   "time": ""
+   "time": "",
+   "place": "Irving, TX",
+   "geo": [
+    32.8295,
+    -96.9442
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Sundbyberg Open — Sundbyberg, Sweden",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9803",
+   "type": "sports",
+   "date": "2026-10-24",
+   "time": "",
+   "place": "Sundbyberg, Sweden",
+   "geo": [
+    59.3629,
+    17.9681
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Clarion Cup — Rimbey, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9704",
+   "type": "sports",
+   "date": "2026-10-24",
+   "time": "",
+   "place": "Rimbey, Alberta",
+   "geo": [
+    52.6434,
+    -114.2297
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Lloydminster SaskTour Spiel — Lloydminster, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9716",
+   "type": "sports",
+   "date": "2026-10-24",
+   "time": "",
+   "place": "Lloydminster, Saskatchewan",
+   "geo": [
+    53.2817,
+    -109.9863
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Abbotsford Elite Mixed Doubles Classic — Abbotsford, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9593",
+   "type": "sports",
+   "date": "2026-10-24",
+   "time": "",
+   "place": "Abbotsford, British Columbia",
+   "geo": [
+    49.0521,
+    -122.3295
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Gage Mixed Doubles Warm-Up Spiel — Oromocto, New Brunswick",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9597",
+   "type": "sports",
+   "date": "2026-10-24",
+   "time": "",
+   "place": "Oromocto, New Brunswick",
+   "geo": [
+    45.8474,
+    -66.4712
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Bern — Bern, Switzerland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9622",
+   "type": "sports",
+   "date": "2026-10-24",
+   "time": "",
+   "place": "Bern, Switzerland",
+   "geo": [
+    46.9485,
+    7.4522
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Wheelchair Mixed Doubles — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9609",
+   "type": "sports",
+   "date": "2026-10-24",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
   },
   {
    "venue": "Granite Curling Club",
@@ -198,7 +3230,12 @@
    "date": "2026-10-24",
    "time": "12:00",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "community",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
   },
   {
    "venue": "Granite Curling Club",
@@ -206,7 +3243,12 @@
    "date": "2026-10-24",
    "time": "14:00",
    "url": "https://calendar.curlingseattle.org/",
-   "type": "community"
+   "type": "community",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
   }
  ]
 }
