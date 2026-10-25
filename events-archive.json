@@ -183,6 +183,30 @@
    "type": "sports",
    "date": "2026-10-23",
    "time": ""
+  },
+  {
+   "venue": "South",
+   "title": "Steers and Beers: The First Rock — Irving, TX",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-10-24",
+   "time": ""
+  },
+  {
+   "venue": "Granite Curling Club",
+   "title": "Adaptive Curling Clinic",
+   "date": "2026-10-24",
+   "time": "12:00",
+   "url": "https://calendar.curlingseattle.org/",
+   "type": "community"
+  },
+  {
+   "venue": "Granite Curling Club",
+   "title": "GCC 75th Anniversary Beer Release Party at Lucky Envelope",
+   "date": "2026-10-24",
+   "time": "14:00",
+   "url": "https://calendar.curlingseattle.org/",
+   "type": "community"
   }
  ]
 }
