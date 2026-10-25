@@ -90,6 +90,19 @@
  *                = sold out. `link` is the ticket page, `{id}` filled with the event id's leading
  *                digits — the number the theatre's own purchase site uses (Pentacle Theatre,
  *                Salem 2026-10-20).
+ *   eventbooking — Curling Club Manager, the Joomla + Event Booking (com_eventbooking) package some
+ *                sixty American curling clubs run their sites and registrations on (Denver, St Paul,
+ *                Duluth, Aksarben, …): `index.php?option=com_eventbooking&view=upcomingevents` renders
+ *                every upcoming event as a block with the title link and a property table — "Event
+ *                Date" (MM-DD-YYYY, with a clock when the club sets one), "Event End Date",
+ *                Capacity / Registered / "Available place" (0 = sold out). A multi-day event is one
+ *                all-day row per day, up to a week (curling-events, 2026-10-22).
+ *   curlingio  — a Curling I/O club portal (<club>.curling.io, the Canadian membership platform six
+ *                American clubs use): /en/competitions (bonspiels) and /en/programs (learn-to-curls,
+ *                leagues) are server-rendered Bootstrap cards — the title (often "Fall Spiel: November
+ *                13-15, 2026", which gives the range), a "Starts Nov 13" / "Starts Jan 2, 2027" badge,
+ *                an "N spots" badge (0 = sold out) and a Details link. `url` is the portal's origin
+ *                (curling-events, 2026-10-22).
  *
  * Also here: the empty-list gate every build runs (`emptyListGate`) — a
  * fresh pull with zero upcoming events is a scouting failure or an outage,
@@ -952,7 +965,133 @@ async function fetchSpektrix(url, ua, label, opts) {
   return out;
 }
 
-const KINDS = { tribe: fetchTribe, ics: fetchIcs, tusboletos: fetchTusboletos, jsonld: fetchJsonLd, ticketera: fetchTicketera, icsfile: fetchIcsFile, linked: fetchLinked, squarespace: fetchSquarespace, cards: fetchCards, nps: fetchNps, localist: fetchLocalist, ludus: fetchLudus, boldtype: fetchBoldtype, spektrix: fetchSpektrix };
+// ---- Curling Club Manager: Joomla's Event Booking component ----
+const MONTH3 = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
+const pad2 = (n) => String(n).padStart(2, '0');
+/** "10-24-2026", "Sat, 10-24-2026 7:30 pm", "06-30-27 12:00 am", "2026-10-24 19:30", "Jan 15 2027 5:00 pm" → { date, time }; null when unread. */
+export function ebDate(s) {
+  const txt = String(s || '').trim().replace(/^[A-Za-z]{3,9},\s+/, ''); // a leading weekday
+  const m = /^(?:(\d{1,2})-(\d{1,2})-(\d{4}|\d{2})|(\d{4})-(\d{2})-(\d{2})|([A-Za-z]{3,9})\.?\s+(\d{1,2}),?\s+(\d{4}))(?:,?\s+(\d{1,2}):(\d{2})(?:\s*([AP])\.?M\.?)?)?/i.exec(txt);
+  if (!m) return null;
+  const mon = m[7] ? MONTH3[m[7].slice(0, 3).toLowerCase()] : 0;
+  if (m[7] && !mon) return null;
+  const date = m[4] ? `${m[4]}-${m[5]}-${m[6]}` : m[7] ? `${m[9]}-${pad2(mon)}-${pad2(m[8])}` : `${m[3].length === 2 ? '20' + m[3] : m[3]}-${pad2(m[1])}-${pad2(m[2])}`;
+  m[7] = m[10]; m[8] = m[11]; m[9] = m[12]; // the clock groups, as below
+  let time = '';
+  if (m[7]) { let h = Number(m[7]); if (m[9]) h = (h % 12) + (m[9].toUpperCase() === 'P' ? 12 : 0); time = `${pad2(h)}:${m[8]}`; }
+  return { date, time };
+}
+/** Every day from start to end inclusive (ISO), at most `max` — longer is a season, not an event, and gives []. */
+export function dayRange(start, end, max = 7) {
+  const out = [];
+  const d = new Date(`${start}T12:00:00Z`), last = new Date(`${end && end >= start ? end : start}T12:00:00Z`);
+  while (d <= last && out.length <= max) { out.push(d.toISOString().slice(0, 10)); d.setUTCDate(d.getUTCDate() + 1); }
+  return out.length > max ? [] : out;
+}
+/**
+ * The upcoming-events view → feed events: one per event, or one all-day row per day of a
+ * multi-day one. Capacity reached ("Available place" 0 with a capacity) marks it sold out.
+ * Returns [{ venue, title, date, time, url, type?, soldOut? }].
+ */
+export function parseEventBooking(html, { venue, base = '', drop, type, types, label = 'feed', today = '' } = {}) {
+  const out = [];
+  for (const block of String(html || '').split(/<h2 class="eb-event-title[^"]*">/).slice(1)) {
+    const tm = /<a href="([^"]+)"[^>]*class="eb-event-title-link"[^>]*>([\s\S]*?)<\/a>/.exec(block) || /<a [^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/.exec(block);
+    if (!tm) continue;
+    const title = decode(tm[2].replace(/<[^>]+>/g, ' '));
+    if (!title || (drop && drop.test(title))) continue;
+    const props = {};
+    for (const pm of block.matchAll(/eb-event-property-label"[^>]*>\s*([\s\S]*?)\s*<\/td>\s*<td class="eb-event-property-value[^"]*"[^>]*>\s*([\s\S]*?)\s*<\/td>/g)) props[decode(pm[1])] = decode(pm[2].replace(/<[^>]+>/g, ' '));
+    const start = ebDate(props['Event Date']);
+    if (!start) { if (props['Event Date']) console.error(`${label}: unread date "${props['Event Date']}"`); continue; }
+    const end = ebDate(props['Event End Date']);
+    let url = decode(tm[1]); try { url = new URL(url, base || 'https://localhost/').href; } catch { /* as written */ }
+    const cap = Number(props.Capacity), left = Number(props['Available place']);
+    const soldOut = cap > 0 && props['Available place'] !== undefined && left === 0;
+    const days = end && end.date > start.date ? dayRange(start.date, end.date) : [start.date];
+    for (const date of days) {
+      if (date < today) continue;
+      const ev = { venue, title, date, time: days.length > 1 ? '' : start.time, url };
+      if (type && (!types || types.includes(type))) ev.type = type;
+      if (soldOut) ev.soldOut = true;
+      out.push(ev);
+    }
+  }
+  return out;
+}
+async function fetchEventBooking(url, ua, label, opts) {
+  const { feed = {}, venue, types, defaultType, drop } = opts;
+  const u = new URL(url);
+  if (!u.search) { u.pathname = u.pathname.replace(/\/?$/, '/index.php'); u.search = '?option=com_eventbooking&view=upcomingevents&limit=100'; } // the club's site root → its upcoming list
+  const html = await fetchText(u.href, ua);
+  const evs = parseEventBooking(html, { venue, base: u.origin, drop: drop || feed.drop, type: feed.type || defaultType, types, label, today: new Date().toISOString().slice(0, 10) });
+  console.log(`${label} (Event Booking): ${evs.length} rows from ${(String(html).match(/eb-event-title-link/g) || []).length} events`);
+  return evs;
+}
+
+// ---- Curling I/O: a club's bonspiel and program cards ----
+/** "November 13-15, 2026", "January 30 - February 1, 2027", "March 20, 2027" inside a title → [start, end] ISO, else null. */
+export function titleRange(title) {
+  const m = /\b([A-Z][a-z]+)\.?\s+(\d{1,2})(?:\s*[-–]\s*(?:([A-Z][a-z]+)\.?\s+)?(\d{1,2}))?,?\s+(\d{4})\b/.exec(String(title || ''));
+  if (!m) return null;
+  const m1 = MONTH3[m[1].slice(0, 3).toLowerCase()], m2 = m[3] ? MONTH3[m[3].slice(0, 3).toLowerCase()] : m1;
+  if (!m1 || !m2) return null;
+  return [`${m[5]}-${pad2(m1)}-${pad2(m[2])}`, m[4] ? `${m[5]}-${pad2(m2)}-${pad2(m[4])}` : `${m[5]}-${pad2(m1)}-${pad2(m[2])}`];
+}
+/**
+ * The cards of /en/competitions and /en/programs → feed events. The date is the range in the
+ * title when it carries one, else the "Starts Mon D[, YYYY]" badge (no year = the nearest one
+ * forward of `today`); cards with neither (a league that only says when it ends) are left out.
+ * "0 spots" is sold out. Returns [{ venue, title, date, time, url, type?, soldOut? }].
+ */
+export function parseCurlingIo(html, { venue, base = '', drop, type, types, label = 'feed', today = new Date().toISOString().slice(0, 10) } = {}) {
+  const out = [];
+  for (const card of String(html || '').split(/class="card h-100"/).slice(1)) {
+    const tm = /class="card-title[^"]*">([\s\S]*?)<\/h2>/.exec(card);
+    if (!tm) continue;
+    const title = decode(tm[1].replace(/<[^>]+>/g, ' '));
+    if (!title || (drop && drop.test(title))) continue;
+    let range = titleRange(title);
+    if (!range) {
+      const sm = /Starts\s+([A-Z][a-z]{2})[a-z]*\.?\s+(\d{1,2})(?:,\s*(\d{4}))?/.exec(card);
+      if (!sm || !MONTH3[sm[1].toLowerCase()]) continue;
+      let y = sm[3] ? Number(sm[3]) : Number(today.slice(0, 4));
+      let date = `${y}-${pad2(MONTH3[sm[1].toLowerCase()])}-${pad2(sm[2])}`;
+      if (!sm[3] && date < today) date = `${y + 1}${date.slice(4)}`;
+      range = [date, date];
+    }
+    const hm = /href="([^"]*\/en\/(?:events|programs)\/\d+[^"]*)"/.exec(card);
+    let url = hm ? decode(hm[1]) : base; try { url = new URL(url, base || 'https://localhost/').href; } catch { /* as written */ }
+    const spots = /(\d+)\s+spots?\b/i.exec(card);
+    const soldOut = (spots && Number(spots[1]) === 0) || /\bsold out\b/i.test(card);
+    const days = dayRange(range[0], range[1]);
+    for (const date of days) {
+      if (date < today) continue;
+      const ev = { venue, title, date, time: '', url };
+      if (type && (!types || types.includes(type))) ev.type = type;
+      if (soldOut) ev.soldOut = true;
+      out.push(ev);
+    }
+  }
+  return out;
+}
+async function fetchCurlingIo(url, ua, label, opts) {
+  const { feed = {}, venue, types, defaultType, drop } = opts;
+  const origin = new URL(url).origin;
+  const out = [];
+  let cards = 0;
+  for (const path of feed.pages || ['/en/competitions', '/en/programs']) {
+    try {
+      const html = await fetchText(origin + path, ua);
+      cards += (String(html).match(/class="card h-100"/g) || []).length;
+      out.push(...parseCurlingIo(html, { venue, base: origin, drop: drop || feed.drop, type: feed.type || defaultType, types, label }));
+    } catch (err) { console.error(`${label}: ${path} ${err.message}`); }
+  }
+  console.log(`${label} (Curling I/O): ${out.length} rows from ${cards} cards`);
+  return out;
+}
+
+const KINDS = { tribe: fetchTribe, ics: fetchIcs, tusboletos: fetchTusboletos, jsonld: fetchJsonLd, ticketera: fetchTicketera, icsfile: fetchIcsFile, linked: fetchLinked, squarespace: fetchSquarespace, cards: fetchCards, nps: fetchNps, localist: fetchLocalist, ludus: fetchLudus, boldtype: fetchBoldtype, spektrix: fetchSpektrix, eventbooking: fetchEventBooking, curlingio: fetchCurlingIo };
 
 /**
  * One source thunk per city.js venue with a `feed` (its listings pinned to that row) and one per

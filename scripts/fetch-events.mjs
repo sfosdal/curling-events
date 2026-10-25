@@ -5,13 +5,21 @@
  * pipeline is lqa-events' (scripts/*.mjs are its files, byte for byte); only
  * the sources below and site/city.js are curling's.
  *
- * Each source returns [{ venue, title, date, time, url, type }]. Four
- * sources, all public and keyless, read at build time:
+ * Each source returns [{ venue, title, date, time, url, type }]. Seven
+ * kinds of source, all public and keyless, read at build time:
  *   - USA Curling's Sport:80 event locator (national championships,
  *     playdowns, qualifiers and the bonspiels clubs list nationwide)
  *   - Granite Curling Club's bonspiel page and public ice calendar (Seattle)
  *   - the Grand Slam of Curling's season list (embedded in its events page)
  *   - World Curling's results database (the season's championships)
+ *   - CurlingZone's tour schedule (Canada's bonspiels and provincials, the
+ *     Brier and the Scotties, the World Curling Tour abroad)
+ *   - the Grand National Curling Club's complete calendar (the Northeast's
+ *     regional association: every GNCC-sanctioned bonspiel and playdown)
+ *   - the clubs' own calendars — the 90-odd US clubs whose sites publish one
+ *     the shared feeds.mjs can read (site/clubs.json `feeds`: Curling Club
+ *     Manager, Curling I/O, Google Calendar, The Events Calendar, Eventbrite,
+ *     Squarespace), plus the two regional calendars in city.js `feeds`
  * A multi-day event is written as one all-day row per day, so the days read
  * as one series ("2 of 4"). No Ticketmaster: curling isn't sold there.
  */
@@ -21,7 +29,8 @@ import { mergeWithArchive, unionArchives, eventKey } from './merge.mjs';
 import { calmTitle, isNotice } from './titles.mjs';
 import { applySchedules } from './schedules.mjs';
 import { slugify, BADGE_FEEDS, TEAMS, CITY } from './badges.mjs';
-import { emptyListGate } from './feeds.mjs';
+import { emptyListGate, feedSources } from './feeds.mjs';
+import { placeEvents } from './places.mjs';
 
 const JSON_OUT = new URL('../site/events.json', import.meta.url);
 const ICS_OUT = new URL('../site/events.ics', import.meta.url);
@@ -75,8 +84,9 @@ for (const [label, v] of Object.entries(CITY.venues)) for (const st of v.states 
 // (Competition, Bonspiel, Event, Course) and Status, `actions` the entry
 // list and the sign-up wizard (public; the event home page needs a login).
 // Competitions are USA Curling's own (nationals, playdowns, qualifiers);
-// bonspiels go to their club's row or their region's; courses (instructor and
-// officials training) are left out.
+// bonspiels go to their club's row or their region's; courses (instructor,
+// officials, coaching and ice-technician certification) are the Officials
+// type, on their region's row (2026-10-22).
 const S80 = 'https://usacurling.sport80.com/api/public/events/locator/data';
 const GRANITE_ZIP = '98133', EVERGREEN_ZIP = '97005';
 let graniteFromS80 = []; // Granite's bonspiels as USA Curling lists them — used only for dates its own page lacks
@@ -95,12 +105,12 @@ async function usaCurling() {
     const info = Object.fromEntries((e.info || []).map((i) => [i.title, val(i.value)]));
     if (info.Status !== 'Active') continue;
     const kind = info.Type;
-    if (!/^(Competition|Bonspiel|Event)$/.test(kind || '')) continue;
+    if (!/^(Competition|Bonspiel|Event|Course)$/.test(kind || '')) continue;
     if (/\bdemo\b/i.test(e.name || '')) continue; // the platform's sample listing
     const dates = [...String(e.subtitle || '').matchAll(/([A-Z][a-z]+) (\d{1,2})(?:st|nd|rd|th)? (\d{4})/g)].map((m) => iso(m[3], monthNo(m[1]), m[2]));
     if (!dates.length) continue;
     const start = dates[0], end = dates[1] || dates[0];
-    if (kind === 'Event' && daysOf(start, end).length > 7) continue; // a season-long series (the junior education series)
+    if ((kind === 'Event' || kind === 'Course') && daysOf(start, end).length > 7) continue; // a season-long series (the junior education series, a months-long course)
     const parts = String(e.address || '').split(',').map((s) => s.trim());
     const zip = parts[parts.length - 1] || '', state = parts[parts.length - 3] || '', town = parts[parts.length - 4] || '';
     const where = town && STATE_ABBR[state] ? `${town}, ${STATE_ABBR[state]}` : (String(e.subtitle).split(' - ').pop() || '').trim();
@@ -108,11 +118,12 @@ async function usaCurling() {
     const title = decode(e.name);
     let venue, url;
     if (kind === 'Competition') { venue = 'USA Curling Nationals'; url = link || CITY.venues[venue].url; }
-    else if (zip === GRANITE_ZIP) { graniteFromS80.push({ title, start, end, url: link }); continue; }
+    else if (zip === GRANITE_ZIP && kind !== 'Course') { graniteFromS80.push({ title, start, end, url: link }); continue; }
+    else if (zip === GRANITE_ZIP) { venue = 'Granite Curling Club'; url = link || CITY.venues[venue].url; }
     else if (zip === EVERGREEN_ZIP) { venue = 'Evergreen Curling Club'; url = link || CITY.venues[venue].url; }
     else { venue = REGION_OF[state]; if (!venue) continue; url = link || CITY.venues[venue].url; }
-    const local = venue === 'Evergreen Curling Club';
-    out.push(...perDay(start, end, { venue, title: local ? title : `${title} — ${where}`, url, type: kind === 'Event' ? 'community' : 'sports' }));
+    const local = venue === 'Evergreen Curling Club' || venue === 'Granite Curling Club';
+    out.push(...perDay(start, end, { venue, title: local ? title : `${title} — ${where}`, url, type: kind === 'Course' ? 'officials' : kind === 'Event' ? 'community' : 'sports' }));
     kept++;
   }
   console.log(`USA Curling locator: ${rows.length} listings, ${kept} upcoming events kept (${out.length} rows), ${graniteFromS80.length} at Granite`);
@@ -153,7 +164,7 @@ async function graniteBonspiels() {
 // practice ice, maintenance, rentals, closures and meetings are not events
 // for a visitor, and its bonspiels come from the page above.
 const KEEP_CATS = new Set(['Learn To Curl', 'Other', 'Activities', 'Competitions']);
-const DROP_TITLES = /instructor|vaccine|info session|orientation|volunteer/i;
+const DROP_TITLES = /vaccine|info session|orientation|volunteer|needs review/i; // "⚠ Web booking needs review" is the booking system's own flag (instructor trainings stay: the Officials type)
 const localClock = (utc) => {
   const p = Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone: CITY.tz, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
     .formatToParts(utc).map((x) => [x.type, x.value]));
@@ -171,7 +182,7 @@ async function graniteCalendar() {
     let venue = 'Granite Curling Club';
     const at = /\s*@\s*(.+)$/.exec(title);
     if (at) { if (/evergreen/i.test(at[1])) venue = 'Evergreen Curling Club'; else if (!/granite|gcc/i.test(at[1])) continue; title = title.slice(0, at.index).trim(); }
-    const type = cat === 'Competitions' ? 'sports' : 'community';
+    const type = cat === 'Competitions' ? 'sports' : cat === 'Learn To Curl' ? 'expo' : 'community';
     const url = venue === 'Granite Curling Club' ? 'https://calendar.curlingseattle.org/' : CITY.venues[venue].url;
     const s = f('DTSTART'), e = f('DTEND');
     if (/^\d{8}$/.test(s)) { // all day; DTEND is the day after
@@ -251,6 +262,58 @@ async function worldCurling() {
   return out;
 }
 
+// --- CurlingZone: the tour's season schedule ---
+// schedule.php?eventyear=<season's end year>&et=<category> is one table per
+// category (81 men, 82 women, 83/84 junior men/women, 85 mixed doubles, 86/87
+// wheelchair): the event (a link to event.php?eventid=N), its town ("Winnipeg,
+// MB", "Aberdeen, SCO", "Fargo, ND") and, on the next row, its dates with no
+// year ("Oct 9 - 12", "Oct 30 - Nov 1", "Dec 11"). A season runs May to
+// April, so May–December are the first year. The same event sits under each
+// category it is open to (one id per category), so events fold by name and
+// start. Canadian events go to the Canada row, American ones to their
+// region's, the rest to the World Tour; the Slams and the world and European
+// championships are left to their own rows' sources.
+const CZ = 'https://www.curlingzone.com';
+const CZ_CATEGORIES = [81, 82, 83, 84, 85, 86, 87];
+const CZ_COUNTRIES = { NZL: 'New Zealand', JPN: 'Japan', SUI: 'Switzerland', SCO: 'Scotland', SWE: 'Sweden', POL: 'Poland', EST: 'Estonia', FIN: 'Finland', NOR: 'Norway', KOR: 'Korea', CZE: 'Czechia', ITA: 'Italy', DEN: 'Denmark', GER: 'Germany', AUS: 'Australia', ENG: 'England', WAL: 'Wales', IRL: 'Ireland', NED: 'Netherlands', AUT: 'Austria', LAT: 'Latvia', CHN: 'China' };
+const CZ_PROVINCES = { ...PROVINCES, PEI: 'PEI', NO: 'Northern Ontario', NU: 'Nunavut' };
+const STATE_NAME = Object.fromEntries(Object.entries(STATE_ABBR).map(([name, ab]) => [ab, name]));
+const CZ_SKIP = /^GSOC\b|grand slam|USA Curling National|\b(world|european)\b.*\b(championship|qualif)/i;
+const czMonth = (m) => ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'].indexOf(m.toLowerCase().slice(0, 3)) + 1;
+async function curlingZone() {
+  const now = new Date();
+  const season = now.getUTCMonth() >= 4 ? now.getUTCFullYear() + 1 : now.getUTCFullYear(); // eventyear: the season's end year
+  const label = `${season - 1}-${String(season).slice(2)}`; // "2026-27", as the page heads its table
+  const yearOf = (m) => (m >= 5 ? season - 1 : season);
+  const out = [], seen = new Set();
+  for (const et of CZ_CATEGORIES) {
+    let h;
+    try { h = new TextDecoder('latin1').decode(await (await get(`${CZ}/schedule.php?eventyear=${season}&et=${et}`, `CurlingZone ${et}`)).arrayBuffer()); }
+    catch (err) { console.error(err.message); continue; }
+    if (!h.includes(`${label} `)) { console.error(`CurlingZone ${et}: no ${label} schedule`); continue; } // a season not yet published, shown as another's
+    for (const m of h.matchAll(/HREF='event\.php\?view=Main&eventid=(\d+)'>([^<]+)<\/a><\/td>\s*<td class=schedulecity[^>]*>([^<]*)<\/td>[\s\S]*?<td class=scheduledate[^>]*>([^<]+)<\/td>/gi)) {
+      const [, id, rawName, rawTown, when] = m;
+      const name = decode(rawName).replace(/\s*[-–]?\s*(?:proudly\s+)?(?:presented|sponsored) by\b.*$/i, '').trim();
+      if (!name || CZ_SKIP.test(name)) continue;
+      const d = /^([A-Za-z]{3})[a-z]*\s+(\d{1,2})(?:\s*-\s*(?:([A-Za-z]{3})[a-z]*\s+)?(\d{1,2}))?$/.exec(decode(when));
+      if (!d) { console.error(`CurlingZone: unread date "${decode(when)}"`); continue; }
+      const m1 = czMonth(d[1]), m2 = d[3] ? czMonth(d[3]) : m1;
+      const start = iso(yearOf(m1), m1, d[2]);
+      const end = d[4] ? iso(yearOf(m2), m2, d[4]) : start;
+      if (seen.has(name.toLowerCase() + start)) continue;
+      seen.add(name.toLowerCase() + start);
+      const [town, code] = decode(rawTown).split(/,\s*/).map((s) => (s || '').trim());
+      let venue, where;
+      if (CZ_PROVINCES[code]) { venue = 'Canada'; where = town ? `${town}, ${CZ_PROVINCES[code]}` : CZ_PROVINCES[code]; }
+      else if (STATE_NAME[code]) { venue = REGION_OF[STATE_NAME[code]]; where = `${town}, ${code}`; if (!venue) continue; }
+      else { venue = 'World Tour'; where = [town, CZ_COUNTRIES[code] || code].filter(Boolean).join(', '); }
+      out.push(...perDay(start, end, { venue, title: where ? `${name} — ${where}` : name, url: `${CZ}/event.php?view=Main&eventid=${id}`, type: 'sports' }));
+    }
+  }
+  console.log(`CurlingZone: ${seen.size} events (${out.length} rows)`);
+  return out;
+}
+
 // Granite's bonspiels that USA Curling lists but its own page doesn't (by start date)
 async function graniteExtra(have) {
   const starts = new Set(have.filter((e) => e.venue === 'Granite Curling Club').map((e) => e.date));
@@ -260,7 +323,94 @@ async function graniteExtra(have) {
   return out;
 }
 
-const sources = [usaCurling, graniteBonspiels, graniteCalendar, grandSlam, worldCurling];
+// --- The Grand National Curling Club: the Northeast's regional calendar ---
+// Its complete calendar is one table: Begin Date ("Friday, 23-Oct-2026"), End
+// Date, Type (the discipline — Open, Mens, Womens, Mixed, Mixed Doubles,
+// Juniors, College, Wheelchair), Name, Location (the host club) and a Status
+// image. Its ICS export answers 500. The host club's town comes from the
+// club list; the row is the club's region (GNCC reaches into the South).
+const GNCC = 'https://gncc.org/index.php/calendars/calendar/complete-calendar';
+const CLUBS = JSON.parse(readFileSync(new URL('../site/clubs.json', import.meta.url), 'utf8')).clubs;
+const clubKey = (s) => String(s || '').toLowerCase().replace(/\b(the|curling|club|association|assoc|inc)\b|[^a-z0-9]/g, '');
+const CLUB_BY_KEY = new Map(CLUBS.map((c) => [clubKey(c.name), c]));
+const clubRow = (c) => (CITY.venues[c.name] ? c.name : REGION_OF[STATE_NAME[c.state]]);
+async function gncc() {
+  const h = await (await get(GNCC, 'GNCC calendar')).text();
+  const out = [];
+  let n = 0;
+  for (const tr of h.matchAll(/<tr class="tabrow\s*">([\s\S]*?)<\/tr>/g)) {
+    const cells = [...tr[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map((c) => c[1]);
+    if (cells.length < 5) continue;
+    const [b, e, disc, rawName, rawWhere] = cells.map(decode);
+    if (/cancel/i.test(cells[5] || '')) continue;
+    const dmy = (x) => { const m = /(\d{1,2})-([A-Za-z]{3})-(\d{4})/.exec(x); return m ? iso(m[3], czMonth(m[2]), m[1]) : ''; };
+    const start = dmy(b), end = dmy(e) || start;
+    if (!start || !rawName) continue;
+    const club = CLUB_BY_KEY.get(clubKey(rawWhere));
+    const venue = (club && clubRow(club)) || 'Northeast';
+    const where = club ? `${club.town}, ${club.state}` : rawWhere;
+    const name = disc && !new RegExp(disc.replace(/s$/, ''), 'i').test(rawName) && !/open/i.test(disc) ? `${rawName} (${disc})` : rawName; // the discipline, when the name leaves it out
+    out.push(...perDay(start, end, { venue, title: `${name} — ${where}`, url: GNCC, type: 'sports' }));
+    n++;
+  }
+  console.log(`GNCC calendar: ${n} events (${out.length} rows)`);
+  return out;
+}
+
+// --- The clubs' own calendars ---
+// site/clubs.json carries, per club, the feeds its website publishes
+// (clubs/feeds.py, from the 2026-10-22 sweep of every US club site): Curling
+// Club Manager's upcoming-events view, a Curling I/O portal, a public Google
+// Calendar, The Events Calendar's REST API, Eventbrite links, a Squarespace
+// collection. Each is read by the shared feeds.mjs on the club's own clock and
+// pinned to the club's row (Granite, Evergreen) or its region's, where the
+// title ends in the club's town. A club calendar lists everything — leagues,
+// practice ice, board meetings, rentals, closures — so only titles that name a
+// public event are kept: bonspiels and playdowns, learn-to-curls and open
+// houses, clinics and camps, courses. The regional calendars in city.js
+// `feeds` (Dakota Territory's Google Calendar, Midwest's Events Calendar) are
+// read the same way without the town suffix.
+const STATE_TZ = { AK: 'America/Anchorage', HI: 'Pacific/Honolulu', AZ: 'America/Phoenix', CA: 'America/Los_Angeles', NV: 'America/Los_Angeles', OR: 'America/Los_Angeles', WA: 'America/Los_Angeles',
+  CO: 'America/Denver', ID: 'America/Denver', MT: 'America/Denver', NM: 'America/Denver', UT: 'America/Denver', WY: 'America/Denver',
+  AL: 'America/Chicago', AR: 'America/Chicago', IL: 'America/Chicago', IA: 'America/Chicago', KS: 'America/Chicago', LA: 'America/Chicago', MN: 'America/Chicago', MS: 'America/Chicago', MO: 'America/Chicago', NE: 'America/Chicago', ND: 'America/Chicago', OK: 'America/Chicago', SD: 'America/Chicago', TN: 'America/Chicago', TX: 'America/Chicago', WI: 'America/Chicago' };
+const CLUB_KEEP = /spiel|learn[- ]to[- ]curl|\bltc\b|curling (?:101|school|class|lesson)|open house|try curling|try it|intro(?:duction)? to curling|discover curling|clinic|\bcamp\b|playdown|championship|qualif|friendly|invitational|classic\b|tournament|\bcup\b|officials? (?:course|training|clinic|certif)|instructor|umpire|ice tech|coach(?:ing|es)? (?:course|clinic|certif|level)|certification|rookie|novice|new curler|beginner|first[- ]timer|wheelchair|stick curling|doubles|open curling|drop[- ]in|pick[- ]?up|mixer|skills/i;
+const CLUB_DROP = /private|rental|meeting|volunteer|no curling|no league|closed|closure|maintenance|ice (?:out|in|melting|removal|install)|tentative|\bhold\b|practice ice|set ?up|clean|membership|dues|locker|grand slam|\bgsoc\b|league (?:night|week|game|final|playoff|standings)|\b(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday) (?:night|morning|afternoon)? ?league\b|finals? (?:tuesday|wednesday|thursday|brunch|league)|^(?:mens?|men's|women'?s|open|mixed|juniors?|social|competitive)$|\bbusy\b/i;
+// a course, not an event that merely mentions a role ("Ice Tech Bonspiel", "League Official Start")
+const OFFICIALS = /(?:officials?|instructor|umpire|ice tech(?:nician)?|coach(?:ing|es)?)\b[^—]*\b(?:course|training|clinic|certif\w*|assessment|level \d)|level \d (?:officials?|instructor|coach|ice tech)|certification|\bumpir(?:e|ing) (?:course|training|clinic)/i;
+const clubType = (title) => (OFFICIALS.test(title) ? 'officials' : LEARN_TO_CURL.test(title) ? 'expo' : /spiel|playdown|championship|qualif|tournament|invitational|classic\b|\bcup\b|friendly|doubles/i.test(title) ? 'sports' : 'community');
+// the date a club writes into the title is the row's own: "Learn to Curl - 01/02/27, 2pm", "… - Sunday,
+// November 29, 2026", "… — Sat Oct 24", "Sat 10-31-26 Learn to Curl", "… (Copy)"
+const DAY = String.raw`(?:(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*,?\s+)?(?:\d{1,2}[-\/]\d{1,2}(?:[-\/]\d{2,4})?|(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d{1,2}(?:st|nd|rd|th)?(?:,?\s+\d{4})?|\d{4}-\d{2}-\d{2})(?:\s*[-–,@]?\s*\d{1,2}(?::\d{2})?\s*[ap]\.?m\.?)?`;
+const TRAILING_DAY = new RegExp(String.raw`\s*(?:[-–—:]|\bon|@)?\s*[(\[]?${DAY}[)\]]?\s*(?:\([^)]*\))?\s*$`, 'i'), LEADING_DAY = new RegExp(String.raw`^${DAY}\s*[-–—:]?\s+`, 'i');
+const clubTitle = (title) => title.replace(/\bLTC\b/g, 'Learn to Curl').replace(/\s*\(copy\)\s*/gi, ' ').replace(TRAILING_DAY, '').replace(LEADING_DAY, '').replace(/\s*[-–—:]\s*$/, '').trim() || title.trim();
+const readFeed = (thunk, { label = 'feed', suffix = '', keep = true, fallbackUrl = '' }) => async () => {
+  let rows;
+  try { rows = await thunk(); } catch (err) { console.error(`${label}: ${err.message}`); return []; }
+  return rows.filter((e) => !CLUB_DROP.test(e.title) && (!keep || CLUB_KEEP.test(e.title)))
+    .map((e) => { const title = clubTitle(e.title); return { ...e, title: suffix ? `${title} — ${suffix}` : title, type: clubType(title), url: e.url || fallbackUrl }; });
+};
+// a pool: the club calendars are a hundred small fetches — six at a time, as one source
+const pooled = (name, thunks, width = 6) => ({ [name]: async () => {
+  const out = [];
+  let i = 0;
+  await Promise.all(Array.from({ length: Math.min(width, thunks.length) }, async () => { while (i < thunks.length) { const t = thunks[i++]; try { out.push(...await t()); } catch (err) { console.error(`${name}: ${err.message}`); } } }));
+  console.log(`${name}: ${out.length} rows from ${thunks.length} calendars`);
+  return out;
+} }[name]);
+const clubThunks = [];
+for (const c of CLUBS) {
+  const venue = clubRow(c);
+  if (!c.feeds || !venue) continue;
+  for (const f of c.feeds) {
+    const [thunk] = feedSources({ venues: CITY.venues, feeds: [{ ...f, label: c.name, venue }], types: CITY.types, tz: STATE_TZ[c.state] || 'America/New_York' }, BROWSER_UA);
+    clubThunks.push(readFeed(thunk, { label: c.name, suffix: CITY.venues[c.name] ? '' : `${c.town}, ${c.state}`, fallbackUrl: c.url }));
+  }
+}
+const clubCalendars = pooled('Club calendars', clubThunks);
+const regionalCalendars = pooled('Regional calendars', feedSources(CITY, BROWSER_UA).map((t, i) => readFeed(t, { label: CITY.feeds[i].label, keep: false })), 2);
+
+const LEARN_TO_CURL = /learn[- ]?(?:to|2)[- ]?curl|try curling|curling 101|intro(?:duction)? to curling|open house|beginner|discover curling|curling (?:school|class(?:es)?|lessons?)\b|new curler|first[- ]timer/i; // not "Curling Classic"
+const sources = [usaCurling, graniteBonspiels, graniteCalendar, grandSlam, worldCurling, curlingZone, gncc, regionalCalendars, clubCalendars];
 
 // Venue names as city.js spells them: a venue listed under other spellings
 // (`alias` — "Bakkt Theater", "Dollar Loan Center", "The Joint")
@@ -288,6 +438,15 @@ for (const src of sources) {
 all = all.concat(await graniteExtra(all));
 
 // window, de-dupe, sort
+// calmTitle on the title alone: the " — Town, ST" place after it keeps its state code (MI is a
+// Spanish small word to calmTitle), and the sport's acronyms stay shouted.
+const ACRONYMS = { gncc: 'GNCC', gmcc: 'GMCC', fmcc: 'FMCC', dtca: 'DTCA', usac: 'USAC', uswca: 'USWCA', wct: 'WCT', mopac: 'MoPac', pnwca: 'PNWCA', glca: 'GLCA', wsca: 'WSCA', gsoc: 'GSOC', itc: 'ITC', bccc: 'BCCC', dcc: 'DCC', gcc: 'GCC', wc3: 'WC3', mdcc: 'MDCC', ncc: 'NCC', scc: 'SCC', lccc: 'LCCC' };
+const ACRONYM_RE = new RegExp(`\\b(${Object.keys(ACRONYMS).join('|')})\\b`, 'gi');
+const calmPlace = (title) => {
+  const i = title.lastIndexOf(' — ');
+  const head = i > 0 ? title.slice(0, i) : title, place = i > 0 ? title.slice(i) : '';
+  return calmTitle(head).replace(ACRONYM_RE, (m) => ACRONYMS[m.toLowerCase()]) + place;
+};
 const today = new Date().toISOString().slice(0, 10);
 const horizon = new Date(Date.now() + WINDOW_DAYS * 86400e3).toISOString().slice(0, 10);
 const cutoff = new Date(Date.now() - WINDOW_DAYS * 86400e3).toISOString().slice(0, 10);
@@ -295,7 +454,9 @@ const seen = new Set();
 const fresh = all
   .filter((e) => e.date && e.date >= cutoff && e.date <= horizon)
   .filter((e) => !isNotice(e.title)) // a closure or construction notice is information, not an event
-  .map((e) => ({ ...e, title: calmTitle(e.title) })) // shouted titles come down to Title Case
+  .map((e) => ({ ...e, title: calmPlace(e.title) })) // shouted titles come down to Title Case — the place after the dash and curling's acronyms kept
+  .map((e) => (LEARN_TO_CURL.test(e.title) ? { ...e, type: 'expo' } : e)) // city.js's "Learn to Curl" type (the shared key 'expo'), whatever the source called it
+  .map((e) => (OFFICIALS.test(e.title) ? { ...e, type: 'officials' } : e)) // the Officials type: officiating, instructor, coaching and ice-technician courses
   .filter((e) => { const k = eventKey(e); if (seen.has(k)) return false; seen.add(k); return true; }); // venue|title|date|clock (merge.mjs): a second showing on one day is kept
 
 // the empty-list gate (feeds.mjs): nothing upcoming in this build's own pull means a room was
@@ -349,6 +510,9 @@ if (Object.keys(seasons).length) {
   writeFileSync(new URL('../site/teams.json', import.meta.url), JSON.stringify({ generated: new Date().toISOString(), teams: seasons, form, postseason }, null, 1) + '\n');
 }
 
+// the Map view: each event's place and spot (scripts/places.mjs, from the committed gazetteer)
+const unplaced = placeEvents(merged, CITY.venues);
+console.log(`places: ${merged.filter((e) => e.geo).length} of ${merged.length} events pinned` + (unplaced.size ? `; not in the gazetteer: ${[...unplaced].map(([p, n]) => `${p} (${n})`).join(', ')}` : ''));
 writeFileSync(JSON_OUT, JSON.stringify({ generated: new Date().toISOString(), events: merged }, null, 2) + '\n');
 // the archive record: this build's past events on top of everything already
 // recorded, never pruned (the feed keeps a year; the branch keeps it all)

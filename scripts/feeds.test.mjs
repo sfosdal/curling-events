@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mapTribeEvents, tribeType, feedSources, emptyListGate, spanishDates, parseTusboletosList, tusboletosTimes, decodeBody, parseJsonLdEvents, parseIcs, icsToTribeRows, ticketeraDates, parseTicketeraList, parseTicketeraDetail, pageRoom, icsStart, mapIcsFile, eventLinks, mapSquarespaceEvents, cardDates, parseCards, mapNpsEvents, cardClock, mapLocalistEvents, parseLudus, parseBoldtypeList, mapSpektrix } from './feeds.mjs';
+import { mapTribeEvents, tribeType, feedSources, emptyListGate, spanishDates, parseTusboletosList, tusboletosTimes, decodeBody, parseJsonLdEvents, parseIcs, icsToTribeRows, ticketeraDates, parseTicketeraList, parseTicketeraDetail, pageRoom, icsStart, mapIcsFile, eventLinks, mapSquarespaceEvents, cardDates, parseCards, mapNpsEvents, cardClock, mapLocalistEvents, parseLudus, parseBoldtypeList, mapSpektrix, parseEventBooking, ebDate, dayRange, parseCurlingIo, titleRange } from './feeds.mjs';
 
 const room = 'Field Arts &#038; Events Hall &#8211; Donna M. Morris Theater';
 const row = (title, start, extra = {}) => ({ title, start_date: start, status: 'publish', all_day: false, venue: { venue: room }, categories: [], ...extra });
@@ -398,4 +398,58 @@ test('a Spektrix instance becomes a performance on the theatre clock; cancelled,
   ];
   const evs = mapSpektrix(events, instances, { venue: 'Pentacle Theatre', link: 'https://purchase.example.org/EventAvailability?EventId={id}', drop: /class/i, type: 'arts', types: ['arts'], today: '2026-10-20' });
   assert.deepEqual(evs, [{ venue: 'Pentacle Theatre', title: 'Angel Street (Gaslight)', date: '2026-10-21', time: '19:30', url: 'https://purchase.example.org/EventAvailability?EventId=3201', instance: 'i1', type: 'arts' }]);
+});
+
+test('an Event Booking upcoming list becomes rows: one per day of a bonspiel, the clock on a one-day event, sold out at capacity', () => {
+  const html = `
+  <div class="eb-event"><div class="eb-box-heading clearfix"><h2 class="eb-event-title pull-left">
+    <a href="/index.php/component/eventbooking/events/bonspiels/293-open-spiel-2026" title="x" class="eb-event-title-link"> Fly your broom to the DCC Halloween Bonspiel </a></h2></div>
+    <table><tr class="eb-event-property"><td class="eb-event-property-label"> Event Date </td><td class="eb-event-property-value"> 10-24-2026 </td></tr>
+    <tr class="eb-event-property"><td class="eb-event-property-label"> Event End Date </td><td class="eb-event-property-value"> 10-25-2026 </td></tr>
+    <tr class="eb-event-property"><td class="eb-event-property-label"> Capacity </td><td class="eb-event-property-value"> 48 </td></tr>
+    <tr class="eb-event-property"><td class="eb-event-property-label"> Registered </td><td class="eb-event-property-value"> 48 </td></tr>
+    <tr class="eb-event-property"><td class="eb-event-property-label"> Available place </td><td class="eb-event-property-value"> 0 </td></tr></table></div>
+  <div class="eb-event"><h2 class="eb-event-title pull-left"><a href="/index.php/events/300-learn-to-curl" class="eb-event-title-link">Learn to Curl</a></h2>
+    <table><tr class="eb-event-property"><td class="eb-event-property-label">Event Date</td><td class="eb-event-property-value">11-02-2026 07:00 PM</td></tr>
+    <tr class="eb-event-property"><td class="eb-event-property-label">Capacity</td><td class="eb-event-property-value">24</td></tr>
+    <tr class="eb-event-property"><td class="eb-event-property-label">Available place</td><td class="eb-event-property-value">9</td></tr></table></div>
+  <div class="eb-event"><h2 class="eb-event-title pull-left"><a href="/index.php/events/301-membership" class="eb-event-title-link">2026-27 Membership</a></h2>
+    <table><tr class="eb-event-property"><td class="eb-event-property-label">Event Date</td><td class="eb-event-property-value">09-01-2026</td></tr></table></div>`;
+  const evs = parseEventBooking(html, { venue: 'Midwest', base: 'https://denvercurlingclub.com', drop: /membership/i, type: 'sports', types: ['sports'], today: '2026-10-22' });
+  assert.deepEqual(evs, [
+    { venue: 'Midwest', title: 'Fly your broom to the DCC Halloween Bonspiel', date: '2026-10-24', time: '', url: 'https://denvercurlingclub.com/index.php/component/eventbooking/events/bonspiels/293-open-spiel-2026', type: 'sports', soldOut: true },
+    { venue: 'Midwest', title: 'Fly your broom to the DCC Halloween Bonspiel', date: '2026-10-25', time: '', url: 'https://denvercurlingclub.com/index.php/component/eventbooking/events/bonspiels/293-open-spiel-2026', type: 'sports', soldOut: true },
+    { venue: 'Midwest', title: 'Learn to Curl', date: '2026-11-02', time: '19:00', url: 'https://denvercurlingclub.com/index.php/events/300-learn-to-curl', type: 'sports' },
+  ]);
+  assert.deepEqual(ebDate('2026-10-24 19:30'), { date: '2026-10-24', time: '19:30' });
+  assert.deepEqual(ebDate('Sat, 11-14-2026 7:30 pm'), { date: '2026-11-14', time: '19:30' });
+  assert.deepEqual(ebDate('06-30-27 12:00 am'), { date: '2027-06-30', time: '00:00' });
+  assert.deepEqual(ebDate('Wed, 07-01-2026'), { date: '2026-07-01', time: '' });
+  assert.deepEqual(ebDate('Jan 15 2027 5:00 pm'), { date: '2027-01-15', time: '17:00' });
+  assert.deepEqual(ebDate('Fri, January 15, 2027'), { date: '2027-01-15', time: '' });
+  assert.equal(ebDate('next week'), null);
+  assert.deepEqual(dayRange('2026-12-30', '2027-01-02'), ['2026-12-30', '2026-12-31', '2027-01-01', '2027-01-02']);
+  assert.deepEqual(dayRange('2026-10-01', '2026-12-01'), []);
+});
+
+test('Curling I/O cards: the title range, else the Starts badge with the nearest year forward; 0 spots is sold out; a league with only an end date is left out', () => {
+  const html = `
+  <div class="card h-100"><div class="card-body"><h2 class="card-title h6 mb-0">Fall Spiel: November 13-15, 2026</h2>
+    <span class="badge">77 spots</span><span class="badge">Starts Nov 13</span><a class="btn" href="/en/events/29795-fall-spiel-november-13-15-2026">Details</a></div></div>
+  <div class="card h-100"><div class="card-body"><h2 class="card-title h6 mb-0">Learn to Curl</h2>
+    <span class="badge">0 spots</span><span class="badge">Starts Jan 2, 2027</span><a class="btn" href="/en/programs/31000-learn-to-curl">Details</a></div></div>
+  <div class="card h-100"><div class="card-body"><h2 class="card-title h6 mb-0">Monday Night Open League (&#39;26-27)</h2>
+    <span class="badge">Ends Apr 19, 2027</span><a class="btn" href="/en/events/28935-monday-night-open-league-26-27">Details</a></div></div>
+  <div class="card h-100"><div class="card-body"><h2 class="card-title h6 mb-0">Rookie Spiel</h2>
+    <span class="badge">Starts Oct 3</span><a class="btn" href="/en/events/29800-rookie-spiel">Details</a></div></div>`;
+  const evs = parseCurlingIo(html, { venue: 'Northwest', base: 'https://anchorage.curling.io', type: 'sports', types: ['sports'], today: '2026-10-22' });
+  assert.deepEqual(evs.map((e) => [e.title, e.date, e.url.replace('https://anchorage.curling.io', ''), !!e.soldOut]), [
+    ['Fall Spiel: November 13-15, 2026', '2026-11-13', '/en/events/29795-fall-spiel-november-13-15-2026', false],
+    ['Fall Spiel: November 13-15, 2026', '2026-11-14', '/en/events/29795-fall-spiel-november-13-15-2026', false],
+    ['Fall Spiel: November 13-15, 2026', '2026-11-15', '/en/events/29795-fall-spiel-november-13-15-2026', false],
+    ['Learn to Curl', '2027-01-02', '/en/programs/31000-learn-to-curl', true],
+    ['Rookie Spiel', '2027-10-03', '/en/events/29800-rookie-spiel', false],
+  ]);
+  assert.deepEqual(titleRange('Winter Classic: January 30 - February 1, 2027'), ['2027-01-30', '2027-02-01']);
+  assert.equal(titleRange('Monday Night Open League'), null);
 });

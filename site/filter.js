@@ -30,6 +30,7 @@
 
   var TYPE_VENUE_DEFAULT = venueTable('type'); // the type when the title decides nothing
   var TYPE_KEYS_OK = { concert: 1, sports: 1, arts: 1, movie: 1, community: 1, expo: 1, bar: 1 };
+  (CITY.types || []).forEach(function (t) { TYPE_KEYS_OK[t.key] = 1; }); // a city's own keys too (curling's 'officials'), else a source's type falls through to the venue's
   // Order: the movie flag and a home team / "vs" are certain. Then the
   // source's own classification (feed `type`: Ticketmaster segment, DICE
   // type tags, Seattle Center facility/type tags — scripts/sources.mjs),
@@ -66,7 +67,7 @@
     if (e.soldOut) return 'soldout';
     var t = e.tickets;
     if (!t || t.box == null || t.box <= 0) return '';
-    var cap = VENUE_CAPACITY[e.venue];
+    var cap = e.capacity || VENUE_CAPACITY[e.venue]; // the night's own house first
     return t.box <= (cap ? Math.ceil(cap * 0.05) : 100) ? 'nearly' : '';
   }
 

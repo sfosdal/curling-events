@@ -14,3 +14,5 @@ events-archive.json
 # written by scripts/seo.mjs at build
 site/robots.txt
 site/sitemap.xml
+# Natural Earth downloads for scripts/build-local-map.mjs
+.cache/
