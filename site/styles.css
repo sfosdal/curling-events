@@ -314,9 +314,9 @@ html.teams-open #calToday { display: none; }
 /* the Filter button rides at the end of the view pill, past a hairline, in every mode (Steve, 2026-10-24,
    "for all sites, and modes combine these"): icon + word like the stops, the word going with is-tight; while
    the panel is open it wears the ink like a knob of its own. It is not a stop: the knob never moves to it. */
-.view-toggle .vt-filter { width: auto; min-width: var(--tt); margin-left: 3px; padding: 0 .75rem 0 .7rem; border-left: 1px solid var(--line); border-radius: 0 999px 999px 0; }
+.view-toggle .vt-filter { width: auto; min-width: var(--tt); padding: 0 .7rem 0 .55rem; } /* a stop like the others — no divider (Steve, 2026-10-24: "vert lines should be consistent") */
 .filterbar.is-tight .view-toggle .vt-filter { width: auto; padding: 0 .35rem 0 .4rem; }
-.view-toggle .vt-filter[aria-expanded="true"], .view-toggle .vt-filter[aria-expanded="true"]:hover { background: var(--ink); color: var(--sky); border-radius: 999px; border-left-color: transparent; }
+.view-toggle .vt-filter[aria-expanded="true"], .view-toggle .vt-filter[aria-expanded="true"]:hover { background: var(--ink); color: var(--sky); border-radius: 999px; }
 /* the bar stays pinned at the top while the list scrolls (--barh is its
    height — the month dividers and the calendar strip stick just below it);
    the panel floats open under it, over the content, which stays put */
