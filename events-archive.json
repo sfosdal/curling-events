@@ -3249,6 +3249,214 @@
     47.7224,
     -122.3447
    ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Sundbyberg Open — Sundbyberg, Sweden",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9803",
+   "type": "sports",
+   "date": "2026-10-25",
+   "time": "",
+   "place": "Sundbyberg, Sweden",
+   "geo": [
+    59.3629,
+    17.9681
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Clarion Cup — Rimbey, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9704",
+   "type": "sports",
+   "date": "2026-10-25",
+   "time": "",
+   "place": "Rimbey, Alberta",
+   "geo": [
+    52.6434,
+    -114.2297
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Lloydminster SaskTour Spiel — Lloydminster, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9716",
+   "type": "sports",
+   "date": "2026-10-25",
+   "time": "",
+   "place": "Lloydminster, Saskatchewan",
+   "geo": [
+    53.2817,
+    -109.9863
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Abbotsford Elite Mixed Doubles Classic — Abbotsford, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9593",
+   "type": "sports",
+   "date": "2026-10-25",
+   "time": "",
+   "place": "Abbotsford, British Columbia",
+   "geo": [
+    49.0521,
+    -122.3295
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Gage Mixed Doubles Warm-Up Spiel — Oromocto, New Brunswick",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9597",
+   "type": "sports",
+   "date": "2026-10-25",
+   "time": "",
+   "place": "Oromocto, New Brunswick",
+   "geo": [
+    45.8474,
+    -66.4712
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Bern — Bern, Switzerland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9622",
+   "type": "sports",
+   "date": "2026-10-25",
+   "time": "",
+   "place": "Bern, Switzerland",
+   "geo": [
+    46.9485,
+    7.4522
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Tallinn Wheelchair Mixed Doubles — Tallinn, Estonia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9609",
+   "type": "sports",
+   "date": "2026-10-25",
+   "time": "",
+   "place": "Tallinn, Estonia",
+   "geo": [
+    59.4372,
+    24.7573
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "2026 Spiel of the Dead — St Paul, MN",
+   "date": "2026-10-25",
+   "time": "",
+   "url": "https://frogtowncurling.org/index.php/component/eventbooking/tournament/224-2026-spiel-of-the-dead",
+   "type": "sports",
+   "place": "St Paul, MN",
+   "geo": [
+    44.9497,
+    -93.0931
+   ]
+  },
+  {
+   "venue": "Granite Curling Club",
+   "title": "Junior Learn To Curl (Day 3 of 3)",
+   "date": "2026-10-25",
+   "time": "09:00",
+   "url": "https://calendar.curlingseattle.org/",
+   "type": "expo",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn To Curl — Norfolk, CT",
+   "date": "2026-10-25",
+   "time": "09:45",
+   "url": "https://norfolkcurlingclub.org/index.php/try-curling/learn-to-curl/learn-to-curl-registration/learn-to-curl-134",
+   "type": "expo",
+   "place": "Norfolk, CT",
+   "geo": [
+    41.99,
+    -73.1991
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Learn to Curl — Wausau, WI",
+   "date": "2026-10-25",
+   "time": "11:00",
+   "url": "https://wausaucurling.org/index.php/component/eventbooking/learn-to-curls/73-learn-to-curl-oct-25-2026",
+   "type": "expo",
+   "place": "Wausau, WI",
+   "geo": [
+    44.9598,
+    -89.6273
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Curling School — Whitesboro, NY",
+   "date": "2026-10-25",
+   "time": "11:30",
+   "url": "http://www.uticacurlingclub.org/",
+   "type": "expo",
+   "place": "Whitesboro, NY",
+   "geo": [
+    43.1218,
+    -75.2911
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Open Doubles League — Hartland, WI",
+   "date": "2026-10-25",
+   "time": "11:30",
+   "url": "https://kmcurlingclub.com/event/open-doubles-league-2/2026-10-25/",
+   "type": "sports",
+   "place": "Hartland, WI",
+   "geo": [
+    43.105,
+    -88.342
+   ]
+  },
+  {
+   "venue": "South",
+   "title": "Try Curling Sunday — Irving, TX",
+   "date": "2026-10-25",
+   "time": "15:00",
+   "url": "https://www.dfwcurling.com/index.php/component/eventbooking/learntocurl/178-try-curling-sunday-10-25-3-00-pm",
+   "type": "expo",
+   "place": "Irving, TX",
+   "geo": [
+    32.8295,
+    -96.9442
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Learn to Curl (Fremont) — San Jose, CA",
+   "date": "2026-10-25",
+   "time": "16:30",
+   "url": "https://siliconvalleycurling.com/event/learn-to-curl-fremont-2026-10-25/",
+   "type": "expo",
+   "place": "San Jose, CA",
+   "geo": [
+    37.3362,
+    -121.8906
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Team Hebert Skills Series: Delivery — Eau Claire, WI",
+   "date": "2026-10-25",
+   "time": "18:30",
+   "url": "https://curlingclub.com/index.php/component/eventbooking/clinics/69-team-hebert-skills-series-delivery",
+   "type": "community",
+   "place": "Eau Claire, WI",
+   "geo": [
+    44.8113,
+    -91.4985
+   ]
   }
  ]
 }
