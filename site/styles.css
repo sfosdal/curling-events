@@ -20,7 +20,8 @@
   --v-usac: #2d619f; --v-wcf: #9f442d; --v-gsoc: #9f8e2d; --v-tour: #2d9f9f; --v-canada: #9f2d2d; --v-granite: #2d9f6d; --v-evergreen: #4f9f2d;
   --v-northwest: #2d8f9f; --v-midwest: #712d9f; --v-northeast: #9f2d66; --v-south: #9f662d; --v-mountain: #819f2d;
   --venue-text: 72%;     /* how much of the venue hue the card's venue label keeps (light mode) */
-  --tint: 26%;           /* the venue wash behind each card (light mode; 13% in the dark palette) */
+  --tint: 26%;           /* the venue wash behind a series card (light mode; 13% in the dark palette) */
+  --row-a: #f3f6f8; --row-b: #d6dde3; /* the list's rows alternate light and dark grey; only a series keeps its venue's hue (Steve, 2026-10-20) */
   /* event-type hues (calendar ticks, agenda right edge): concerts salmon and
      arts crimson keep clear of the brand orange; movies slate = "quiet" */
   --t-concert: #d9664f;
@@ -58,6 +59,7 @@
     --v-usac: #86b4ea; --v-wcf: #ea9a86; --v-gsoc: #eadb86; --v-tour: #86eaea; --v-canada: #ea8686; --v-granite: #86eabe; --v-evergreen: #a4ea86;
     --v-northwest: #86dcea; --v-midwest: #c286ea; --v-northeast: #ea86b8; --v-south: #eab886; --v-mountain: #d0ea86;
     --venue-text: 100%; --tint: 13%;
+    --row-a: #1e252c; --row-b: #2c343c;
     --t-concert: #f0806a; --t-sports: #f2d21b; --t-arts: #d63a4f;
     --t-movie: #8b9db0; --t-community: #e660a8; --t-expo: #4fd1c5; --t-bar: #e3ad3c; --alert: #ff4b3e;
     --bug-bg: #2b2d30; --bug-frame: #c9cdd2; --bug-ink: #f4f4f4; --bug-soft: #d5d8dc; --bug-dim: #b9bec4; --bug-rowline: #5c6167; --bug-off: #6a6d72; --bug-muted: #4a4f56; --bug-score-bg: #fafafa; --bug-shadow: rgba(0, 0, 0, .35); --bug-redzone: #ff7b7b;
@@ -74,6 +76,7 @@
   --v-usac: #86b4ea; --v-wcf: #ea9a86; --v-gsoc: #eadb86; --v-tour: #86eaea; --v-canada: #ea8686; --v-granite: #86eabe; --v-evergreen: #a4ea86;
   --v-northwest: #86dcea; --v-midwest: #c286ea; --v-northeast: #ea86b8; --v-south: #eab886; --v-mountain: #d0ea86;
   --venue-text: 100%; --tint: 13%;
+  --row-a: #1e252c; --row-b: #2c343c;
   --t-concert: #f0806a; --t-sports: #f2d21b; --t-arts: #d63a4f;
   --t-movie: #8b9db0; --t-community: #e660a8; --t-expo: #4fd1c5; --t-bar: #e3ad3c; --alert: #ff4b3e;
   --bug-bg: #2b2d30; --bug-frame: #c9cdd2; --bug-ink: #f4f4f4; --bug-soft: #d5d8dc; --bug-dim: #b9bec4; --bug-rowline: #5c6167; --bug-off: #6a6d72; --bug-muted: #4a4f56; --bug-score-bg: #fafafa; --bug-shadow: rgba(0, 0, 0, .35); --bug-redzone: #ff7b7b;
@@ -765,7 +768,9 @@ button.cal-day:hover { background: color-mix(in srgb, var(--ink) 10%, var(--mist
   letter-spacing: .06em; color: var(--ink-soft); line-height: 1; /* "WEDNESDAY" fits the rail; line-height 1 like the clock's PM */
 }
 .day-events { display: grid; gap: .6rem; align-content: start; }
-/* each row carries a whisper of its venue's color (set inline by app.js) */
+.agenda .day-events > .ev { background: var(--row-a); } /* the list only: the Teams schedule keeps its home-game wash */
+.agenda .day-events > .ev:nth-child(even) { background: var(--row-b); }
+/* a series row carries a whisper of its venue's color (set inline by app.js); the rest are the greys above */
 .ev { display: flex; gap: .8rem; align-items: flex-start; padding: .45em .55em; border-radius: 6px; position: relative; overflow: hidden; }
 .ev-body { display: flex; flex-direction: column; align-items: flex-start; gap: .18rem; min-width: 0; }
 .ev-title { display: flex; align-items: center; gap: .45rem; min-width: 0; }
@@ -1931,6 +1936,7 @@ body.sheet-open { overflow: hidden; }
 
 } /* end of the phone block (it ran to the end of the file unclosed, harmlessly, until rules followed it) */
 
+
 /* ---- the Map view (local-map.js, the fourth view stop, in a city whose city.js carries a map block — Steve, 2026-10-24) ---- */
 html.map-open .agenda, html.map-open .cal-toggle, html.map-open #calToday, html.map-open .view-note { display: none; } /* the list and its calendar step aside; the filters and search stay — the pins follow them */
 .local-map { margin-top: 1.2rem; }
@@ -1990,6 +1996,8 @@ html.map-open .agenda, html.map-open .cal-toggle, html.map-open #calToday, html.
 /* the pin's card: the month view's day card (.mb-pop), with the room's own site at its foot */
 .lm-pop .lm-site { display: inline-flex; align-items: center; gap: .35rem; margin-top: .35rem; font: 500 .78rem/1 var(--body); color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: .1rem; }
 .lm-pop .lm-site:hover { border-color: var(--ink); }
+.lm-pop .lm-foot { display: flex; flex-wrap: wrap; gap: .3rem 1.1rem; } /* Venue list · Venue site ↗ (Steve, 2026-10-26) */
+.lm-pop .lm-list { background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 0 0 .1rem; cursor: pointer; }
 .lm-pop .lm-more { font-family: var(--mono); font-size: .68rem; letter-spacing: .06em; color: var(--ink-soft); margin: .1rem 0 .3rem; }
 /* each row's day at its right end, month and day only (Steve, 2026-10-26) — the title and clock line wrap short of it */
 .lm-pop .mb-ev { position: relative; padding-right: 3.6rem; }

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mapTribeEvents, tribeType, feedSources, emptyListGate, spanishDates, parseTusboletosList, tusboletosTimes, decodeBody, parseJsonLdEvents, parseIcs, icsToTribeRows, ticketeraDates, parseTicketeraList, parseTicketeraDetail, pageRoom, icsStart, mapIcsFile, eventLinks, mapSquarespaceEvents, cardDates, parseCards, mapNpsEvents, cardClock, mapLocalistEvents, parseLudus, parseBoldtypeList, mapSpektrix, parseEventBooking, ebDate, dayRange, parseCurlingIo, titleRange } from './feeds.mjs';
+import { mapTribeEvents, tribeType, feedSources, emptyListGate, spanishDates, parseTusboletosList, tusboletosTimes, decodeBody, parseJsonLdEvents, parseIcs, icsToTribeRows, ticketeraDates, parseTicketeraList, parseTicketeraDetail, pageRoom, icsStart, mapIcsFile, eventLinks, mapSquarespaceEvents, cardDates, parseCards, mapNpsEvents, cardClock, mapLocalistEvents, parseLudus, parseBoldtypeList, mapSpektrix, parseMecInit, parseMecCards } from './feeds.mjs';
 
 const room = 'Field Arts &#038; Events Hall &#8211; Donna M. Morris Theater';
 const row = (title, start, extra = {}) => ({ title, start_date: start, status: 'publish', all_day: false, venue: { venue: room }, categories: [], ...extra });
@@ -400,56 +400,34 @@ test('a Spektrix instance becomes a performance on the theatre clock; cancelled,
   assert.deepEqual(evs, [{ venue: 'Pentacle Theatre', title: 'Angel Street (Gaslight)', date: '2026-10-21', time: '19:30', url: 'https://purchase.example.org/EventAvailability?EventId=3201', instance: 'i1', type: 'arts' }]);
 });
 
-test('an Event Booking upcoming list becomes rows: one per day of a bonspiel, the clock on a one-day event, sold out at capacity', () => {
-  const html = `
-  <div class="eb-event"><div class="eb-box-heading clearfix"><h2 class="eb-event-title pull-left">
-    <a href="/index.php/component/eventbooking/events/bonspiels/293-open-spiel-2026" title="x" class="eb-event-title-link"> Fly your broom to the DCC Halloween Bonspiel </a></h2></div>
-    <table><tr class="eb-event-property"><td class="eb-event-property-label"> Event Date </td><td class="eb-event-property-value"> 10-24-2026 </td></tr>
-    <tr class="eb-event-property"><td class="eb-event-property-label"> Event End Date </td><td class="eb-event-property-value"> 10-25-2026 </td></tr>
-    <tr class="eb-event-property"><td class="eb-event-property-label"> Capacity </td><td class="eb-event-property-value"> 48 </td></tr>
-    <tr class="eb-event-property"><td class="eb-event-property-label"> Registered </td><td class="eb-event-property-value"> 48 </td></tr>
-    <tr class="eb-event-property"><td class="eb-event-property-label"> Available place </td><td class="eb-event-property-value"> 0 </td></tr></table></div>
-  <div class="eb-event"><h2 class="eb-event-title pull-left"><a href="/index.php/events/300-learn-to-curl" class="eb-event-title-link">Learn to Curl</a></h2>
-    <table><tr class="eb-event-property"><td class="eb-event-property-label">Event Date</td><td class="eb-event-property-value">11-02-2026 07:00 PM</td></tr>
-    <tr class="eb-event-property"><td class="eb-event-property-label">Capacity</td><td class="eb-event-property-value">24</td></tr>
-    <tr class="eb-event-property"><td class="eb-event-property-label">Available place</td><td class="eb-event-property-value">9</td></tr></table></div>
-  <div class="eb-event"><h2 class="eb-event-title pull-left"><a href="/index.php/events/301-membership" class="eb-event-title-link">2026-27 Membership</a></h2>
-    <table><tr class="eb-event-property"><td class="eb-event-property-label">Event Date</td><td class="eb-event-property-value">09-01-2026</td></tr></table></div>`;
-  const evs = parseEventBooking(html, { venue: 'Midwest', base: 'https://denvercurlingclub.com', drop: /membership/i, type: 'sports', types: ['sports'], today: '2026-10-22' });
-  assert.deepEqual(evs, [
-    { venue: 'Midwest', title: 'Fly your broom to the DCC Halloween Bonspiel', date: '2026-10-24', time: '', url: 'https://denvercurlingclub.com/index.php/component/eventbooking/events/bonspiels/293-open-spiel-2026', type: 'sports', soldOut: true },
-    { venue: 'Midwest', title: 'Fly your broom to the DCC Halloween Bonspiel', date: '2026-10-25', time: '', url: 'https://denvercurlingclub.com/index.php/component/eventbooking/events/bonspiels/293-open-spiel-2026', type: 'sports', soldOut: true },
-    { venue: 'Midwest', title: 'Learn to Curl', date: '2026-11-02', time: '19:00', url: 'https://denvercurlingclub.com/index.php/events/300-learn-to-curl', type: 'sports' },
-  ]);
-  assert.deepEqual(ebDate('2026-10-24 19:30'), { date: '2026-10-24', time: '19:30' });
-  assert.deepEqual(ebDate('Sat, 11-14-2026 7:30 pm'), { date: '2026-11-14', time: '19:30' });
-  assert.deepEqual(ebDate('06-30-27 12:00 am'), { date: '2027-06-30', time: '00:00' });
-  assert.deepEqual(ebDate('Wed, 07-01-2026'), { date: '2026-07-01', time: '' });
-  assert.deepEqual(ebDate('Jan 15 2027 5:00 pm'), { date: '2027-01-15', time: '17:00' });
-  assert.deepEqual(ebDate('Fri, January 15, 2027'), { date: '2027-01-15', time: '' });
-  assert.equal(ebDate('next week'), null);
-  assert.deepEqual(dayRange('2026-12-30', '2027-01-02'), ['2026-12-30', '2026-12-31', '2027-01-01', '2027-01-02']);
-  assert.deepEqual(dayRange('2026-10-01', '2026-12-01'), []);
+// ---- Modern Events Calendar list pages (STG, 2026-10-26) ----
+const MEC_PAGE = `<div class="mec-wrap mec-skin-list-container  " id="mec_skin_mec1">
+<article class="mec-event-article mec-clear mec-divider-toggle mec-toggle-202610-mec1"><div class="mec-event-content"><h3 class="mec-event-title"><a class="mec-color-hover" data-event-id="69810" href="https://www.stgpresents.org/events/dermot-kennedy/" target="_self" rel="noopener">Dermot Kennedy POSTPONED</a><span class="event-color"></span></h3></div>
+<div class="mec-date-details"> <span class="mec-event-d"><i class="mec-sl-calendar"></i><span class="mec-start-date-label">Oct 26</span></span></div><div class="mec-time-details"><svg></svg><span class="mec-start-time">7:30 PM</span></div><div class="mec-venue-details"> <svg></svg><span>The Paramount Theatre</span></div></article>
+<article class="mec-event-article mec-clear"><h3 class="mec-event-title"><a class="mec-color-hover" href="https://www.stgpresents.org/events/skillet/">Skillet</a></h3><span class="mec-start-date-label">Oct 27</span><span class="mec-start-time">7:00 PM</span><div class="mec-venue-details"><svg></svg><span>The Moore Theatre</span></div></article>
+<article class="mec-past-event mec-event-article  mec-clear"><h3 class="mec-event-title"><a class="mec-color-hover" href="https://www.stgpresents.org/events/eric-idle/">An Evening with Eric Idle: Idle in Provence &#8211; CANCELED</a></h3><span class="mec-start-date-label">Oct 29 2026</span><div class="mec-venue-details"><svg></svg><span>The Paramount Theatre</span></div></article>
+</div>
+<script> jQuery(document).ready(function() { jQuery("#mec_skin_mec1").mecListView( { id: "mec1", start_date: "2026-10-26", end_date: "2026-10-28", offset: "4", limit: "12", pagination: "loadmore", atts: "atts%5Bcategory%5D=234%2C20&atts%5Bid%5D=12133&atts%5Binstance_id%5D=mec1", ajax_url: "https://www.stgpresents.org/wp-admin/admin-ajax.php", sed_method: "0", sf: { container: "", reset: 0, refine: 1, }, }); }); </script>`;
+
+test('parseMecInit reads the list skin\'s load-more parameters off the page', () => {
+  assert.deepEqual(parseMecInit(MEC_PAGE), { id: 'mec1', startDate: '2026-10-26', endDate: '2026-10-28', offset: 4, limit: 12, atts: 'atts%5Bcategory%5D=234%2C20&atts%5Bid%5D=12133&atts%5Binstance_id%5D=mec1', ajaxUrl: 'https://www.stgpresents.org/wp-admin/admin-ajax.php' });
+  assert.equal(parseMecInit('<html>no calendar</html>'), null);
 });
 
-test('Curling I/O cards: the title range, else the Starts badge with the nearest year forward; 0 spots is sold out; a league with only an end date is left out', () => {
-  const html = `
-  <div class="card h-100"><div class="card-body"><h2 class="card-title h6 mb-0">Fall Spiel: November 13-15, 2026</h2>
-    <span class="badge">77 spots</span><span class="badge">Starts Nov 13</span><a class="btn" href="/en/events/29795-fall-spiel-november-13-15-2026">Details</a></div></div>
-  <div class="card h-100"><div class="card-body"><h2 class="card-title h6 mb-0">Learn to Curl</h2>
-    <span class="badge">0 spots</span><span class="badge">Starts Jan 2, 2027</span><a class="btn" href="/en/programs/31000-learn-to-curl">Details</a></div></div>
-  <div class="card h-100"><div class="card-body"><h2 class="card-title h6 mb-0">Monday Night Open League (&#39;26-27)</h2>
-    <span class="badge">Ends Apr 19, 2027</span><a class="btn" href="/en/events/28935-monday-night-open-league-26-27">Details</a></div></div>
-  <div class="card h-100"><div class="card-body"><h2 class="card-title h6 mb-0">Rookie Spiel</h2>
-    <span class="badge">Starts Oct 3</span><a class="btn" href="/en/events/29800-rookie-spiel">Details</a></div></div>`;
-  const evs = parseCurlingIo(html, { venue: 'Northwest', base: 'https://anchorage.curling.io', type: 'sports', types: ['sports'], today: '2026-10-22' });
-  assert.deepEqual(evs.map((e) => [e.title, e.date, e.url.replace('https://anchorage.curling.io', ''), !!e.soldOut]), [
-    ['Fall Spiel: November 13-15, 2026', '2026-11-13', '/en/events/29795-fall-spiel-november-13-15-2026', false],
-    ['Fall Spiel: November 13-15, 2026', '2026-11-14', '/en/events/29795-fall-spiel-november-13-15-2026', false],
-    ['Fall Spiel: November 13-15, 2026', '2026-11-15', '/en/events/29795-fall-spiel-november-13-15-2026', false],
-    ['Learn to Curl', '2027-01-02', '/en/programs/31000-learn-to-curl', true],
-    ['Rookie Spiel', '2027-10-03', '/en/events/29800-rookie-spiel', false],
+test('parseMecCards: title + link, a yearless or dated label, the clock, the venue; CANCELED / POSTPONED suffixes become the status', () => {
+  const today = new Date('2026-10-26T12:00:00Z');
+  assert.deepEqual(parseMecCards(MEC_PAGE, today), [
+    { title: 'Dermot Kennedy', url: 'https://www.stgpresents.org/events/dermot-kennedy/', date: '2026-10-26', time: '19:30', place: 'The Paramount Theatre', status: 'postponed' },
+    { title: 'Skillet', url: 'https://www.stgpresents.org/events/skillet/', date: '2026-10-27', time: '19:00', place: 'The Moore Theatre' },
+    { title: 'An Evening with Eric Idle: Idle in Provence', url: 'https://www.stgpresents.org/events/eric-idle/', date: '2026-10-29', time: '', place: 'The Paramount Theatre', status: 'cancelled' },
   ]);
-  assert.deepEqual(titleRange('Winter Classic: January 30 - February 1, 2027'), ['2027-01-30', '2027-02-01']);
-  assert.equal(titleRange('Monday Night Open League'), null);
+});
+
+test('parseCards `venues` keeps only the cards whose place matches (Lumen Field\'s calendar lists the WAMU Theater too)', () => {
+  const html = `<div role="listitem" class="db-ft-events-item w-dyn-item"><a href="/events/boo-seattle" class="ft-card w-inline-block"><div fs-cmssort-field="date, year" class="filter-item-hidden">2026-10-30</div><div fs-cmsfilter-field="event-venue" class="filter-item-hidden">WAMU Theater</div><div class="ft-card-time">5:00 PM</div><h3 class="card-title-h3">BOO Seattle</h3></a></div>
+<div role="listitem" class="db-ft-events-item w-dyn-item"><a href="/events/zach-bryan-2027" class="ft-card w-inline-block"><div fs-cmssort-field="date, year" class="filter-item-hidden">2027-05-22</div><div fs-cmsfilter-field="event-venue" class="filter-item-hidden">Lumen Field</div><div class="ft-card-time">7:00 PM</div><h3 class="card-title-h3">Zach Bryan</h3></a></div>`;
+  const opts = { item: /<div role="listitem" class="db-ft-events-item w-dyn-item">/, title: /<a href="([^"]+)" class="ft-card[\s\S]*?<h3 class="card-title-h3">([^<]+)</, when: /fs-cmssort-field="date, year" class="filter-item-hidden">(\d{4}-\d{2}-\d{2})<[\s\S]*?(?:ft-card-time">([^<]*)<|card-title-h3)/, place: /fs-cmsfilter-field="event-venue" class="filter-item-hidden">([^<]+)</, base: 'https://www.lumenfield.com/' };
+  const all = parseCards(html, opts);
+  assert.equal(all.length, 2);
+  assert.deepEqual(parseCards(html, { ...opts, venues: /lumen field/i, venue: 'Lumen Field' }), [{ venue: 'Lumen Field', title: 'Zach Bryan', date: '2027-05-22', time: '19:00', url: 'https://www.lumenfield.com/events/zach-bryan-2027' }]);
 });
