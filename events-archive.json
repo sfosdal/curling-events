@@ -3457,6 +3457,45 @@
     44.8113,
     -91.4985
    ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Clarion Cup — Rimbey, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9704",
+   "type": "sports",
+   "date": "2026-10-26",
+   "time": "",
+   "place": "Rimbey, Alberta",
+   "geo": [
+    52.6434,
+    -114.2297
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Beginner League — Buffalo, NY",
+   "date": "2026-10-26",
+   "time": "20:00",
+   "url": "https://buffalocurlingclub.org/event/beginner-league/2026-10-26/",
+   "type": "expo",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Learn to Curl (San Jose) — San Jose, CA",
+   "date": "2026-10-26",
+   "time": "20:45",
+   "url": "https://siliconvalleycurling.com/event/learn-to-curl-san-jose-2026-10-26/",
+   "type": "expo",
+   "place": "San Jose, CA",
+   "geo": [
+    37.3362,
+    -121.8906
+   ]
   }
  ]
 }
