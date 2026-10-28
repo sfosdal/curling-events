@@ -3496,6 +3496,32 @@
     37.3362,
     -121.8906
    ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "Le Gruyère AOP European Curling Championships 2026 — Ostrava",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-10-27",
+   "time": "",
+   "place": "Ostrava",
+   "geo": [
+    49.8354,
+    18.293
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Gstaad — Gstaad, Switzerland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9623",
+   "type": "sports",
+   "date": "2026-10-27",
+   "time": "",
+   "place": "Gstaad, Switzerland",
+   "geo": [
+    46.4722,
+    7.2887
+   ]
   }
  ]
 }
