@@ -16,3 +16,4 @@ site/robots.txt
 site/sitemap.xml
 # Natural Earth downloads for scripts/build-local-map.mjs
 .cache/
+failures.json

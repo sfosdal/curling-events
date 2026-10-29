@@ -23,6 +23,7 @@
  * A multi-day event is written as one all-day row per day, so the days read
  * as one series ("2 of 4"). No Ticketmaster: curling isn't sold there.
  */
+import './failures.mjs'; // first: every outside call retried, the ones still failing written to failures.json (Steve, 2026-10-29)
 import { writeFileSync, readFileSync } from 'node:fs';
 import { buildIcs } from './ics.mjs';
 import { mergeWithArchive, unionArchives, eventKey } from './merge.mjs';

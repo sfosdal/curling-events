@@ -2,20 +2,52 @@ name: build & publish events
 
 on:
   schedule:
-    - cron: '53 19 * * *'   # once a day at noon Pacific (19:00 UTC in daylight time, 11 AM PST in winter; GitHub cron is UTC, best-effort), off the sister sites' minutes — Steve, 2026-10-11
-  workflow_dispatch: {}
+    # noon Pacific all year (Steve, 2026-10-29): GitHub cron is UTC, so it fires at both noon hours —
+    # 19:53 UTC is noon in daylight time, 20:53 UTC in standard time — and the gate job
+    # below lets through only the one that is noon in America/Los_Angeles today; the other run is skipped, not failed
+    - cron: '53 19 * * *'
+    - cron: '53 20 * * *'
+  workflow_dispatch:
+    inputs:
+      schedule:
+        description: 'test the noon gate: a cron line to act as (blank = just build)'
+        required: false
+        default: ''
   push:
     branches: [main]
 
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
-  build:
+  gate:
+    # Is this run noon in America/Los_Angeles? A push or a plain dispatch always builds;
+    # a scheduled run builds only when its cron hour is noon there today
+    # (decided by the cron that fired, not the clock — GitHub starts
+    # scheduled runs late, sometimes by most of an hour).
     runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.noon.outputs.run }}
+    steps:
+      - id: noon
+        env:
+          CITY_TZ: America/Los_Angeles
+          FIRED: ${{ github.event.schedule || inputs.schedule }}
+        run: |
+          if [ -z "$FIRED" ]; then echo "run=true" >> "$GITHUB_OUTPUT"; echo "$GITHUB_EVENT_NAME, not a scheduled run: build"; exit 0; fi
+          off=$(TZ=$CITY_TZ date +%z)   # -0700 in daylight time, -0800 in standard time
+          h=$((10#${off:1:2})); if [ "${off:0:1}" = "-" ]; then noon=$(( (12 + h) % 24 )); else noon=$(( (36 - h) % 24 )); fi
+          hour=$(echo "$FIRED" | awk '{print $2}')
+          if [ "$((10#$hour))" -eq "$noon" ]; then run=true; else run=false; fi
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+          echo "fired as '$FIRED'; noon in $CITY_TZ (UTC$off) is $noon:00 UTC today: run=$run"
+  build:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    concurrency:   # one build at a time; a newer run waits instead of cancelling this one
+      group: pages-build
+      cancel-in-progress: false
     permissions:
       contents: write   # to push the archive record to the `archive` branch
+      issues: write     # the "Calls failing after retries" issue (scripts/failure-issue.mjs)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -57,9 +89,18 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
+      - name: Mail Steve about calls still failing after their retries (one issue, assigned to him; a mail only for a new failure; never fails the run)
+        if: always()
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/failure-issue.mjs
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    concurrency:   # deploys queue too, never cancel each other
+      group: pages-deploy
+      cancel-in-progress: false
     permissions:
       pages: write
       id-token: write
