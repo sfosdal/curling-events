@@ -3574,6 +3574,126 @@
     44.8113,
     -91.4985
    ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "World Mixed Doubles Playdown Event — Eau Claire, WI",
+   "url": "https://usacurling.sport80.com/public/events/251/entries/841?bl=locator",
+   "type": "sports",
+   "date": "2026-10-29",
+   "time": "",
+   "place": "Eau Claire, WI",
+   "geo": [
+    44.8113,
+    -91.4985
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "Le Gruyère AOP European Curling Championships 2026 — Ostrava",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-10-29",
+   "time": "",
+   "place": "Ostrava",
+   "geo": [
+    49.8354,
+    18.293
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rick Rowsell Classic — St. Johns, Newfoundland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9532",
+   "type": "sports",
+   "date": "2026-10-29",
+   "time": "",
+   "place": "St. Johns, Newfoundland",
+   "geo": [
+    47.5615,
+    -52.7126
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rose Dolan Women's Fall Classic — Kemptville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9575",
+   "type": "sports",
+   "date": "2026-10-29",
+   "time": "",
+   "place": "Kemptville, Ontario",
+   "geo": [
+    45.0154,
+    -75.6446
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Gstaad — Gstaad, Switzerland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9623",
+   "type": "sports",
+   "date": "2026-10-29",
+   "time": "",
+   "place": "Gstaad, Switzerland",
+   "geo": [
+    46.4722,
+    7.2887
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "USA Curling Mixed Doubles World Playdown — Eau Claire, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9900",
+   "type": "sports",
+   "date": "2026-10-29",
+   "time": "",
+   "place": "Eau Claire, WI",
+   "geo": [
+    44.8113,
+    -91.4985
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "FISU Canadian Mxied Doubles Qualifier — Toronto, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9877",
+   "type": "sports",
+   "date": "2026-10-29",
+   "time": ""
+  },
+  {
+   "venue": "World Tour",
+   "title": "WCT Latvian Mixed Doubles Curling Cup 1 — Riga, Latvia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9899",
+   "type": "sports",
+   "date": "2026-10-29",
+   "time": ""
+  },
+  {
+   "venue": "Northeast",
+   "title": "Casual (Drop In) League — Buffalo, NY",
+   "date": "2026-10-29",
+   "time": "10:00",
+   "url": "https://buffalocurlingclub.org/event/casual-drop-in-league/2026-10-29/",
+   "type": "community",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Mixed Doubles (6 sheets) — Whitesboro, NY",
+   "date": "2026-10-29",
+   "time": "18:00",
+   "url": "http://www.uticacurlingclub.org/",
+   "type": "sports",
+   "place": "Whitesboro, NY",
+   "geo": [
+    43.1218,
+    -75.2911
+   ]
   }
  ]
 }
