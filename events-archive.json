@@ -3694,6 +3694,173 @@
     43.1218,
     -75.2911
    ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "World Mixed Doubles Playdown Event — Eau Claire, WI",
+   "url": "https://usacurling.sport80.com/public/events/251/entries/841?bl=locator",
+   "type": "sports",
+   "date": "2026-10-30",
+   "time": "",
+   "place": "Eau Claire, WI",
+   "geo": [
+    44.8113,
+    -91.4985
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "Le Gruyère AOP European Curling Championships 2026 — Ostrava",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-10-30",
+   "time": "",
+   "place": "Ostrava",
+   "geo": [
+    49.8354,
+    18.293
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rick Rowsell Classic — St. Johns, Newfoundland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9532",
+   "type": "sports",
+   "date": "2026-10-30",
+   "time": "",
+   "place": "St. Johns, Newfoundland",
+   "geo": [
+    47.5615,
+    -52.7126
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rose Dolan Women's Fall Classic — Kemptville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9575",
+   "type": "sports",
+   "date": "2026-10-30",
+   "time": "",
+   "place": "Kemptville, Ontario",
+   "geo": [
+    45.0154,
+    -75.6446
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Atkins Curling Supplies Classic — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9784",
+   "type": "sports",
+   "date": "2026-10-30",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "EJCT Edinburgh — Edinburgh, Scotland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9641",
+   "type": "sports",
+   "date": "2026-10-30",
+   "time": "",
+   "place": "Edinburgh, Scotland",
+   "geo": [
+    55.9533,
+    -3.1884
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "USA Curling Mixed Doubles World Playdown — Eau Claire, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9900",
+   "type": "sports",
+   "date": "2026-10-30",
+   "time": "",
+   "place": "Eau Claire, WI",
+   "geo": [
+    44.8113,
+    -91.4985
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "FISU Canadian Mxied Doubles Qualifier — Toronto, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9877",
+   "type": "sports",
+   "date": "2026-10-30",
+   "time": ""
+  },
+  {
+   "venue": "World Tour",
+   "title": "WCT Latvian Mixed Doubles Curling Cup 1 — Riga, Latvia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9899",
+   "type": "sports",
+   "date": "2026-10-30",
+   "time": ""
+  },
+  {
+   "venue": "Midwest",
+   "title": "FMCC Woodchipper Bonspiel",
+   "date": "2026-10-30",
+   "time": "",
+   "url": "",
+   "type": "sports"
+  },
+  {
+   "venue": "Midwest",
+   "title": "2026 Spooky Spiel — Traverse City, MI",
+   "date": "2026-10-30",
+   "time": "08:00",
+   "url": "https://tccurling.org/spookyspiel/",
+   "type": "sports",
+   "place": "Traverse City, MI",
+   "geo": [
+    44.7606,
+    -85.6166
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "2026 Men’s Invitational Bonspiel — Racine, WI",
+   "date": "2026-10-30",
+   "time": "14:00",
+   "url": "https://racinecurlingclub.com/event/2026-mens-invitational-bonspiel/",
+   "type": "sports",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "King's Cup (4 sheets) — Whitesboro, NY",
+   "date": "2026-10-30",
+   "time": "17:30",
+   "url": "http://www.uticacurlingclub.org/",
+   "type": "sports",
+   "place": "Whitesboro, NY",
+   "geo": [
+    43.1218,
+    -75.2911
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "1st/3rd Stick Curling League — Buffalo, NY",
+   "date": "2026-10-30",
+   "time": "20:00",
+   "url": "https://buffalocurlingclub.org/event/1st-3rd-stick-curling-league/2026-10-30/",
+   "type": "community",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
   }
  ]
 }
