@@ -3861,6 +3861,178 @@
     42.8864,
     -78.8781
    ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "World Mixed Doubles Playdown Event — Eau Claire, WI",
+   "url": "https://usacurling.sport80.com/public/events/251/entries/841?bl=locator",
+   "type": "sports",
+   "date": "2026-10-31",
+   "time": "",
+   "place": "Eau Claire, WI",
+   "geo": [
+    44.8113,
+    -91.4985
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rick Rowsell Classic — St. Johns, Newfoundland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9532",
+   "type": "sports",
+   "date": "2026-10-31",
+   "time": "",
+   "place": "St. Johns, Newfoundland",
+   "geo": [
+    47.5615,
+    -52.7126
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rose Dolan Women's Fall Classic — Kemptville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9575",
+   "type": "sports",
+   "date": "2026-10-31",
+   "time": "",
+   "place": "Kemptville, Ontario",
+   "geo": [
+    45.0154,
+    -75.6446
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Atkins Curling Supplies Classic — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9784",
+   "type": "sports",
+   "date": "2026-10-31",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "EJCT Edinburgh — Edinburgh, Scotland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9641",
+   "type": "sports",
+   "date": "2026-10-31",
+   "time": "",
+   "place": "Edinburgh, Scotland",
+   "geo": [
+    55.9533,
+    -3.1884
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "USA Curling Mixed Doubles World Playdown — Eau Claire, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9900",
+   "type": "sports",
+   "date": "2026-10-31",
+   "time": "",
+   "place": "Eau Claire, WI",
+   "geo": [
+    44.8113,
+    -91.4985
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "FISU Canadian Mxied Doubles Qualifier — Toronto, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9877",
+   "type": "sports",
+   "date": "2026-10-31",
+   "time": ""
+  },
+  {
+   "venue": "World Tour",
+   "title": "WCT Latvian Mixed Doubles Curling Cup 1 — Riga, Latvia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9899",
+   "type": "sports",
+   "date": "2026-10-31",
+   "time": ""
+  },
+  {
+   "venue": "World Curling",
+   "title": "Le Gruyère AOP European Curling Championships 2026 — Ostrava",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-10-31",
+   "time": "",
+   "place": "Ostrava",
+   "geo": [
+    49.8354,
+    18.293
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Member Skills Clinic - Balance and Delivery — Ferndale, MI",
+   "date": "2026-10-31",
+   "time": "09:00",
+   "url": "https://detroitcurlingclub.com/",
+   "type": "community",
+   "place": "Ferndale, MI",
+   "geo": [
+    42.4606,
+    -83.1346
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn to Curl 2 — McKees Rocks, PA",
+   "date": "2026-10-31",
+   "time": "09:30",
+   "url": "https://www.pittsburghcurlingclub.com/",
+   "type": "expo",
+   "place": "McKees Rocks, PA",
+   "geo": [
+    40.4656,
+    -80.0656
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Curling 101 - Session #1 — Ferndale, MI",
+   "date": "2026-10-31",
+   "time": "11:00",
+   "url": "https://detroitcurlingclub.com/",
+   "type": "expo",
+   "place": "Ferndale, MI",
+   "geo": [
+    42.4606,
+    -83.1346
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Curling 101 - Session #1 — Ferndale, MI",
+   "date": "2026-10-31",
+   "time": "13:00",
+   "url": "https://detroitcurlingclub.com/",
+   "type": "expo",
+   "place": "Ferndale, MI",
+   "geo": [
+    42.4606,
+    -83.1346
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn to Curl 1 — McKees Rocks, PA",
+   "date": "2026-10-31",
+   "time": "13:00",
+   "url": "https://www.pittsburghcurlingclub.com/",
+   "type": "expo",
+   "place": "McKees Rocks, PA",
+   "geo": [
+    40.4656,
+    -80.0656
+   ]
   }
  ]
 }
