@@ -4033,6 +4033,152 @@
     40.4656,
     -80.0656
    ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "Le Gruyère AOP European Curling Championships 2026 — Ostrava",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-01",
+   "time": "",
+   "place": "Ostrava",
+   "geo": [
+    49.8354,
+    18.293
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rick Rowsell Classic — St. Johns, Newfoundland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9532",
+   "type": "sports",
+   "date": "2026-11-01",
+   "time": "",
+   "place": "St. Johns, Newfoundland",
+   "geo": [
+    47.5615,
+    -52.7126
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Rose Dolan Women's Fall Classic — Kemptville, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9575",
+   "type": "sports",
+   "date": "2026-11-01",
+   "time": "",
+   "place": "Kemptville, Ontario",
+   "geo": [
+    45.0154,
+    -75.6446
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Atkins Curling Supplies Classic — Winnipeg, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9784",
+   "type": "sports",
+   "date": "2026-11-01",
+   "time": "",
+   "place": "Winnipeg, Manitoba",
+   "geo": [
+    49.8955,
+    -97.1385
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "EJCT Edinburgh — Edinburgh, Scotland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9641",
+   "type": "sports",
+   "date": "2026-11-01",
+   "time": "",
+   "place": "Edinburgh, Scotland",
+   "geo": [
+    55.9533,
+    -3.1884
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "USA Curling Mixed Doubles World Playdown — Eau Claire, WI",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9900",
+   "type": "sports",
+   "date": "2026-11-01",
+   "time": "",
+   "place": "Eau Claire, WI",
+   "geo": [
+    44.8113,
+    -91.4985
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "FISU Canadian Mxied Doubles Qualifier — Toronto, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9877",
+   "type": "sports",
+   "date": "2026-11-01",
+   "time": ""
+  },
+  {
+   "venue": "World Tour",
+   "title": "WCT Latvian Mixed Doubles Curling Cup 1 — Riga, Latvia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9899",
+   "type": "sports",
+   "date": "2026-11-01",
+   "time": ""
+  },
+  {
+   "venue": "Midwest",
+   "title": "Open Doubles League — Hartland, WI",
+   "date": "2026-11-01",
+   "time": "11:30",
+   "url": "https://kmcurlingclub.com/event/open-doubles-league-2/2026-11-01/",
+   "type": "sports",
+   "place": "Hartland, WI",
+   "geo": [
+    43.105,
+    -88.342
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Learn to Curl — Appleton, WI",
+   "date": "2026-11-01",
+   "time": "12:00",
+   "url": "https://appletoncurling.com/event/learn-to-curl-5/",
+   "type": "expo",
+   "place": "Appleton, WI",
+   "geo": [
+    44.2614,
+    -88.407
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Gmcc Learn to Curl — Burlington, VT",
+   "date": "2026-11-01",
+   "time": "13:00",
+   "url": "https://www.greenmountaincurlingclub.org/",
+   "type": "expo",
+   "place": "Burlington, VT",
+   "geo": [
+    44.4762,
+    -73.2129
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn to Curl — Buffalo, NY",
+   "date": "2026-11-01",
+   "time": "18:00",
+   "url": "https://buffalocurlingclub.org/event/learn-to-curl/2026-11-01/",
+   "type": "expo",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
   }
  ]
 }
