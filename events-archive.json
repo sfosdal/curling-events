@@ -4179,6 +4179,45 @@
     42.8864,
     -78.8781
    ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Learn to Curl (Community Ed) — Two Harbors, MN",
+   "date": "2026-11-02",
+   "time": "18:00",
+   "url": "https://twoharborscurling.com/",
+   "type": "expo",
+   "place": "Two Harbors, MN",
+   "geo": [
+    47.0257,
+    -91.6731
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fall Monday Night Doubles — Racine, WI",
+   "date": "2026-11-02",
+   "time": "18:00",
+   "url": "https://racinecurlingclub.com/event/fall-monday-night-doubles/2026-11-02/",
+   "type": "sports",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Beginner League — Buffalo, NY",
+   "date": "2026-11-02",
+   "time": "20:00",
+   "url": "https://buffalocurlingclub.org/event/beginner-league/2026-11-02/",
+   "type": "expo",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
   }
  ]
 }
