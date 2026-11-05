@@ -4231,6 +4231,45 @@
     50.043,
     -110.679
    ]
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "P&H Masters — Medicine Hat, Alberta",
+   "url": "https://www.thegrandslamofcurling.com/events/p-h-masters-20",
+   "type": "sports",
+   "date": "2026-11-04",
+   "time": "",
+   "place": "Medicine Hat, Alberta",
+   "geo": [
+    50.043,
+    -110.679
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fall Wednesday Night Veteran-Beginner — Racine, WI",
+   "date": "2026-11-04",
+   "time": "17:30",
+   "url": "https://racinecurlingclub.com/event/fall-wednesday-night-veteran-beginner/2026-11-04/",
+   "type": "expo",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn to Curl — Rutland, VT",
+   "date": "2026-11-04",
+   "time": "19:30",
+   "url": "https://www.rutlandrocks.com/",
+   "type": "expo",
+   "place": "Rutland, VT",
+   "geo": [
+    43.6085,
+    -72.9725
+   ]
   }
  ]
 }
