@@ -4270,6 +4270,123 @@
     43.6085,
     -72.9725
    ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Maine-iac — Belfast, ME",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-05",
+   "time": "",
+   "place": "Belfast, ME",
+   "geo": [
+    44.4262,
+    -69.0065
+   ]
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "P&H Masters — Medicine Hat, Alberta",
+   "url": "https://www.thegrandslamofcurling.com/events/p-h-masters-20",
+   "type": "sports",
+   "date": "2026-11-05",
+   "time": "",
+   "place": "Medicine Hat, Alberta",
+   "geo": [
+    50.043,
+    -110.679
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Lodz — Lodz, Poland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9634",
+   "type": "sports",
+   "date": "2026-11-05",
+   "time": "",
+   "place": "Lodz, Poland",
+   "geo": [
+    51.7728,
+    19.4785
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Chicago Mixed Doubles Dog Dare — Northbrook, IL",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9659",
+   "type": "sports",
+   "date": "2026-11-05",
+   "time": "",
+   "place": "Northbrook, IL",
+   "geo": [
+    42.1287,
+    -87.8265
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Founders — South Plainfield, NJ",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-05",
+   "time": "",
+   "place": "South Plainfield, NJ",
+   "geo": [
+    40.5793,
+    -74.4115
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Cool Duck 5-and-Under Bonspiel — Ardsley-On-Hudson, NY",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-05",
+   "time": "",
+   "place": "Ardsley-On-Hudson, NY",
+   "geo": [
+    41.0251,
+    -73.8704
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Maine-iac 'Spiel — Belfast, ME",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-05",
+   "time": "",
+   "place": "Belfast, ME",
+   "geo": [
+    44.4262,
+    -69.0065
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Casual (Drop In) League — Buffalo, NY",
+   "date": "2026-11-05",
+   "time": "10:00",
+   "url": "https://buffalocurlingclub.org/event/casual-drop-in-league/2026-11-05/",
+   "type": "community",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Open House — Two Harbors, MN",
+   "date": "2026-11-05",
+   "time": "18:00",
+   "url": "https://twoharborscurling.com/",
+   "type": "expo",
+   "place": "Two Harbors, MN",
+   "geo": [
+    47.0257,
+    -91.6731
+   ]
   }
  ]
 }
