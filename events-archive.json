@@ -4387,6 +4387,242 @@
     47.0257,
     -91.6731
    ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Maine-iac — Belfast, ME",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Belfast, ME",
+   "geo": [
+    44.4262,
+    -69.0065
+   ]
+  },
+  {
+   "venue": "South",
+   "title": "5U Open Qualifier — Irving, TX",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Irving, TX",
+   "geo": [
+    32.8295,
+    -96.9442
+   ]
+  },
+  {
+   "venue": "Evergreen Curling Club",
+   "title": "Rose City Doubles",
+   "url": "https://www.evergreencurling.org/",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Beaverton, OR",
+   "geo": [
+    45.4895,
+    -122.7919
+   ]
+  },
+  {
+   "venue": "Granite Curling Club",
+   "title": "Hot Shots Curling Camp",
+   "url": "https://curlingseattle.org/bonspiels",
+   "type": "community",
+   "status": "cancelled",
+   "date": "2026-11-06",
+   "time": "",
+   "statusSince": "2026-10-22T01:56:53.301Z",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "P&H Masters — Medicine Hat, Alberta",
+   "url": "https://www.thegrandslamofcurling.com/events/p-h-masters-20",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Medicine Hat, Alberta",
+   "geo": [
+    50.043,
+    -110.679
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Showdown — Virden, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9787",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Virden, Manitoba",
+   "geo": [
+    49.8485,
+    -100.9323
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Original 16 Mens Cash Spiel — Calgary, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9658",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Calgary, Alberta",
+   "geo": [
+    51.0456,
+    -114.0575
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Major Welding Abbotsford Cashspiel — Abbotsford, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9690",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Abbotsford, British Columbia",
+   "geo": [
+    49.0521,
+    -122.3295
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Lodz — Lodz, Poland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9634",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Lodz, Poland",
+   "geo": [
+    51.7728,
+    19.4785
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Chicago Mixed Doubles Dog Dare — Northbrook, IL",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9659",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Northbrook, IL",
+   "geo": [
+    42.1287,
+    -87.8265
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Palmerston Mixed Doubles Spiel — Palmerston, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9551",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Palmerston, Ontario",
+   "geo": [
+    43.8341,
+    -80.8496
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "GOLDLINE Mixed Doubles Riviere-du-Loup — Riviere-du-Loup, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9587",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Riviere-du-Loup, Quebec",
+   "geo": [
+    47.8541,
+    -69.5333
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Frozen Gridiron Classic — Buffalo, NY",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
+  },
+  {
+   "venue": "South",
+   "title": "Triangle CC Mixed Doubles — Durham, NC",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Durham, NC",
+   "geo": [
+    35.9967,
+    -78.9018
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Simply Curling — Nashua, NH",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Nashua, NH",
+   "geo": [
+    42.7656,
+    -71.4677
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Carosella (Womens) — Schenectady, NY",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Schenectady, NY",
+   "geo": [
+    42.8142,
+    -73.9396
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Doubles Roc — Rochester, NY",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-06",
+   "time": "",
+   "place": "Rochester, NY",
+   "geo": [
+    43.1573,
+    -77.6152
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "KM Cash Spiel November 6-8, 2026 — Hartland, WI",
+   "date": "2026-11-06",
+   "time": "",
+   "url": "https://kmcurlingclub.com/event/kmcc-cash-spiel/",
+   "type": "sports",
+   "place": "Hartland, WI",
+   "geo": [
+    43.105,
+    -88.342
+   ]
   }
  ]
 }
