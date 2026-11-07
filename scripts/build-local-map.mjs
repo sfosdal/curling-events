@@ -18,6 +18,17 @@
 //     whose pins are the places the events name (`pins: 'places'`) rather
 //     than rooms — so a room with geo is not required here.
 //
+// The line of the place itself (Steve, 2026-11-02: "every city site should by
+// default show the city boundaries"): `boundary` in the block draws it on an
+// urban ground, shown as the map opens —
+//   { osm: <relation id> | [ids] } — a municipal boundary relation from
+//     OpenStreetMap (Overpass `rel(id);out geom;`), every ring of it (an
+//     enclave's line too); the city limits;
+//   { geojson: '<url>', credit: '…' } — a Polygon/MultiPolygon GeoJSON read
+//     once, for a neighbourhood OpenStreetMap has no line for (the City of
+//     Seattle's Neighborhood Map Atlas for Lower Queen Anne and Pioneer Square).
+// The frame grows to take in the whole line (the view opens on the rooms all the same), so the map can zoom out to all of it.
+//
 // Both read-throughs are cached in .cache/ (gitignored) and the output is
 // committed: the Actions build never downloads anything. The labels (towns,
 // waters, peaks) are the city's own, in the same block.
@@ -46,6 +57,72 @@ async function cached(name, fetcher) {
   const f = path.join(cache, name);
   try { await access(f); return JSON.parse(await readFile(f, 'utf8')); } catch { /* not cached */ }
   const data = await fetcher(); await writeFile(f, JSON.stringify(data)); return data;
+}
+
+// one Overpass read, cached by its query
+const overpass = (q) => cached('osm-' + createHash('sha1').update(q).digest('hex').slice(0, 10) + '.json', async () => {
+  console.log('reading OpenStreetMap through Overpass…');
+  // the public servers turn requests away when every worker is busy (502/504 "at capacity", 429): try each mirror in turn, then wait and go round again
+  const MIRRORS = ['https://overpass-api.de/api/interpreter', 'https://overpass.openstreetmap.fr/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass.private.coffee/api/interpreter']; // the French community's planet mirror answered when the main one and the two others sat at capacity for an hour (2026-10-26)
+  let last = '';
+  for (let round = 0; round < 4; round++) {
+    for (const url of MIRRORS) {
+      const r = await fetch(url, { method: 'POST', headers: { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'data=' + encodeURIComponent(q) }).catch(e => ({ ok: false, status: e.message, text: async () => '' }));
+      if (r.ok) { try { return await r.json(); } catch (e) { last = `${url}: ${e.message}`; continue; } }
+      last = `${url}: HTTP ${r.status} ${(await r.text()).slice(0, 120).replace(/\s+/g, ' ')}`;
+      console.log(`  ${last}`);
+    }
+    const wait = 20 * 2 ** round; console.log(`  every Overpass mirror busy — retrying in ${wait} s`); await new Promise(res => setTimeout(res, wait * 1000));
+  }
+  throw new Error(`Overpass failed after every mirror and retry: ${last}`);
+});
+
+// a boundary's ways joined end to end whichever way each runs (stitch() follows a coastline's direction,
+// which a boundary's ways don't keep — Seattle's 54 never closed): the lines, closed or not, as [lon, lat]
+function joinWays(ways) {
+  const key = (p) => p[0] + ',' + p[1];
+  const left = ways.filter(w => w.length > 1).map(w => w.slice()), out = [];
+  while (left.length) {
+    let line = left.pop();
+    for (let grew = true; grew && key(line[0]) !== key(line[line.length - 1]);) {
+      grew = false;
+      for (let i = 0; i < left.length; i++) {
+        const w = left[i], a = key(line[0]), z = key(line[line.length - 1]);
+        if (key(w[0]) === z) line = line.concat(w.slice(1));
+        else if (key(w[w.length - 1]) === z) line = line.concat(w.slice(0, -1).reverse());
+        else if (key(w[w.length - 1]) === a) line = w.concat(line.slice(1));
+        else if (key(w[0]) === a) line = w.slice().reverse().concat(line.slice(1));
+        else continue;
+        left.splice(i, 1); grew = true; break;
+      }
+    }
+    out.push(line);
+  }
+  return out;
+}
+
+// the place's own line, as rings of [lon, lat] (see `boundary` above)
+async function boundaryRings(B) {
+  if (B.osm != null) {
+    const ids = [].concat(B.osm);
+    const d = await overpass(`[out:json][timeout:180];(${ids.map(id => `rel(${id});`).join('')});out geom;`);
+    const rels = d.elements.filter(e => e.type === 'relation');
+    if (rels.length !== ids.length) throw new Error(`boundary: ${rels.length} of ${ids.length} relation(s) came back`);
+    rels.forEach(r => console.log(`boundary: ${r.tags?.name} (relation ${r.id}, admin_level ${r.tags?.admin_level || '-'})`));
+    return rels.flatMap(r => joinWays(r.members.filter(m => m.type === 'way' && m.geometry && (m.role === 'outer' || m.role === 'inner' || m.role === '')).map(m => m.geometry.filter(Boolean).map(g => [g.lon, g.lat]))));
+  }
+  if (B.geojson) {
+    const g = await cached('boundary-' + createHash('sha1').update(B.geojson).digest('hex').slice(0, 10) + '.json', async () => {
+      const r = await fetch(B.geojson, { headers: { 'User-Agent': UA } });
+      if (!r.ok) throw new Error(`boundary GeoJSON: HTTP ${r.status}`);
+      return r.json();
+    });
+    const feats = g.type === 'FeatureCollection' ? g.features : [g];
+    if (!feats.length) throw new Error('boundary GeoJSON: no feature');
+    console.log(`boundary: ${feats.length} feature(s) from ${new URL(B.geojson).host}`);
+    return feats.flatMap(f => (f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [f.geometry.coordinates]).flat());
+  }
+  throw new Error('map.boundary: { osm: id } or { geojson: url }');
 }
 
 const W = 1000;
@@ -78,6 +155,17 @@ if (M.kind === 'island') {
   console.log(`island: ${land.length} land ring(s), ${far.length} neighbour(s)`);
 } else if (M.kind === 'urban') {
   let [S, Wl, N, E] = M.bbox;
+  // the frame takes in the whole line of the place, so the view can zoom out to all of it (Steve, 2026-11-05: "allow zooming out to
+  // show the complete city line inside the view for all cities/neighborhoods"); the view still opens on the rooms' box (`home`)
+  const lineRings = M.boundary ? await boundaryRings(M.boundary) : null, roomsBox = [S, Wl, N, E];
+  let grewToLine = false;
+  if (lineRings) {
+    let ls = Infinity, lw = Infinity, ln = -Infinity, le = -Infinity; // a loop, not Math.min(...): a city line can run to six figures of points
+    for (const r of lineRings) for (const [lon, lat] of r) { if (lat < ls) ls = lat; if (lat > ln) ln = lat; if (lon < lw) lw = lon; if (lon > le) le = lon; }
+    const pad = Math.max(ln - ls, le - lw) * .04;
+    const grown = [Math.min(S, ls - pad), Math.min(Wl, lw - pad), Math.max(N, ln + pad), Math.max(E, le + pad)].map(v => +v.toFixed(4));
+    if (grown.some((v, i) => v !== [S, Wl, N, E][i])) { [S, Wl, N, E] = grown; grewToLine = true; console.log(`bbox grown to the whole line → ${grown.join(', ')}`); }
+  }
   const cy = (S + N) / 2, k = Math.cos(cy * Math.PI / 180);
   // the ground is at least `aspect` wide for its height (1.6 unless the block says otherwise): a desktop frame zoomed right out then shows
   // most of its width, and the view never has to leave the data to fill the frame (local-map.js keeps a city ground covered — Steve, 2026-10-25)
@@ -91,22 +179,7 @@ if (M.kind === 'island') {
   const roadsRe = '^(' + (M.roads || ['motorway', 'trunk', 'primary']).join('|') + ')$';
   const bbox = [S, Wl, N, E].join(',');
   const q = `[out:json][timeout:180];(way[natural=coastline](${bbox});way[natural=water][name](${bbox});relation[natural=water][name](${bbox});way[highway~"${roadsRe}"](${bbox}););out geom;`;
-  const osm = await cached('osm-' + createHash('sha1').update(q).digest('hex').slice(0, 10) + '.json', async () => {
-    console.log('reading OpenStreetMap through Overpass…');
-    // the public servers turn requests away when every worker is busy (502/504 "at capacity", 429): try each mirror in turn, then wait and go round again
-    const MIRRORS = ['https://overpass-api.de/api/interpreter', 'https://overpass.openstreetmap.fr/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass.private.coffee/api/interpreter']; // the French community's planet mirror answered when the main one and the two others sat at capacity for an hour (2026-10-26)
-    let last = '';
-    for (let round = 0; round < 4; round++) {
-      for (const url of MIRRORS) {
-        const r = await fetch(url, { method: 'POST', headers: { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'data=' + encodeURIComponent(q) }).catch(e => ({ ok: false, status: e.message, text: async () => '' }));
-        if (r.ok) { try { return await r.json(); } catch (e) { last = `${url}: ${e.message}`; continue; } }
-        last = `${url}: HTTP ${r.status} ${(await r.text()).slice(0, 120).replace(/\s+/g, ' ')}`;
-        console.log(`  ${last}`);
-      }
-      const wait = 20 * 2 ** round; console.log(`  every Overpass mirror busy — retrying in ${wait} s`); await new Promise(res => setTimeout(res, wait * 1000));
-    }
-    throw new Error(`Overpass failed after every mirror and retry: ${last}`);
-  });
+  const osm = await overpass(q);
   const tol = M.tolerance ?? 0.6, minArea = M.minArea ?? 6;
   const wayOf = w => ({ nodes: w.nodes || w.geometry.filter(Boolean).map((g, i) => `${w.ref || w.id}:${i}`), pts: w.geometry.filter(Boolean).map(g => px([g.lon, g.lat])) });
   const els = osm.elements;
@@ -124,10 +197,16 @@ if (M.kind === 'island') {
     const cls = e.tags.highway, pcs = clipPolyline(wayOf(e).pts, wide);
     for (const pc of pcs) { const pts = simplify(pc.pts, tol); if (pts.length > 1) (roads[cls] = roads[cls] || []).push(pathOf(pts, false)); }
   }
+  let boundary = '';
+  if (M.boundary) { // the place's own line, clipped a little past the frame (roads' rule)
+    boundary = lineRings.flatMap(r => clipPolyline(r.map(px), wide)).map(pc => simplify(pc.pts, M.boundary.tolerance ?? tol / 4)).filter(p => p.length > 1).map(p => pathOf(p, false)).join('');
+    if (!boundary) console.log('boundary: nothing of it inside the frame');
+  }
   let home = null;
-  if (M.home) { const [hs, hw, hn, he] = M.home, a = px([hw, hn]), b = px([he, hs]); home = [a[0], a[1], b[0] - a[0], b[1] - a[1]].map(v => +fmt(v)); }
-  ground = { sea: sea.rings.map(r => pathOf(r)), water: waterRings.map(r => pathOf(r)), roads: Object.fromEntries(Object.entries(roads).map(([c, d]) => [c, d.join('')])), labels: (M.labels || []).map(toLabel(px)), home,
-    credit: 'Shoreline, waters and roads © OpenStreetMap contributors, ODbL.' };
+  const homeBox = M.home || (grewToLine ? roomsBox : null); // a frame grown to the line still opens on the rooms
+  if (homeBox) { const [hs, hw, hn, he] = homeBox, a = px([hw, hn]), b = px([he, hs]); home = [a[0], a[1], b[0] - a[0], b[1] - a[1]].map(v => +fmt(v)); }
+  ground = { sea: sea.rings.map(r => pathOf(r)), water: waterRings.map(r => pathOf(r)), roads: Object.fromEntries(Object.entries(roads).map(([c, d]) => [c, d.join('')])), boundary, labels: (M.labels || []).map(toLabel(px)), home,
+    credit: 'Shoreline, waters' + (M.boundary?.osm != null ? ', roads and the city line' : ' and roads') + ' © OpenStreetMap contributors, ODbL.' + (M.boundary?.credit ? ' ' + M.boundary.credit : '') };
   console.log(`urban: ${coast.length} coast chain(s) → ${sea.rings.length} sea ring(s), ${waterRings.length} waters, roads ${Object.entries(roads).map(([c, d]) => c + ' ' + d.length).join(', ')}`);
 } else if (M.kind === 'world') {
   const [S, Wl, N, E] = M.bbox;

@@ -517,7 +517,15 @@ const plainFetch = async (u) => { // the fallback when uv cannot run: the same r
   return res.text();
 };
 const chromeCache = new Map(); // one fetch of a page per build, however many feed rows ask for it
-export async function chromeFetch(urls, label) {
+// One cffi-fetch.py run at a time (the helper is a blocking spawnSync anyway): venues read side by side that
+// share pages (Ticketera's category listings) then find them cached, as they did when the sources ran in turn.
+let chromeChain = Promise.resolve();
+export function chromeFetch(urls, label) {
+  const p = chromeChain.then(() => chromeFetchNow(urls, label));
+  chromeChain = p.catch(() => {});
+  return p;
+}
+async function chromeFetchNow(urls, label) {
   const out = new Map();
   for (const u of urls) if (chromeCache.has(u)) out.set(u, chromeCache.get(u));
   const want = [...new Set(urls.filter((u) => !chromeCache.has(u)))];
@@ -904,8 +912,15 @@ export function parseMecCards(html, today = new Date()) {
   }
   return out;
 }
+// One read of a Modern Events Calendar listing per build, however many venues take cards from it (Seattle: the
+// Paramount, the Moore, the Neptune and Kerry Hall all read STG's one list — four walks of 22 pages before
+// 2026-11-03). The promise is shared, so venues read side by side wait on the one walk.
+const mecCache = new Map();
 async function fetchMec(url, ua, label, opts) {
-  const { feed = {}, venue, types, defaultType, drop, venues = feed.venues || opts.rooms || feed.rooms } = opts;
+  if (!mecCache.has(url)) mecCache.set(url, mecCards(url, ua, label));
+  return mecRows(await mecCache.get(url), label, opts);
+}
+async function mecCards(url, ua, label) {
   const html = await fetchText(url, ua);
   const init = parseMecInit(html);
   const pages = [html];
@@ -921,7 +936,10 @@ async function fetchMec(url, ua, label, opts) {
     if (data.end_date === endDate && Number(data.offset) === offset) break; // the plugin would loop here too
     endDate = data.end_date; offset = Number(data.offset) || 0;
   }
-  const cards = pages.flatMap((h) => parseMecCards(h));
+  return { cards: pages.flatMap((h) => parseMecCards(h)), pages: pages.length };
+}
+function mecRows({ cards, pages }, label, opts) {
+  const { feed = {}, venue, types, defaultType, drop, venues = feed.venues || opts.rooms || feed.rooms } = opts;
   const evs = [];
   for (const c of cards) {
     if (venues && !venues.test(c.place)) continue;
@@ -932,7 +950,7 @@ async function fetchMec(url, ua, label, opts) {
     if (type && (!types || types.includes(type))) ev.type = type;
     evs.push(ev);
   }
-  console.log(`${label} (MEC): ${evs.length} events from ${cards.length} cards on ${pages.length} pages`);
+  console.log(`${label} (MEC): ${evs.length} events from ${cards.length} cards on ${pages} pages`);
   return evs;
 }
 
@@ -1069,9 +1087,8 @@ export function parseBoldtypeList(html) {
   return out;
 }
 const BOLDTYPE_DATE_ONLY = /^\s*(?:(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*,?\s+)?(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d{1,2}(?:st|nd|rd|th)?\s*$/i;
-async function fetchBoldtype(url, ua, label, opts) {
-  const { feed = {}, venue, types, defaultType, drop } = opts;
-  const rooms = feed.rooms || opts.rooms; // tested on the Venue cell, room and town ("El Sid at the APEX Everett, WA"): the city buttons are loose (Everett sits under Seattle), so `city: ''` + a town in `rooms` reads by place
+const boldtypeLists = new Map();
+async function boldtypeList(url, ua, feed) {
   const seen = new Map();
   for (let page = 1; page <= (feed.maxPages || 30); page++) {
     const body = new URLSearchParams({ page: String(page), terms: '', city: feed.city || '', date: '', end: '', venue: '' });
@@ -1086,6 +1103,14 @@ async function fetchBoldtype(url, ua, label, opts) {
     if (seen.size === before) break; // past the last page the list repeats
     await new Promise((r) => setTimeout(r, 250));
   }
+  return seen;
+}
+async function fetchBoldtype(url, ua, label, opts) {
+  const { feed = {}, venue, types, defaultType, drop } = opts;
+  const rooms = feed.rooms || opts.rooms; // tested on the Venue cell, room and town ("El Sid at the APEX Everett, WA"): the city buttons are loose (Everett sits under Seattle), so `city: ''` + a town in `rooms` reads by place
+  const key = `${new URL(url).origin}|${feed.city || ''}|${feed.maxPages || 30}`; // one walk of the box office's list per build, however many venues read it
+  if (!boldtypeLists.has(key)) boldtypeLists.set(key, boldtypeList(url, ua, feed));
+  const seen = await boldtypeLists.get(key);
   const keep = [...seen.values()].filter((c) => (!rooms || rooms.test(c.place)) && !(drop && drop.test(c.title)));
   const out = [];
   let pages = 0;
@@ -1193,7 +1218,54 @@ async function fetchRss(url, ua, label, opts) {
   return evs;
 }
 
-const KINDS = { tribe: fetchTribe, ics: fetchIcs, tusboletos: fetchTusboletos, jsonld: fetchJsonLd, ticketera: fetchTicketera, icsfile: fetchIcsFile, linked: fetchLinked, squarespace: fetchSquarespace, cards: fetchCards, nps: fetchNps, localist: fetchLocalist, ludus: fetchLudus, boldtype: fetchBoldtype, spektrix: fetchSpektrix, mec: fetchMec, rss: fetchRss, aeg: fetchAeg, plot: fetchPlot };
+// ---- DICE (dice.fm): a venue's public page ----
+// Steve, 2026-11-03: "adding dice.fm to every city/neighborhood". DICE has no self-serve key for a listings site (its
+// partner API is for promoters and venues selling on DICE, scoped to their own shows), so this reads the page anyone can
+// open — dice.fm/venue/<id or slug> — and takes the next shows from its own Next.js data (profile.sections, the
+// 'upcoming' one: about thirty shows; the rest load through DICE's API, which needs a key and is left alone). No
+// borrowed widget key. One DICE page at a time, 1.5 s apart, however many venues read side by side. A page without the
+// data (a challenge page, a redesign) throws, so the venue keeps its rows from the last build (feedSources).
+let diceChain = Promise.resolve();
+const diceTurn = (fn) => { const p = diceChain.then(fn); diceChain = p.catch(() => {}).then(() => new Promise((r) => setTimeout(r, 1500))); return p; };
+/**
+ * A dice.fm venue page's HTML → feed rows: the 'upcoming' section's shows, each at its local date and clock (the
+ * event's own time zone), linked to dice.fm/event/<id>, sold out from DICE's status. `drop` leaves out titles it
+ * matches. Throws when the page carries no event data.
+ */
+export function mapDicePage(html, { venue = '', label = '', drop = null, type = '', tz = 'America/Los_Angeles' } = {}) {
+  const m = /<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/.exec(html || '');
+  if (!m) throw new Error(`${label || 'DICE'}: no event data on the page`);
+  const profile = JSON.parse(m[1])?.props?.pageProps?.profile;
+  if (!profile) throw new Error(`${label || 'DICE'}: no venue profile on the page`);
+  const sections = (profile.sections || []).filter((x) => x.key === 'upcoming');
+  const local = (iso, zone) => new Intl.DateTimeFormat('sv-SE', { timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(iso)).split(' '); // "2026-11-04 20:00"
+  const out = [];
+  for (const e of sections.flatMap((x) => x.events || [])) {
+    const start = e?.dates?.event_start_date;
+    if (!e?.name || !start || !e.id) continue;
+    const title = decode(e.name).replace(/\s+/g, ' ').trim();
+    if (drop && drop.test(title)) continue;
+    const zone = e.dates.timezone || tz;
+    const [date, time] = local(start, zone);
+    const ev = { venue: venue || e.venues?.[0]?.name || label, title, date, time, url: `https://dice.fm/event/${e.id}` };
+    if (e.dates.event_end_date) { const [d2, t2] = local(e.dates.event_end_date, zone); if (d2 === date && t2 > time) ev.end = t2; } // an end the same night only
+    if (e.status === 'sold-out') ev.soldOut = true;
+    else if (e.status === 'cancelled' || e.status === 'postponed') ev.status = e.status;
+    if (type) ev.type = type;
+    out.push(ev);
+  }
+  return out;
+}
+async function fetchDice(url, ua, label, opts) {
+  const { feed = {}, venue, defaultType, drop, tz } = opts;
+  const res = await diceTurn(() => fetch(url, { headers: { 'User-Agent': ua, Accept: 'text/html' }, signal: AbortSignal.timeout(30000) }));
+  if (!res.ok) throw new Error(`${label} (DICE) HTTP ${res.status}`);
+  const evs = mapDicePage(await res.text(), { venue, label, drop: drop || feed.drop, type: feed.type || defaultType, tz });
+  console.log(`${label} (DICE): ${evs.length} events`);
+  return evs;
+}
+
+const KINDS = { tribe: fetchTribe, ics: fetchIcs, tusboletos: fetchTusboletos, jsonld: fetchJsonLd, ticketera: fetchTicketera, icsfile: fetchIcsFile, linked: fetchLinked, squarespace: fetchSquarespace, cards: fetchCards, nps: fetchNps, localist: fetchLocalist, ludus: fetchLudus, boldtype: fetchBoldtype, spektrix: fetchSpektrix, mec: fetchMec, rss: fetchRss, aeg: fetchAeg, plot: fetchPlot, dice: fetchDice };
 
 /**
  * One source thunk per city.js venue with a `feed` (its listings pinned to that row) and one per
@@ -1203,20 +1275,30 @@ const KINDS = { tribe: fetchTribe, ics: fetchIcs, tusboletos: fetchTusboletos, j
  */
 // The venues whose own calendar failed this build (feedSources), for keepFailedVenues.
 export const feedFailedVenues = new Set();
+// The venues whose own calendar answered and listed nothing this build, each with the calendars' URLs (feedSources), for
+// merge.mjs keepQuietVenues: the rows that calendar's site gave the venue last time are kept (Steve, 2026-10-31).
+export const feedQuietVenues = new Map();
+// The city-wide feeds (city.js `feeds` without a `venue`) that failed or listed nothing this build, URL → label: they name no
+// venue of their own, so merge.mjs keepQuietVenues keeps the upcoming rows that link to their site (the Alliance for Pioneer
+// Square's calendar beside First Thursday's, both folded into Around Pioneer Square).
+export const feedQuietSites = new Map();
 const feedFailedHost = (url, check = globalThis[Symbol.for('here.events/failedHost')]) => { try { return !!check?.(new URL(url).hostname); } catch { return false; } };
 export function feedSources(city, ua) {
   const types = (city.types || []).map((t) => t.key);
   const run = (feed, label, venue) => async () => {
     const fn = KINDS[feed.kind];
     if (!fn) { console.error(`${label}: unknown feed kind "${feed.kind}"`); return []; }
-    // A venue whose own calendar leads (not `secondary`, so no Ticketmaster rows stand behind it) and
-    // failed — threw, or came back empty while a call to its site failed after its retries — keeps its
-    // upcoming rows from the previous feed (fetch-events.mjs → tm-fetch.mjs keepFailedVenues).
-    const leads = venue && !feed.secondary;
+    // A venue whose own calendar failed — threw, or came back empty while a call to its site failed
+    // after its retries — keeps its upcoming rows from the previous feed (fetch-events.mjs → tm-fetch.mjs
+    // keepFailedVenues), whether that calendar leads or stands behind Ticketmaster (`secondary`: the rows
+    // Ticketmaster has are in the build already, so dropClashes keeps only the ones it lacks; Steve,
+    // 2026-10-31: "feed source that errors out (or is suddenly empty) should keep last events"). One that
+    // answered and listed nothing goes to feedQuietVenues, and a city-wide feed that failed or listed nothing to
+    // feedQuietSites: merge.mjs keepQuietVenues keeps the rows they gave.
     let rows;
     try { rows = await fn(feed.url, ua, label, { drop: feed.drop, maxRepeat: feed.maxRepeat, venues: feed.venues, rooms: feed.rooms || feed.venues, types, defaultType: venue ? city.venues[venue].type : feed.type, feed, venue, tz: city.tz }); }
-    catch (err) { if (leads) feedFailedVenues.add(venue); throw err; }
-    if (leads && !rows.length && feedFailedHost(feed.url)) feedFailedVenues.add(venue);
+    catch (err) { if (venue) feedFailedVenues.add(venue); else feedQuietSites.set(feed.url, label); throw err; }
+    if (!rows.length) { if (!venue) feedQuietSites.set(feed.url, label); else if (feedFailedHost(feed.url)) feedFailedVenues.add(venue); else feedQuietVenues.set(venue, (feedQuietVenues.get(venue) || []).concat(feed.url)); }
     return rows;
   };
   return [

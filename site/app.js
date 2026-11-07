@@ -223,7 +223,7 @@
         Object.keys(state.venueMode).forEach(function (v) {
           if (state.venues.indexOf(v) === -1) delete state.venueMode[v];
         });
-        renderFilters(); renderCal(); renderAgenda(); renderBoard(); updateSubscribe(); if (window.LQAMap) LQAMap.render(); // a cold ?view=map load drew the map before the feed: again, with the counts (Steve, 2026-10-26: '0 upcoming at 0 of 22 places')
+        renderFilters(); renderCal(); renderAgenda(); renderBoard(); updateSubscribe(); renderEmbedSnippet(); if (window.LQAMap) LQAMap.render(); // the feed is in: the subscribe links and the embed snippet carry the real view; a cold ?view=map load drew the map before the feed: again, with the counts (Steve, 2026-10-26: '0 upcoming at 0 of 22 places')
         if (!$('teamsView').hidden && teamView.slug !== undefined) renderTeams(teamView.slug); // a ?team= open drew the season before the feed arrived: again, with ticket links and counts
       })
       .catch(function (err) {
@@ -244,7 +244,7 @@
     concert: '--t-concert', sports: '--t-sports', arts: '--t-arts',
     movie: '--t-movie', community: '--t-community', expo: '--t-expo', bar: '--t-bar',
   };
-  function typeColor(k) { return 'var(' + TYPE_VARS[k] + ')'; }
+  function typeColor(k) { var own = TYPE_LIST.filter(function (t) { return t.key === k && t.color; })[0]; return own ? own.color : 'var(' + TYPE_VARS[k] + ')'; } // a city's own type may carry its colour (tango-events, 2026-10-30)
   var TYPE_KEYS = {};
   TYPE_LIST.forEach(function (t) { TYPE_KEYS[t.key] = true; });
   // The baseline every visitor starts from (and "Reset filters" returns to):
@@ -623,7 +623,7 @@
     return true;
   }
   // a filter change also rewinds the agenda to its first page
-  function applyFilters() { syncFilters(); renderViewNote(); renderCal(); renderAgenda(); renderBoard(); updateSubscribe(); saveFilters(); if (window.LQAMap) LQAMap.render(); } // the Map view's pins follow the filters (local-map.js, in a city that has one)
+  function applyFilters() { syncFilters(); renderViewNote(); renderCal(); renderAgenda(); renderBoard(); updateSubscribe(); renderEmbedSnippet(); saveFilters(); if (window.LQAMap) LQAMap.render(); } // the Map view's pins follow the filters (local-map.js, in a city that has one)
   // ---- the view note (2026-09-20, for readers who never open the panel) ----
   // One plain line above the list while the view is not the usual one: the
   // preset's name when one matches, else what is hidden or added compared
@@ -756,6 +756,14 @@
     if (open) { fitPops(true); presetEdge(); }
   }
   function togglePanel() { setPanelOpen($('filterPanel').hidden); }
+  // Apply (Steve, 2026-11-05: "an ok or done button as [a cue] to the user to make it obvious it's being applied …
+  // I kind of like apply"): every choice already applies as it is made; the button is the visible end of the
+  // panel — it closes it, and the list behind shows the result. Made here so every city's panel gets it.
+  var fpFoot = document.createElement('div');
+  fpFoot.className = 'fp-foot';
+  fpFoot.innerHTML = '<button type="button" class="chip fp-apply" id="filterApply">Apply</button>';
+  $('filterPanel').appendChild(fpFoot);
+  $('filterApply').addEventListener('click', function () { setPanelOpen(false); $('filterToggle').focus({ preventScroll: true }); });
   $('filterToggle').addEventListener('click', togglePanel);
   // a click anywhere outside the panel or its chip closes it
   document.addEventListener('click', function (e) {
@@ -1357,6 +1365,7 @@
     basketball: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.6 5.6c3.5 3.5 3.5 9.3 0 12.8M18.4 5.6c-3.5 3.5-3.5 9.3 0 12.8"/>',
     rugby: '<ellipse cx="12" cy="12" rx="10" ry="6" transform="rotate(-45 12 12)"/><path d="M8.5 15.5l7-7M10 13l1.5 1.5M12 11l1.5 1.5M14 9l1.5 1.5"/>',
     soccer: '<circle cx="12" cy="12" r="9"/><path d="M12 8.2l3.8 2.8-1.5 4.5h-4.6l-1.5-4.5z"/><path d="M12 8.2V3.4M15.8 11l4.2-1.4M14.3 15.5l2.6 3.6M9.7 15.5l-2.6 3.6M8.2 11L4 9.6"/>',
+    volleyball: '<circle cx="12" cy="12" r="9"/><path d="M12 12C14.2 9.6 14.8 6.2 13.6 3.15"/><path d="M12 12C14.2 9.6 14.8 6.2 13.6 3.15" transform="rotate(120 12 12)"/><path d="M12 12C14.2 9.6 14.8 6.2 13.6 3.15" transform="rotate(240 12 12)"/>', // three seams swirling from the centre (Steve, 2026-10-31: "vollyball icon" — Lincoln's Huskers Volleyball showed the crest alone)
   };
   function sportIcon(sport) {
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -2163,8 +2172,8 @@
     var tv = [], stream = [], seen = {};
     // two names for one thing (KHN/Prime, Kraken Hockey Network, KONG — the same set and the same services) show once, under the first
     names.forEach(function (n) {
-      var info = channelInfo(n), set = info && (info.ota || info.directv || info.dish || info.xfinity);
-      var k = set ? JSON.stringify([info.ota, info.directv, info.dish, info.xfinity]) : String(n).toLowerCase();
+      var info = channelInfo(n), set = info && (info.ota || info.directv || info.dish || info.xfinity || payTv(info).length);
+      var k = set ? JSON.stringify([info.ota, info.directv, info.dish, info.xfinity, info.paytv || null]) : String(n).toLowerCase();
       if (seen[k]) return; seen[k] = true;
       if (set || !info) tv.push(n);
       else stream.push({ name: n, ways: (info.stream || []).filter(function (x) { return x.toLowerCase() !== String(n).toLowerCase(); }), apps: info.apps || null, bars: info.bars || null, via: false });
@@ -2174,6 +2183,13 @@
       if (info && (info.stream || []).length && !seen[k]) { seen[k] = true; stream.push({ name: n, ways: info.stream.slice(), apps: null, via: true }); }
     });
     return { tv: tv, stream: stream };
+  }
+  // a row's other pay-TV numbers (channels.json `paytv`: provider → number,
+  // in the order written — Cancún's Izzi, Sky and Totalplay, 2026-11-01), for
+  // the providers the fixed fields (DirecTV, Dish, Xfinity) don't name
+  function payTv(info) {
+    var p = (info && info.paytv) || {};
+    return Object.keys(p).filter(function (k) { return k !== '_' && p[k]; }).map(function (k) { return k + ' ' + p[k]; });
   }
   var TV_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 21h8M12 18v3M8 3l4 3 4-3"/></svg>';
   var RADIO_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="12" rx="2"/><circle cx="8.5" cy="15" r="2.5"/><path d="M14 13h4M14 17h4M6 9l12-6"/></svg>';
@@ -2185,7 +2201,7 @@
     return sec;
   }
   // a list for a section — TV: each network with the ways to a set (the
-  // antenna, DirecTV, Xfinity); radio: the stations. Every entry a link
+  // antenna, DirecTV, Xfinity, a row's `paytv` providers); radio: the stations. Every entry a link
   // where the table has one.
   function buildWatchList(names, radio, kind) {
     var ul = document.createElement('ul'); ul.className = 'tf-channels'; ul.dataset.kind = kind || 'tv';
@@ -2197,6 +2213,7 @@
         if (info.ota) how.push('over the air ' + info.ota);
         if (info.directv) how.push('DirecTV ' + info.directv);
         if (info.xfinity) how.push('Xfinity ' + info.xfinity);
+        payTv(info).forEach(function (h) { how.push(h); });
       }
       how.forEach(function (h) { li.appendChild(watchEntry('span', h)); });
       ul.appendChild(li);
@@ -3538,7 +3555,6 @@
     var v = $('sheetVenueLink'); v.href = VENUE_URL[e.venue] || '#'; v.hidden = !VENUE_URL[e.venue]; v.textContent = 'Venue \u2197'; v.title = 'What\u2019s on at ' + e.venue; // the venue's own calendar (short: the name is the sheet's eyebrow — Steve, 2026-09-21)
     var team = TEAMS.filter(function (t) { return t.re.test(e.title || '') && t.venue === e.venue && t.strip !== false; })[0]; // a home game: the club's season, in the Teams view (a club with no tab there has no Season button)
     var tb = $('sheetTeam'); tb.hidden = !team; if (team) { tb.textContent = 'Season'; tb.title = team.label + ' season, in the Teams view'; tb.dataset.slug = team.slug; }
-    var ht = $('sheetHideTeam'); ht.hidden = !team; if (team) { ht.textContent = 'Hide ' + team.label; ht.title = 'Hide ' + team.label + ' home games'; ht.dataset.slug = team.slug; }
     var phone = matchMedia(sheetTouch).matches;
     var sheet = $('sheet');
     sheetAnchor = anchor || null; sheetPoint = point && (point.x || point.y) ? point : null;
@@ -3559,12 +3575,6 @@
   }
   $('sheetClose').addEventListener('click', closeSheet);
   $('sheetTeam').addEventListener('click', function () { var slug = this.dataset.slug; closeSheet(); setTeamsView(slug, true); });
-  $('sheetHideTeam').addEventListener('click', function () { // this club's home games off (the venue stays), with a way back
-    var t = TEAM_BY_SLUG[this.dataset.slug], snap = filterSnapshot(); closeSheet();
-    if (!t) return;
-    setMode(state.teamMode, t.slug, 'ex'); applyFilters();
-    showToast(t.label + ' games hidden', function () { restoreSnapshot(snap); });
-  });
   $('sheetBack').addEventListener('click', closeSheet);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('sheet').hidden) closeSheet(); });
   // a click anywhere outside the pop closes it (the opening click never gets
@@ -3593,6 +3603,27 @@
       document.body.removeChild(ta);
       ok ? resolve() : reject(new Error('copy failed'));
     });
+  }
+  // ---- the Embed panel's snippet follows the filter (2026-10-22) ----
+  // The two lines carry the view set right now — data-filter (the share
+  // code), data-search and data-soldout — which embed.js applies with this
+  // site's own rule, so a widget shows what its maker saw. A view that shows
+  // everything writes the plain snippet. The host and the container id come
+  // from the markup's own snippet, which names this site.
+  var embedSnippet = $('embedSnippet'); // absent from a page whose Embed panel predates it: then only the live feed link follows
+  var embedText = embedSnippet ? embedSnippet.textContent : '';
+  var embedSrc = (/src="([^"]*embed\.js)"/.exec(embedText) || [])[1] || CITY.site + 'embed.js';
+  var embedId = (/id="([^"]+)"/.exec(embedText) || [])[1] || 'lqa-events';
+  function renderEmbedSnippet() {
+    var live = $('liveFeedLink'); // the Data feeds list: the live feed of this view
+    if (live) live.href = CAL_SERVER ? liveFeedUrl() : 'events.ics';
+    if (!embedSnippet) return;
+    var code = LQAFilter.encodeFilterCode(currentModes());
+    var attrs = ' data-max="8"';
+    if (!/^0+$/.test(code)) attrs += ' data-filter="' + code + '"';
+    if (state.q) attrs += ' data-search="' + LQAFilter.encodeSearch(state.q) + '"';
+    if (state.soldOnly) attrs += ' data-soldout';
+    embedSnippet.textContent = '<div id="' + embedId + '"></div>\n<script src="' + embedSrc + '"' + attrs + ' defer></script>';
   }
   $('copyFilterLink').addEventListener('click', function () {
     var code = LQAFilter.encodeFilterCode(currentModes());
@@ -4223,35 +4254,62 @@
   });
 
   // ---- subscribe popover ----
-  // The feed follows the active filter where a pre-built file exists: the
-  // default no-movies view, one hidden team, or "only" one venue. Anything
-  // else falls back to the full feed.
+  // The feed follows the active filter. A pre-built file where one matches
+  // (the default no-movies view, one hidden team, "only" one venue — the
+  // shapes the build writes), else the live feed at CAL_SERVER (the repo's
+  // lambda/index.mjs, 2026-10-22): it runs this site's own filter rule on
+  // this site's events.json for any filter, search and the sold-out switch
+  // included, so the subscription shows what the page shows and refreshes
+  // with it. With no live server, anything else falls back to the full feed
+  // as before. A view that shows everything is the full feed either way.
+  var CAL_SERVER = 'https://cal.here.events/'; // '' = the pre-built files only
   var icsHref = '';
+  function liveFeedUrl() { // ?site=<this site's host>&f=<share code>[&s=<search>][&so=1] — the same codes Copy Filter Link writes
+    var u = CAL_SERVER + '?site=' + encodeURIComponent(new URL(CITY.site).host) + '&f=' + LQAFilter.encodeFilterCode(currentModes());
+    if (state.q) u += '&s=' + LQAFilter.encodeSearch(state.q);
+    if (state.soldOnly) u += '&so=1';
+    return u;
+  }
+  // under "Include my filter choices": the filter rides in the feed's address, so a calendar keeps the set it was
+  // added with — say so where the choice is made (Steve, 2026-11-05: "is it clear here"). Made here rather than in
+  // index.html so every city's pop-up gets it through the shared app.js.
+  var subFilterNote = document.createElement('p');
+  subFilterNote.id = 'subFilterNote';
+  subFilterNote.className = 'pop-note pop-filter-note';
+  subFilterNote.hidden = true;
+  subFilterNote.textContent = 'Your calendar keeps the filters set now. To change them later, add it again.';
+  $('subFilterRow').after(subFilterNote);
   function updateSubscribe() {
     if (document.documentElement.classList.contains('teams-open')) { // Teams mode: the club's season (home and away), or every club's
       $('subFilterRow').hidden = true;
+      subFilterNote.hidden = true;
       setSubscribeFile(teamView.slugs.length === 1 ? 'team-' + teamView.slugs[0] + '.ics' : 'teams.ics');
       return;
     }
+    var extra = !!state.q || state.soldOnly; // what no pre-built file carries
     var filteredFile = null;
-    if (anyIncluded() || modeKeys(state.capMode, 'ex').length) { $('subFilterRow').hidden = true; setSubscribeFile('events.ics'); return; } // a checked box or an X'd band: no ready-made feed matches
-    var vEx = modeKeys(state.venueMode, 'ex');
-    var bEx = modeKeys(state.badgeMode, 'ex');
-    var tEx = modeKeys(state.teamMode, 'ex');
-    var vOn = state.venues.filter(function (v) { return state.venueMode[v] !== 'ex'; });
-    var movieOnly = bEx.length === 1 && bEx[0] === 'movie';
-    if (!vEx.length && !tEx.length && movieOnly) {
-      filteredFile = 'events-no-movies.ics'; // the default view
-    } else if (!vEx.length && !bEx.length && tEx.length === 1) {
-      filteredFile = 'events-no-' + tEx[0] + '.ics';
-    } else if (vOn.length === 1 && !tEx.length &&
-        (!bEx.length || (movieOnly && vOn[0] !== CITY.movieVenue))) {
-      // a lone remaining venue is "only that venue"; the baseline movie
-      // exclusion changes nothing unless that venue is the cinema itself
-      filteredFile = 'events-venue-' + slugify(vOn[0]) + '.ics';
+    if (!extra && !anyIncluded() && !modeKeys(state.capMode, 'ex').length) { // a checked box or an X'd band: no ready-made feed matches
+      var vEx = modeKeys(state.venueMode, 'ex');
+      var bEx = modeKeys(state.badgeMode, 'ex');
+      var tEx = modeKeys(state.teamMode, 'ex');
+      var vOn = state.venues.filter(function (v) { return state.venueMode[v] !== 'ex'; });
+      var movieOnly = bEx.length === 1 && bEx[0] === 'movie';
+      if (!vEx.length && !tEx.length && movieOnly) {
+        filteredFile = 'events-no-movies.ics'; // the default view
+      } else if (!vEx.length && !bEx.length && tEx.length === 1) {
+        filteredFile = 'events-no-' + tEx[0] + '.ics';
+      } else if (vOn.length === 1 && !tEx.length &&
+          (!bEx.length || (movieOnly && vOn[0] !== CITY.movieVenue))) {
+        // a lone remaining venue is "only that venue"; the baseline movie
+        // exclusion changes nothing unless that venue is the cinema itself
+        filteredFile = 'events-venue-' + slugify(vOn[0]) + '.ics';
+      }
     }
-    $('subFilterRow').hidden = !filteredFile;
-    setSubscribeFile((filteredFile && $('subUseFilter').checked) ? filteredFile : 'events.ics');
+    var everything = !extra && /^0+$/.test(LQAFilter.encodeFilterCode(currentModes())); // nothing hidden, nothing on Show: the full feed is the filtered feed
+    var filtered = filteredFile || (CAL_SERVER && !everything ? liveFeedUrl() : null);
+    $('subFilterRow').hidden = !filtered;
+    subFilterNote.hidden = !filtered || !$('subUseFilter').checked;
+    setSubscribeFile((filtered && $('subUseFilter').checked) ? filtered : 'events.ics');
   }
   function setSubscribeFile(file) {
     icsHref = new URL(file, location.href).href;
@@ -4279,6 +4337,7 @@
   });
   $('subUseFilter').addEventListener('change', updateSubscribe);
   updateSubscribe();
+  renderEmbedSnippet(); // the plain snippet until the feed arrives (the init above renders it again)
   // the pop floats over the docked mini calendar and is shorter than it,
   // so while it's open the calendar fades out (styles.css: html.pop-open)
   // rather than showing a strip of days under the pop's bottom edge
@@ -4332,5 +4391,9 @@
   }
   // a ?team= link opens the Teams view straight away
   if (new URLSearchParams(location.search).get('team')) setTeamsView(new URLSearchParams(location.search).get('team'), false);
-  window.LQAHooks = { dayItems: dayItems, byDate: function () { return state.byDate; }, boardEntry: boardEntry, closeDayPop: closeDayPop, syncViewSwitch: syncViewSwitch, fitFilterBar: fitFilterBar, todayStr: todayStr, venueColor: venueColor, onlyVenue: onlyVenue }; // what local-map.js borrows
+  window.LQAHooks = { dayItems: dayItems, byDate: function () { return state.byDate; }, boardEntry: boardEntry, closeDayPop: closeDayPop, syncViewSwitch: syncViewSwitch, fitFilterBar: fitFilterBar, todayStr: todayStr, venueColor: venueColor, onlyVenue: onlyVenue,
+    // the Map view's caption offers Reset when the filters leave nothing on the map, and its Cities card ends in the More Cities sheet (Steve, 2026-10-31)
+    isDefaultView: function () { return isDefaultState() && !state.soldOnly; },
+    resetFilters: function () { applyPreset(PRESETS[0]); state.q = ''; $('searchBox').value = ''; applyFilters(); },
+    openCities: function () { if (!CITIES || !CITIES.cities || !CITIES.cities.length) return false; if (!citySheet) citySheet = buildCitySheet(); citySheet.open(); return true; } }; // what local-map.js borrows
 })();

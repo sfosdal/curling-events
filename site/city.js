@@ -44,7 +44,7 @@
       cssVar: '--v-usac',
       color: '#86b4ea',
       url: 'https://www.usacurling.org/championships',
-      icon: 'https://www.google.com/s2/favicons?domain=www.usacurling.org&sz=128',
+      icon: 'marks/venues/usacurling.org.png',
     },
     'World Curling': { // the World Curling Federation's championships — its results database's season list
       capacity: 5000,
@@ -52,7 +52,7 @@
       cssVar: '--v-wcf',
       color: '#ea9a86',
       url: 'https://results.worldcurling.org/Championship',
-      icon: 'https://www.google.com/s2/favicons?domain=worldcurling.org&sz=128',
+      icon: 'marks/venues/worldcurling.org.png',
     },
     'Grand Slam of Curling': { // the professional tour's Slams — the season list its events page embeds
       capacity: 4000,
@@ -60,7 +60,7 @@
       cssVar: '--v-gsoc',
       color: '#eadb86',
       url: 'https://www.thegrandslamofcurling.com/events',
-      icon: 'https://www.google.com/s2/favicons?domain=www.thegrandslamofcurling.com&sz=128',
+      icon: 'marks/venues/thegrandslamofcurling.com.png',
     },
     'World Tour': { // the World Curling Tour and other nations' championships outside North America — CurlingZone's schedule
       capacity: 1000,
@@ -68,7 +68,7 @@
       cssVar: '--v-tour',
       color: '#86eaea',
       url: 'https://www.curlingzone.com/schedule.php',
-      icon: 'https://www.google.com/s2/favicons?domain=www.curlingzone.com&sz=128',
+      icon: 'marks/venues/curlingzone.com.png',
     },
     // --- Bonspiels & clubs ---
     'Granite Curling Club': { // Seattle, 1440 N 128th St, five sheets — its bonspiel list, and its public calendar for learn-to-curls, clinics and club nights
@@ -78,7 +78,7 @@
       cssVar: '--v-granite',
       color: '#86eabe',
       url: 'https://curlingseattle.org/bonspiels',
-      icon: 'https://www.google.com/s2/favicons?domain=curlingseattle.org&sz=128',
+      icon: 'marks/venues/curlingseattle.org.png',
       alias: /granite curling/i,
       geo: [47.7224, -122.3447], town: 'Seattle, WA', // the club's own spot: the Map pins its rows there (scripts/places.mjs)
     },
@@ -89,7 +89,7 @@
       cssVar: '--v-evergreen',
       color: '#a4ea86',
       url: 'https://www.evergreencurling.org/',
-      icon: 'https://www.google.com/s2/favicons?domain=www.evergreencurling.org&sz=128',
+      icon: 'marks/venues/evergreencurling.org.png',
       alias: /evergreen curling/i,
       geo: [45.4895, -122.7919], town: 'Beaverton, OR',
     },
@@ -100,7 +100,7 @@
       cssVar: '--v-northwest',
       color: '#86dcea',
       url: 'https://www.usacurling.org/bonspiel-calendar',
-      icon: 'https://www.google.com/s2/favicons?domain=www.usacurling.org&sz=128',
+      icon: 'marks/venues/usacurling.org.png',
       states: ['Washington', 'Oregon', 'Idaho', 'Montana', 'Alaska'],
     },
     'Midwest': { // the heartland of American curling
@@ -110,7 +110,7 @@
       cssVar: '--v-midwest',
       color: '#c286ea',
       url: 'https://www.usacurling.org/bonspiel-calendar',
-      icon: 'https://www.google.com/s2/favicons?domain=www.usacurling.org&sz=128',
+      icon: 'marks/venues/usacurling.org.png',
       states: ['Wisconsin', 'Minnesota', 'Michigan', 'Illinois', 'Indiana', 'Ohio', 'Iowa', 'Nebraska', 'North Dakota', 'South Dakota', 'Missouri', 'Kansas'],
     },
     'Northeast': {
@@ -120,7 +120,7 @@
       cssVar: '--v-northeast',
       color: '#ea86b8',
       url: 'https://www.usacurling.org/bonspiel-calendar',
-      icon: 'https://www.google.com/s2/favicons?domain=www.usacurling.org&sz=128',
+      icon: 'marks/venues/usacurling.org.png',
       states: ['Maine', 'New Hampshire', 'Vermont', 'Massachusetts', 'Rhode Island', 'Connecticut', 'New York', 'New Jersey', 'Pennsylvania', 'Maryland', 'Delaware', 'District of Columbia', 'Virginia', 'West Virginia'],
     },
     'South': {
@@ -130,7 +130,7 @@
       cssVar: '--v-south',
       color: '#eab886',
       url: 'https://www.usacurling.org/bonspiel-calendar',
-      icon: 'https://www.google.com/s2/favicons?domain=www.usacurling.org&sz=128',
+      icon: 'marks/venues/usacurling.org.png',
       states: ['Texas', 'North Carolina', 'South Carolina', 'Georgia', 'Florida', 'Tennessee', 'Alabama', 'Kentucky', 'Louisiana', 'Arkansas', 'Oklahoma', 'Mississippi'],
     },
     'Canada': { // Canada's tour bonspiels, provincials, the Brier and the Scotties — CurlingZone's schedule (curling.ca 403s every fetch)
@@ -140,7 +140,7 @@
       cssVar: '--v-canada',
       color: '#ea8686',
       url: 'https://www.curlingzone.com/schedule.php',
-      icon: 'https://www.google.com/s2/favicons?domain=www.curlingzone.com&sz=128',
+      icon: 'marks/venues/curlingzone.com.png',
     },
     'Mountain & Southwest': {
       capacity: 150,
@@ -149,7 +149,7 @@
       cssVar: '--v-mountain',
       color: '#d0ea86',
       url: 'https://www.usacurling.org/bonspiel-calendar',
-      icon: 'https://www.google.com/s2/favicons?domain=www.usacurling.org&sz=128',
+      icon: 'marks/venues/usacurling.org.png',
       states: ['California', 'Nevada', 'Arizona', 'Utah', 'Colorado', 'New Mexico', 'Wyoming', 'Hawaii'],
     },
   };

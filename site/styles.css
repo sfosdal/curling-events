@@ -401,6 +401,10 @@ html.is-scrolled { --titleh: 2.2rem; --barh: calc(var(--barh-base) + var(--title
 .fp-preset { font-size: .8rem; padding: .4em .85em; min-height: 2rem; }
 .fp-preset:hover { border-color: var(--ink-soft); }
 .fp-preset.is-on { background: var(--ink); color: var(--sky); border-color: var(--ink); }
+/* the panel's foot: Apply, pinned to the bottom edge while the panel scrolls (2026-11-05) */
+.fp-foot { position: sticky; bottom: -1rem; z-index: 1; display: flex; justify-content: flex-end; margin: 1.1rem -1.1rem -1rem; padding: .7rem 1.1rem; background: var(--mist); border-top: 1px solid var(--line); }
+.fp-foot .fp-apply { font-size: .9rem; font-weight: 600; padding: .45em 1.6em; min-height: 2.25rem; background: var(--ink); color: var(--sky); border-color: var(--ink); }
+.fp-foot .fp-apply:hover { background: color-mix(in srgb, var(--ink) 85%, var(--sky)); }
 .fp-group h3 {
   white-space: nowrap; /* never wraps (Steve, 2026-09-22) */
   font-family: var(--mono); font-size: .68rem; text-transform: uppercase;
@@ -865,6 +869,7 @@ button.cal-day:hover { background: color-mix(in srgb, var(--ink) 10%, var(--mist
 .pop-filter { display: flex; justify-content: center; gap: .5em; align-items: center; cursor: pointer; font-weight: 600; font-size: .88rem; margin: 0 0 .8rem; }
 .pop-filter input { accent-color: var(--ink); }
 .pop-filter[hidden] { display: none; } /* an author display beats the hidden attribute: say it outright (Teams mode has no filter to include) */
+.pop-filter-note { margin: -.45rem 0 .9rem; font-size: .68rem; } /* the filter row's footnote: the calendar keeps the filters it was added with (2026-11-05) */
 
 /* ---- share / embed: a <details> in the footer that opens UPWARD, its body
    floating over the list ---- */
@@ -974,6 +979,7 @@ footer .foot-links { order: 3; display: flex; align-items: center; gap: 1.2rem; 
 footer .foot-link { order: 1; } /* Advertise, Embed, Sources */
 footer #embed { order: 2; }
 footer #sources { order: 3; } /* a page link since 2026-10-29, still last on the row */
+footer #contact { order: 4; } /* the mailto, after Sources (2026-11-05) */
 /* the Advertise link: dressed as the Sources / Embed labels, after them */
 footer .foot-link { position: relative; top: -.5px; display: inline-flex; align-items: center; gap: .4rem; /* measured half a pixel under its neighbours' labels (Steve, 2026-09-15) */ font-family: var(--mono); font-size: .9rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); text-decoration: none; padding: .2rem 0; white-space: nowrap; }
 footer .foot-link:hover { color: var(--ink-soft); }
@@ -1960,6 +1966,7 @@ html.map-open .agenda, html.map-open .cal-toggle, html.map-open #calToday, html.
 .lm-road { fill: none; stroke: var(--road); stroke-linecap: round; stroke-linejoin: round; stroke-width: calc(var(--u, 1) * .6); opacity: .45; }
 .lm-road-primary, .lm-road-trunk { stroke-width: calc(var(--u, 1) * .9); opacity: .6; }
 .lm-road-motorway { stroke-width: calc(var(--u, 1) * 1.5); opacity: .8; }
+.lm-boundary { fill: none; stroke: var(--lm-dot); stroke-width: calc(var(--u, 1) * 1.3); stroke-dasharray: calc(var(--u, 1) * 6) calc(var(--u, 1) * 3.5); stroke-linecap: round; stroke-linejoin: round; opacity: .7; pointer-events: none; } /* the city's or neighbourhood's own line (build-local-map.mjs `boundary`): dashed, the map dots' orange, over the roads and under the labels and pins */
 .lm-town { font-family: var(--mono); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; fill: var(--ink-soft); paint-order: stroke; stroke: var(--mist); stroke-width: calc(var(--u, 1) * 3); stroke-linejoin: round; pointer-events: none; }
 .lm-town-dot { fill: var(--ink-soft); }
 .lm-water-name { font-family: var(--body); font-style: italic; letter-spacing: .04em; fill: color-mix(in srgb, var(--ink) 55%, #4da3f0); pointer-events: none; }
@@ -1984,13 +1991,19 @@ html.map-open .agenda, html.map-open .cal-toggle, html.map-open #calToday, html.
 .lm-zoom button[data-z="me"] { margin-top: .3rem; } /* the crosshair: the visitor's own spot, a little apart from the zoom */
 .lm-zoom button.is-busy { opacity: .5; cursor: progress; }
 .lm-zoom button[aria-pressed="true"] { color: #2f7fd6; border-color: #2f7fd6; }
-.lm-city { cursor: pointer; }
-.lm-city-dot { fill: #1f8a4c; stroke: #fff; stroke-width: calc(var(--u, 1) * 1.5); }
-.lm-sign-board { fill: #0f7a45; stroke: #fff; stroke-width: calc(var(--u, 1) * 1); } /* one thin white line as the board's edge (Steve, 2026-10-26: 'the white border should actually be the border') */
-.lm-sign-hit { fill: #fff; opacity: 0; }
-.lm-city:hover .lm-sign-hit, .lm-city:focus-visible .lm-sign-hit { opacity: .14; }
-.lm-sign-name, .lm-sign-mi { font-family: var(--body); font-weight: 700; letter-spacing: .01em; fill: #fff; pointer-events: none; }
-.lm-sign-name { letter-spacing: .03em; }
+.lm-zoom button[data-z="cities"] { margin-top: .3rem; } /* Switch City (and Switch Neighbourhood under it): the other sites, a little apart from the zoom — in place of the green signposts (Steve, 2026-10-31) */
+.lm-zoom button[aria-expanded="true"] { color: var(--ink); border-color: var(--ink); }
+.lm-switch .lm-sw-list { list-style: none; margin: .1rem 0 .35rem; padding: 0; }
+.lm-switch .lm-sw-row { display: flex; align-items: baseline; gap: .55rem; padding: .45rem .1rem; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none; font: 500 .9rem/1.25 var(--body); }
+.lm-switch li:first-child .lm-sw-row { border-top: 0; }
+.lm-switch a.lm-sw-row:hover .lm-sw-name, .lm-switch a.lm-sw-row:focus-visible .lm-sw-name { text-decoration: underline; text-underline-offset: .15em; }
+.lm-switch .lm-sw-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lm-switch .lm-sw-tag { flex: none; font-family: var(--mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.lm-switch .lm-sw-far { flex: none; font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; color: var(--ink-soft); }
+.lm-switch .is-here .lm-sw-row { font-weight: 700; }
+.lm-switch .is-here .lm-sw-row::after { content: '✓'; flex: none; color: var(--ink-soft); }
+.lm-caption .lm-reset { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--ink); background: none; border: 0; border-bottom: 1px solid currentColor; border-radius: 0; padding: 0; cursor: pointer; } /* the filters leave nothing on the map: one tap back to the default (Steve, 2026-10-31) */
+.lm-caption .lm-reset[hidden] { display: none; }
 .lm-me-dot { fill: #2f7fd6; stroke: var(--mist); stroke-width: calc(var(--u, 1) * 2); }
 .lm-me-acc { fill: #2f7fd6; fill-opacity: .14; stroke: #2f7fd6; stroke-opacity: .45; stroke-width: calc(var(--u, 1) * .8); animation: lm-pulse 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes lm-pulse { 0% { fill-opacity: .22; } 100% { fill-opacity: .08; } }

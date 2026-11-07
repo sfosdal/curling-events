@@ -80,7 +80,7 @@ test('time-less event becomes all-day (DATE value, exclusive DTEND next day)', (
 test('UID is stable across runs and unique per venue|title|date', () => {
   assert.equal(eventUid(timed), eventUid({ ...timed, url: 'https://other.example' }));
   assert.notEqual(eventUid(timed), eventUid({ ...timed, date: '2026-08-29' }));
-  assert.match(eventUid(timed), /^[0-9a-f]{40}@fosdal\.net$/);
+  assert.match(eventUid(timed), new RegExp('^[0-9a-f]{40}@' + globalThis.LQACity.ics.uidDomain.replace(/\./g, '\\.') + '$')); // the city's own domain (fosdal.net on every live site)
 });
 
 test('a second showing on the same day gets its own UID; a lone showing keeps the old one', () => {
@@ -108,4 +108,18 @@ test('long lines are folded at 75 octets with continuation space', () => {
 test('DTSTAMP uses the provided generation time in UTC', () => {
   const ics = buildIcs([timed], NOW);
   assert.match(ics, /DTSTAMP:20260824T120000Z/);
+});
+
+test('an event with its own zone keeps its clock in that zone, and the feed carries both zone blocks (tango-events)', () => {
+  const own = TZ === 'America/Toronto' ? 'America/Vancouver' : 'America/Toronto';
+  const ics = buildIcs([{ ...timed, tz: own }, timed], NOW);
+  assert.match(ics, new RegExp(`DTSTART;TZID=${own}:20260828T`));
+  assert.match(ics, new RegExp(`DTSTART;TZID=${TZ}:20260828T`));
+  assert.equal(ics.match(/BEGIN:VTIMEZONE/g).length, 2);
+  assert.match(ics, new RegExp(`TZID:${own}\\r\\n`));
+});
+
+test('a feed whose events carry no zone has exactly the one city block', () => {
+  const ics = buildIcs([timed, { ...timed, tz: 'Mars/Olympus' }], NOW); // an unknown zone falls back to the city's
+  assert.equal(ics.match(/BEGIN:VTIMEZONE/g).length, 1);
 });

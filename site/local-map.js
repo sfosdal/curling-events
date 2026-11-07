@@ -65,8 +65,27 @@
   // a neighbourhood site (`map.focus: 'hood'`) opens on its own rooms — those
   // without `area: 'town'` — with room round them for the discs and names
   // (Steve, 2026-10-24: "focus to contain the URLs in that neighboorhood")
+  // the box round the neighbourhood's own line (map units), with a hair of room so the line is not on the frame's edge
+  var lineBoxOf = null, lineBoxVal = null;
+  function lineBox() { return CITY.map && CITY.map.focus === 'hood' ? lineExtent() : null; } // a neighbourhood site's own line
+  function lineExtent() { // the whole city or neighbourhood line, with a margin, in frame units — any urban site
+    if (!data || !data.boundary) return null;
+    if (lineBoxOf === data.boundary) return lineBoxVal;
+    var nums = data.boundary.match(/-?\d+(?:\.\d+)?/g), bx = [], by = [];
+    for (var i = 0; nums && i + 1 < nums.length; i += 2) { bx.push(+nums[i]); by.push(+nums[i + 1]); }
+    lineBoxOf = data.boundary; lineBoxVal = null;
+    if (bx.length < 2) return null;
+    var l = Infinity, r = -Infinity, t = Infinity, b = -Infinity; // a loop, not Math.min.apply: a city line runs to many thousand points
+    for (i = 0; i < bx.length; i++) { l = Math.min(l, bx[i]); r = Math.max(r, bx[i]); t = Math.min(t, by[i]); b = Math.max(b, by[i]); }
+    var m = Math.max(r - l, b - t) * .06;
+    return (lineBoxVal = [l - m, t - m, r - l + 2 * m, b - t + 2 * m]);
+  }
   function hoodBox() {
     if (!data || !CITY.map || CITY.map.focus !== 'hood') return null;
+    // the neighbourhood's own line, as close as the map zooms (Steve, 2026-11-03: "I want the map zoom to show the
+    // neighborhood as zoomed in as possible"); home() widens it to the deepest zoom when the line is smaller still
+    var lb = lineBox();
+    if (lb) return lb;
     var pts = ROOMS.filter(function (v) { return VENUES[v].area !== 'town'; }).map(function (v) { return px(VENUES[v].geo[0], VENUES[v].geo[1]); });
     if (!pts.length) return null;
     var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
@@ -78,14 +97,11 @@
   var atHome = true; // the view is still the opening one (no zoom or pan yet): it follows the frame's shape when that changes
   function home(draw) {
     atHome = true; var hb = hoodBox();
-    if (hb || (data && data.home)) { var h = hb || data.home, a = ar(), w = Math.max(h[2], h[3] / a); view = { x: h[0] + h[2] / 2 - w / 2, y: h[1] + h[3] / 2 - w * a / 2, w: w, h: w * a }; }
+    if (hb || (data && data.home)) { var h = hb || data.home, a = ar(), w = Math.max(h[2], h[3] / a, hb ? MIN_W() : 0); view = { x: h[0] + h[2] / 2 - w / 2, y: h[1] + h[3] / 2 - w * a / 2, w: w, h: w * a }; }
     else fit(false);
-    homeW = view.w;
     if (draw !== false) render();
   }
-  var homeW = 0; // the opening view's width: the signs wait for a zoom in past it
-  function zoomedIn() { return homeW > 0 && view.w < homeW * .98; } // a pan alone is not a zoom
-  function fit(draw) { atHome = false; var a = ar(), w = COVER() ? MAX_W() : Math.max(FRAME.w, FRAME.h / a); view = { x: (FRAME.w - w) / 2, y: (FRAME.h - w * a) / 2, w: w, h: w * a }; if (draw !== false) render(); } // a city ground: as far out as still fills the frame; an island or the world: the whole ground
+  function fit(draw) { atHome = false; var a = ar(), w = COVER() ? MAX_W() : Math.max(FRAME.w, FRAME.h / a); view = { x: (FRAME.w - w) / 2, y: (FRAME.h - w * a) / 2, w: w, h: w * a }; if (COVER()) { clamp(); takeInLine(); } if (draw !== false) render(); } // a city ground: as far out as still fills the frame; an island or the world: the whole ground
   // the frame's own proportions (height over width): it fills the content's width and the height the window leaves,
   // whatever the ground's shape — the viewBox follows the frame, not the other way round (Steve, 2026-10-24)
   function ar() { var r = svg.parentElement.getBoundingClientRect(); return r.width > 0 && r.height > 0 ? r.height / r.width : FRAME.h / FRAME.w; }
@@ -228,6 +244,7 @@
       (data.sea || []).forEach(function (d) { el('path', { d: d, 'class': 'lm-sea', 'fill-rule': 'evenodd' }, svg); });
       (data.water || []).forEach(function (d) { el('path', { d: d, 'class': 'lm-water', 'fill-rule': 'evenodd' }, svg); });
       ['secondary', 'primary', 'trunk', 'motorway'].forEach(function (c) { if (data.roads && data.roads[c]) el('path', { d: data.roads[c], 'class': 'lm-road lm-road-' + c }, svg); });
+      if (data.boundary) el('path', { d: data.boundary, 'class': 'lm-boundary' }, svg); // the city's (or neighbourhood's) own line, always on (Steve, 2026-11-02)
     } else if (data.kind === 'world') { // the ocean everywhere, the countries over it, the state lines and the great lakes over those
       el('rect', { x: -FRAME.w, y: -FRAME.h, width: FRAME.w * 3, height: FRAME.h * 3, 'class': 'lm-ocean' }, svg);
       (data.land || []).forEach(function (d) { el('path', { d: d, 'class': 'lm-island', 'fill-rule': 'evenodd' }, svg); });
@@ -251,76 +268,10 @@
     var shrink = Math.min(1, Math.max(.5, Math.sqrt(.16 * view.w * view.h / (area || 1))));
     pins.forEach(function (p) { p.r *= shrink; p.cap = p.group ? Math.max(p.r * 2, 10 * u) : Math.max(p.r * .9, 10 * u); }); // a group's spot is an average anyway: it may stray farther to clear its neighbours
     spread(pins, 3 * u);
-    // ---- the other cities on here.events nearby, as highway mileage signs (Steve, 2026-10-26: "add labels for nearby locations … more like these, including distance"):
-    // one green sign per edge the cities lie beyond, a row each — name left, distance right — and a one-row sign beside the dot of a city inside the view.
-    // Laid out before the labels, which keep clear of the boards; drawn on top of everything (the layer is re-appended at the end) ----
-    var ctl = $('mapView').querySelector('.lm-zoom'), ctlBottom = 0, keepOut = []; if (ctl) { var cr = ctl.getBoundingClientRect(), sr = svg.getBoundingClientRect(); ctlBottom = view.y + (cr.bottom - sr.top) * u; keepOut.push({ x: view.x + (cr.left - sr.left) * u - 6 * u, y: view.y, w: (cr.width + 6) * u + 6 * u, h: ctlBottom - view.y + 6 * u }); } // the zoom buttons' column: no sign under it
-    var sf = 15 * u, sPad = sf * 1.02, capH = sf * .72, sRow = sf * 1.45, inset = 12 * u, bySide = { top: [], bottom: [], left: [], right: [] }, signLayer = el('g', { 'class': 'lm-signs' }, svg), signBoxes = [];
-    var dUnit = CITY.distanceUnit === 'km' ? 'km' : 'mi'; // city.js distanceUnit: 'km' where the roads are signed in kilometres (Steve, 2026-10-26: "mi for countries that support it or km for the others")
-    function overlaps(a, b) { return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y; }
-    function inView(bx) { return bx.x >= view.x + inset && bx.x + bx.w <= view.x + view.w - inset && bx.y >= view.y + inset && bx.y + bx.h <= view.y + view.h - inset; }
-    function cover(a, b) { return Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)) * Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y)); }
-    function crowding(bx) { var c = 0; pins.forEach(function (p) { c += cover(bx, { x: p.x - p.r, y: p.y - p.r, w: 2 * p.r, h: 2 * p.r }); }); signBoxes.concat(keepOut).forEach(function (o) { c += cover(bx, o) * 1000; }); return c; } // how much of the board lies over rooms (and, far worse, over another sign or the buttons)
-    function clearOfRooms(bx) { return crowding(bx) === 0; }
-    function sign(rows, placeAt) { // rows: [{name, dist, url}]; placeAt(w, h) names the board's top-left once the words are measured (a width guessed from the letter count ran "Spokane223" together)
-      var g = el('g', { 'class': 'lm-sign' }, signLayer), board = el('rect', { rx: sf * .5, 'class': 'lm-sign-board' }, g); // one white line, the board's own edge (Steve, 2026-10-26: 'the white border should actually be the border')
-      var items = rows.map(function (r) {
-        var a = el('a', { href: cityLink(r), 'class': 'lm-city' }, g), ttl = el('title', {}, a); ttl.textContent = r.name + "'s calendar on here.events — about " + r.dist + (dUnit === 'km' ? ' km' : ' miles');
-        var hit = el('rect', { height: sRow, 'class': 'lm-sign-hit' }, a);
-        var t1 = el('text', { 'text-anchor': 'start', 'font-size': sf, 'class': 'lm-sign-name' }, a); t1.textContent = r.name;
-        var t2 = el('text', { 'text-anchor': 'end', 'font-size': sf, 'class': 'lm-sign-mi' }, a); t2.textContent = r.dist + ' ' + dUnit;
-        return { hit: hit, t1: t1, t2: t2 };
-      });
-      var nameW = 0, miW = 0; items.forEach(function (it) { nameW = Math.max(nameW, it.t1.getComputedTextLength()); miW = Math.max(miW, it.t2.getComputedTextLength()); });
-      var w = sPad * 2 + nameW + sf * 2 + miW, h = sPad * 2 + capH + (rows.length - 1) * sRow; // the block of words, the capitals' top to the last baseline, inside the same margin on every side (Steve, 2026-10-26: "the margins must be nice")
-      var at = placeAt(w, h); if (!at) { g.remove(); return null; }
-      var x0 = Math.min(view.x + view.w - inset - w, Math.max(view.x + inset, at.x)), y0 = Math.min(view.y + view.h - inset - h, Math.max(view.y + inset, at.y)); // inside the view whatever it measured
-      board.setAttribute('x', x0); board.setAttribute('y', y0); board.setAttribute('width', w); board.setAttribute('height', h);
-      items.forEach(function (it, i) {
-        var base = y0 + sPad + capH + i * sRow;
-        it.hit.setAttribute('x', x0); it.hit.setAttribute('width', w); it.hit.setAttribute('y', base - capH - (sRow - capH) / 2); // the whole row taps
-        it.t1.setAttribute('x', x0 + sPad); it.t1.setAttribute('y', base); it.t2.setAttribute('x', x0 + w - sPad); it.t2.setAttribute('y', base);
-      });
-      var bx = { x: x0, y: y0, w: w, h: h }; signBoxes.push(bx); return bx;
-    }
-    function settle(bx, axis) { // the board slid along its edge (x for a top/bottom sign, y for a side one) to the nearest clear spot — failing one, the least crowded
-      var step = (axis === 'x' ? bx.w : bx.h) * .5, lim = axis === 'x' ? [view.x + inset, view.x + view.w - inset - bx.w] : [view.y + inset, view.y + view.h - inset - bx.h], best = null, bestC = Infinity;
-      for (var k = 0; k < 24; k++) {
-        var off = (k % 2 ? 1 : -1) * Math.ceil(k / 2) * step, v = Math.min(lim[1], Math.max(lim[0], (axis === 'x' ? bx.x : bx.y) + off));
-        var t = axis === 'x' ? { x: v, y: bx.y, w: bx.w, h: bx.h } : { x: bx.x, y: v, w: bx.w, h: bx.h }, c = crowding(t);
-        if (c === 0) return t;
-        if (c < bestC) { bestC = c; best = t; }
-      }
-      return best || bx;
-    }
-    (zoomedIn() ? nearbyCities(100) : []).forEach(function (c) { // only once zoomed in past the opening view (Steve, 2026-10-30: "signe posts here … are dumb. only use them when zoomed in")
-      var p = px(c.lat, c.lon), row = { name: c.name, key: c.key, dist: Math.max(1, Math.round(dUnit === 'km' ? c.km : c.km * .621371)), url: c.url, x: p[0], y: p[1] };
-      if (p[0] > view.x + inset && p[0] < view.x + view.w - inset && p[1] > view.y + inset && p[1] < view.y + view.h - inset) { // inside the view: its dot, the sign beside it where the rooms leave room
-        el('circle', { cx: p[0], cy: p[1], r: 3.5 * u, 'class': 'lm-city-dot' }, signLayer);
-        var probe = sign([row], function (w, h) { // right of the dot, then left, below, above, the diagonals, then the same a step farther — the first spot in view and clear of the rooms' discs (Steve, 2026-10-26: "too much overlap")
-          var gap = 8 * u, spots = [];
-          [1, 2.2].forEach(function (m) { var g = gap * m; spots.push({ x: p[0] + g, y: p[1] - h / 2 }, { x: p[0] - g - w, y: p[1] - h / 2 }, { x: p[0] - w / 2, y: p[1] + g }, { x: p[0] - w / 2, y: p[1] - g - h }, { x: p[0] + g, y: p[1] + g }, { x: p[0] - g - w, y: p[1] + g }, { x: p[0] + g, y: p[1] - g - h }, { x: p[0] - g - w, y: p[1] - g - h }); });
-          for (var k = 0; k < spots.length; k++) { var bx = { x: spots[k].x, y: spots[k].y, w: w, h: h }; if (inView(bx) && clearOfRooms(bx)) return spots[k]; }
-          return null; // hemmed in: the sign goes to the edge instead, like a city beyond the view
-        });
-        if (probe) return;
-      }
-      var cx = view.x + view.w / 2, cy = view.y + view.h / 2, dx = (p[0] - cx) / view.w, dy = (p[1] - cy) / view.h; // which edge: the one its direction leaves by first
-      bySide[Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'bottom' : 'top')].push(row);
-    });
-    Object.keys(bySide).forEach(function (side) {
-      var rows = bySide[side]; if (!rows.length) return;
-      rows.sort(function (p, q) { return p.dist - q.dist; });
-      var mx = rows.reduce(function (t, r) { return t + r.x; }, 0) / rows.length, my = rows.reduce(function (t, r) { return t + r.y; }, 0) / rows.length; // where they lie, on average: the sign sits at that point of the edge
-      sign(rows, function (w, h) {
-        var y = Math.min(view.y + view.h - inset - h, Math.max(view.y + inset, my - h / 2)), x = Math.min(view.x + view.w - inset - w, Math.max(view.x + inset, mx - w / 2));
-        if (side === 'right' && ctlBottom && y < ctlBottom + inset) y = Math.min(view.y + view.h - inset - h, ctlBottom + inset); // not under the zoom buttons
-        if (side === 'top') return settle({ x: x, y: view.y + inset, w: w, h: h }, 'x');
-        if (side === 'bottom') return settle({ x: x, y: view.y + view.h - inset - h, w: w, h: h }, 'x');
-        if (side === 'left') return settle({ x: view.x + inset, y: y, w: w, h: h }, 'y');
-        return settle({ x: view.x + view.w - inset - w, y: y, w: w, h: h }, 'y');
-      });
-    });
+    // The green mileage signposts that stood here (2026-10-26 → 2026-10-31) gave way to the Cities and Neighbourhoods
+    // buttons in the zoom column (Steve, 2026-10-31: "for signposts, I want a switch cities button … and switch
+    // neighborfoods" → option 1) — see switcher() below; nothing is drawn over the map for the other sites any more.
+    var signBoxes = [];
     var boxes = placeLabels(pins, fs, signBoxes); // the labels keep clear of the signs
     // ---- the places a visitor steers by, where a pin's label has not taken the spot ----
     var tfs = 10.5 * u;
@@ -356,32 +307,70 @@
       el('circle', { cx: me.x, cy: me.y, r: 5 * u, 'class': 'lm-me-dot' }, mg);
       var mt = el('title', {}, mg); mt.textContent = 'You are here';
     }
-    svg.appendChild(signLayer); // the signs over everything
     var cap = $('lmCaption'), own = keys.filter(function (v) { return VENUES[v] && t.n[v]; }).length, ownAll = keys.length - CITY_ROOMS.length;
-    if (cap) cap.firstElementChild.textContent = total + ' upcoming at ' + own + ' of ' + ownAll + ' places' + (CITY_ROOMS.length ? ' · ' + cityTotal + ' more across ' + (CITYMAP.city || 'the city') : '');
+    var filteredOut = !total && ownAll > 0 && !!H.resetFilters && !(H.isDefaultView && H.isDefaultView()); // the filters leave nothing on the map (Steve, 2026-10-31: "#1, yes" — a whole map of hollow rings read as broken)
+    if (cap) {
+      cap.firstElementChild.textContent = (filteredOut ? 'Nothing upcoming under these filters' : total + ' upcoming at ' + own + ' of ' + ownAll + ' places') + (CITY_ROOMS.length ? ' · ' + cityTotal + ' more across ' + (CITYMAP.city || 'the city') : '');
+      var rs = cap.querySelector('.lm-reset');
+      if (filteredOut && !rs) { rs = document.createElement('button'); rs.type = 'button'; rs.className = 'lm-reset'; rs.textContent = 'Reset filters'; rs.addEventListener('click', function () { H.resetFilters(); }); cap.insertBefore(rs, cap.firstElementChild.nextSibling); }
+      if (rs) rs.hidden = !filteredOut;
+    }
   }
   function schedule() { if (!rafId) rafId = requestAnimationFrame(function () { rafId = 0; render(); }); }
 
   // ---- zoom and pan ----
-  var MIN_W = function () { return FRAME.w / (data && data.kind === 'urban' ? 24 : data && data.kind === 'world' ? 120 : 16); }; // a city zooms a little deeper: its rooms sit a block apart; the world much deeper, down to a state's towns
+  var MIN_W = function () { // a neighbourhood site may go as deep as fills a narrow frame with its own line (Steve, 2026-11-03)
+    var base = FRAME.w / (data && data.kind === 'urban' ? 24 : data && data.kind === 'world' ? 120 : 16), lb = lineBox();
+    return lb ? Math.min(base, Math.max(lb[2], lb[3] / ar())) : base;
+  }; // a city zooms a little deeper: its rooms sit a block apart; the world much deeper, down to a state's towns
   var COVER = function () { return !!data && data.kind === 'urban'; }; // a city's ground is a rectangle of data, so the view stays inside it and the frame is always full (Steve, 2026-10-25); an island sits in open sea, the world in ocean — those run on past the data
-  var MAX_W = function () { var a = ar(); return COVER() ? Math.min(FRAME.w, FRAME.h / a) : Math.max(FRAME.w, FRAME.h / a) * 1.3; }; // out to the whole ground (plus a margin) in the frame's own shape — or, covered, as far as still fills it
+  var MAX_W = function () { // out to the whole ground (plus a margin) in the frame's own shape — or, covered, as far as still fills it,
+    var a = ar(); if (!COVER()) return Math.max(FRAME.w, FRAME.h / a) * 1.3;
+    var le = lineExtent(); // and on to the whole city line in any window shape, the ground then centred (Steve, 2026-11-05: "allow zooming out
+    return Math.max(Math.min(FRAME.w, FRAME.h / a), le ? Math.max(le[2], le[3] / a) : 0); // to show the complete city line inside the view")
+  }; // out to the whole ground (plus a margin) in the frame's own shape — or, covered, as far as still fills it
   function clamp() {
     view.w = Math.min(MAX_W(), Math.max(MIN_W(), view.w)); view.h = view.w * ar();
     var m = COVER() ? 0 : .15; // the margin the view may show past the ground
     var lo = -FRAME.w * m, hi = FRAME.w * (1 + m) - view.w; view.x = hi < lo ? (lo + hi) / 2 : Math.min(hi, Math.max(lo, view.x)); // wider than the ground: centred on it
     lo = -FRAME.h * m; hi = FRAME.h * (1 + m) - view.h; view.y = hi < lo ? (lo + hi) / 2 : Math.min(hi, Math.max(lo, view.y));
   }
+  function takeInLine() { // on a zoom out (and the fit button), past the ground's fill or all the way out: the view slides to take in as much
+    // of the city line as it holds, so at the widest the whole line shows (Steve, 2026-11-05); only then, so a pan at that scale stays free
+    var le = COVER() && view.w > Math.min(Math.min(FRAME.w, FRAME.h / ar()), MAX_W() - 1) + .5 ? lineExtent() : null;
+    if (le) { // +1: rounding at MAX_W; the line's margin is cut to the ground's edge
+      var lo = Math.max(0, Math.min(FRAME.w, le[0] + le[2]) - view.w), hi = Math.min(FRAME.w - view.w, Math.max(0, le[0])); if (lo <= hi + 1) view.x = Math.min(hi, Math.max(lo, view.x));
+      lo = Math.max(0, Math.min(FRAME.h, le[1] + le[3]) - view.h); hi = Math.min(FRAME.h - view.h, Math.max(0, le[1])); if (lo <= hi + 1) view.y = Math.min(hi, Math.max(lo, view.y));
+    }
+  }
   function zoomAt(cx, cy, f) { // cx, cy: client coordinates the zoom keeps still
     var r = svg.getBoundingClientRect(), k = view.w / r.width, fx = (cx - r.left) * k + view.x, fy = (cy - r.top) * k + view.y;
     atHome = false; var w = view.w / f; w = Math.min(MAX_W(), Math.max(MIN_W(), w)); var ff = view.w / w;
     view.x = fx - (fx - view.x) / ff; view.y = fy - (fy - view.y) / ff; view.w = w; view.h = w * ar();
-    clamp(); closePop(); schedule();
+    clamp(); if (f < 1) takeInLine(); closePop(); schedule();
+  }
+  // the double-click and the + / − buttons glide to the new scale over a moment, eased, the way a pinch moves — they jumped
+  // until Steve (2026-10-31): "when double clicking to zoome the map, it should just jump, it should slow zoom in. link pinch
+  // zoom in/out does. the +- should do the same"; a reduced-motion setting keeps the jump
+  var glideId = 0;
+  function stopGlide() { if (glideId) { cancelAnimationFrame(glideId); glideId = 0; } }
+  function glideZoom(cx, cy, f) {
+    stopGlide();
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { zoomAt(cx, cy, f); return; }
+    var t0 = 0, done = 1, MS = 300;
+    function step(now) {
+      if (!t0) t0 = now;
+      var k = Math.min(1, (now - t0) / MS), want = Math.pow(f, 1 - Math.pow(1 - k, 3)); // ease-out cubic, on the scale's log (each frame a ratio, so the point under the pointer stays put)
+      zoomAt(cx, cy, want / done); done = want;
+      if (rafId) { cancelAnimationFrame(rafId); rafId = 0; } render(); // this frame, not the next
+      glideId = k < 1 ? requestAnimationFrame(step) : 0;
+    }
+    glideId = requestAnimationFrame(step);
   }
   var pts = {}, drag = null, pinch = null;
   svg.addEventListener('pointerdown', function (e) {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
-    if (e.target.closest && e.target.closest('.lm-city')) return; // a sign is a plain link: no capture, or the click lands on the svg and the link never fires (Steve, 2026-10-26: 'the click to everett from Seattle isn't working')
+    stopGlide(); // a hand on the map takes over from a glide
     pts[e.pointerId] = { x: e.clientX, y: e.clientY }; svg.setPointerCapture(e.pointerId);
     var ids = Object.keys(pts);
     if (ids.length === 1) drag = { x: e.clientX, y: e.clientY, vx: view.x, vy: view.y, moved: false, target: e.target.closest('.lm-pin') };
@@ -411,16 +400,16 @@
   }
   svg.addEventListener('pointerup', up); svg.addEventListener('pointercancel', up);
   svg.addEventListener('wheel', function (e) { // by the delta's size, never a fixed step per event: a trackpad pinch (ctrlKey, small deltas, dozens a second) or two-finger scroll lands many events per gesture, a mouse notch one of ±100 or so (≈ 1.2×)
-    e.preventDefault();
+    e.preventDefault(); stopGlide();
     var d = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 100 : 1), f = Math.exp(-d * (e.ctrlKey ? .01 : .002));
     zoomAt(e.clientX, e.clientY, Math.min(1.5, Math.max(1 / 1.5, f)));
   }, { passive: false });
-  svg.addEventListener('dblclick', function (e) { e.preventDefault(); zoomAt(e.clientX, e.clientY, 2); });
+  svg.addEventListener('dblclick', function (e) { e.preventDefault(); glideZoom(e.clientX, e.clientY, 2); });
   svg.addEventListener('keydown', function (e) { var g = e.target.closest && e.target.closest('.lm-pin'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); toggleVenue(g.dataset.venue, g); } });
   $('mapView').querySelector('.lm-zoom').addEventListener('click', function (e) {
     var b = e.target.closest('button[data-z]'); if (!b) return;
     var r = svg.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-    if (b.dataset.z === 'in') zoomAt(cx, cy, 1.6); else if (b.dataset.z === 'out') zoomAt(cx, cy, 1 / 1.6); else if (b.dataset.z === 'me') locate(b); else { closePop(); fit(); } // fit: the whole frame, out-of-town rooms included
+    if (b.dataset.z === 'in') glideZoom(cx, cy, 1.6); else if (b.dataset.z === 'out') glideZoom(cx, cy, 1 / 1.6); else if (b.dataset.z === 'me') locate(b); else if (b.dataset.z === 'cities' || b.dataset.z === 'hoods') switchCard(b.dataset.z, b); else { stopGlide(); closePop(); fit(); } // fit: the whole frame, out-of-town rooms included
   });
 
   // ---- the visitor's own spot (Steve, 2026-10-25: "find my location") ----
@@ -447,19 +436,82 @@
   var PREVIEW = (new URLSearchParams(location.search).get('preview') || ''); // a local demo: ?preview=seattle:8120,everett:8088 sends a city's sign or jump to that preview port instead of its live host, and carries the list along (nothing of it in production links)
   var PREVIEW_PORT = {}; PREVIEW.split(',').forEach(function (kv) { var m = /^([\w-]+):(\d+)$/.exec(kv); if (m) PREVIEW_PORT[m[1]] = m[2]; });
   function cityLink(c) { return (PREVIEW_PORT[c.key] ? 'http://localhost:' + PREVIEW_PORT[c.key] + '/repo/site/' : c.url) + '?view=map&from=' + encodeURIComponent(CITY.key) + (PREVIEW ? '&preview=' + encodeURIComponent(PREVIEW) : ''); }
-  var SAME_WAY = 1.25; // "about the same distance" as the nearest site: within a quarter again of its distance (Honolulu signs Maui; Big Island, at twice as far, waits for the 100 km rule)
-  var FROM = new URLSearchParams(location.search).get('from') || ''; // the city whose sign or location jump brought the visitor here: its sign is drawn however far it lies, so there is a way back (Steve, 2026-10-26)
-  function nearbyCities(within) { // the other city-wide sites within `within` km of this ground's centre, nearest first — and always the nearest one however far it lies, with any others about as far (Steve, 2026-10-26: "every map view should have at least one sign post to another place. if there are other locations within the same distance add those too")
-    var b = (CITY.map && CITY.map.home) || (CITY.map && CITY.map.bbox); if (!data || !b) return []; // [S, W, N, E] — miles are from the home box (downtown) when the city has one
-    var lat = (b[0] + b[2]) / 2, lon = (b[1] + b[3]) / 2, list = (window.LQACities && window.LQACities.cities) || [], own = CITY.key, cityKey = CITY.map && CITY.map.city && CITY.map.city.key, out = [];
-    list.forEach(function (c) {
-      if (!c.live || c.lat == null || c.key === own || c.key === cityKey || c.name !== c.city) return;
-      var dLat = (c.lat - lat) * Math.PI / 180, dLon = (c.lon - lon) * Math.PI / 180, a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat * Math.PI / 180) * Math.cos(c.lat * Math.PI / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-      out.push({ key: c.key, name: c.name, url: c.url, lat: c.lat, lon: c.lon, km: 2 * 6371 * Math.asin(Math.sqrt(a)) });
+  var FROM = new URLSearchParams(location.search).get('from') || ''; // the site whose Cities card brought the visitor here: it heads this site's card, so there is a way back (Steve, 2026-10-26)
+  // ---- the other sites on here.events: the Cities and Neighbourhoods buttons in the zoom column ----
+  // (Steve, 2026-10-31: "I want a switch cities buttone somewhere if you are in a city that doesn't have any neighborfooh
+  // here sites. if you are in a city with neighborhoods defiend I want a switch cities and switch neighborfoods" → option 1,
+  // in place of the green signposts.) A city's neighbourhood sites are the cities.js entries of the same city and state
+  // whose name is not the city's (Lower Queen Anne · Seattle); no field of their own.
+  function sites() { return (window.LQACities && window.LQACities.cities) || []; }
+  function self() { return sites().filter(function (c) { return c.key === CITY.key; })[0] || null; }
+  function family() { // this site's city-wide site and its neighbourhood sites, when it has any — Seattle, Lower Queen Anne, Pioneer Square
+    var me0 = self(); if (!me0) return [];
+    var f = sites().filter(function (c) { return c.live && c.city === me0.city && c.state === me0.state; });
+    return f.length > 1 && f.some(function (c) { return c.name !== c.city; }) ? f : [];
+  }
+  function unproject(x, y) { var p = data.proj; if (p.kind === 'miller') return [Math.atan(Math.sinh((p.my0 - y / p.s) * Math.PI / 180 / 1.25)) / .8 * 180 / Math.PI, (x - p.w / 2) / p.s + p.cx]; return [p.cy - (y - p.h / 2) / p.s, (x - p.w / 2) / (p.k * p.s) + p.cx]; } // px() backwards: frame units → [lat, lon]
+  function otherCities() { // the other city-wide sites, nearest first: from this city's own spot on here.events, or — a site that is no city (tango) — from the middle of the view
+    var me0 = self(), o = me0 && me0.lat != null ? [me0.lat, me0.lon] : data && view ? unproject(view.x + view.w / 2, view.y + view.h / 2) : null;
+    var skip = {}; skip[CITY.key] = 1; if (CITY.map && CITY.map.city) skip[CITY.map.city.key] = 1; family().forEach(function (c) { skip[c.key] = 1; });
+    var out = sites().filter(function (c) { return c.live && c.lat != null && !skip[c.key] && c.name === c.city; }).map(function (c) { // city-wide sites only: a neighbourhood belongs to its city's card
+      var r = { key: c.key, name: c.name, url: c.url, state: c.state };
+      if (o) {
+        var f1 = o[0] * Math.PI / 180, f2 = c.lat * Math.PI / 180, dl = (c.lon - o[1]) * Math.PI / 180, a = Math.sin((f2 - f1) / 2) * Math.sin((f2 - f1) / 2) + Math.cos(f1) * Math.cos(f2) * Math.sin(dl / 2) * Math.sin(dl / 2);
+        r.km = 2 * 6371 * Math.asin(Math.sqrt(a));
+        r.deg = (Math.atan2(Math.sin(dl) * Math.cos(f2), Math.cos(f1) * Math.sin(f2) - Math.sin(f1) * Math.cos(f2) * Math.cos(dl)) * 180 / Math.PI + 360) % 360; // the initial bearing, clockwise from north
+      }
+      return r;
     });
-    out.sort(function (p, q) { return p.km - q.km; });
-    var near = out.length ? out[0].km : 0;
-    return out.filter(function (c) { return c.km <= within || c.key === FROM || c.km <= near * SAME_WAY; });
+    out.sort(function (p, q) { return o ? p.km - q.km : p.name.localeCompare(q.name); });
+    return out;
+  }
+  var ARROWS = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
+  var SIGNPOST = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M9 21h6M12 5h6.5l2 2.5-2 2.5H12M12 12H5.5l-2 2.5 2 2.5H12"/></svg>';
+  var HOODS_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21v-9l4-3 4 3v9M13 21v-6l3.5-2.5L20 15v6M8 15h2"/></svg>';
+  function mountSwitch() { // the buttons, under find-my-location, once cities.js is in (a deferred script like this one)
+    var col = $('mapView').querySelector('.lm-zoom'); if (!col || col.querySelector('[data-z="cities"]') || !sites().length) return;
+    function add(z, label, icon) { var b = document.createElement('button'); b.type = 'button'; b.dataset.z = z; b.title = label; b.setAttribute('aria-label', label); b.setAttribute('aria-haspopup', 'dialog'); b.setAttribute('aria-expanded', 'false'); b.innerHTML = icon; col.appendChild(b); }
+    add('cities', 'Switch City', SIGNPOST);
+    if (family().length) add('hoods', 'Switch Neighbourhood', HOODS_ICON);
+  }
+  var openSwitch = null; // 'cities' | 'hoods' while its card is up
+  function swRow(c, here, far, tag) {
+    var li = document.createElement('li'); if (here) li.className = 'is-here';
+    var a = document.createElement(here ? 'span' : 'a'); a.className = 'lm-sw-row'; if (here) a.setAttribute('aria-current', 'page'); else a.href = cityLink(c);
+    var n = document.createElement('span'); n.className = 'lm-sw-name'; n.textContent = c.name; a.appendChild(n);
+    if (tag) { var g = document.createElement('span'); g.className = 'lm-sw-tag'; g.textContent = tag; a.appendChild(g); }
+    if (far) { var d = document.createElement('span'); d.className = 'lm-sw-far'; d.textContent = far; a.appendChild(d); }
+    li.appendChild(a); return li;
+  }
+  function switchCard(kind, b) {
+    if (openSwitch === kind) { closePop(); return; }
+    H.closeDayPop(); closePop(); openSwitch = kind; b.setAttribute('aria-expanded', 'true');
+    var pop = document.createElement('div'); pop.className = 'mb-pop lm-pop lm-switch'; pop.setAttribute('role', 'dialog');
+    var ul = document.createElement('ul'); ul.className = 'lm-sw-list';
+    if (kind === 'cities') {
+      var unit = CITY.distanceUnit === 'km' ? 'km' : 'mi', list = otherCities(), back = FROM && list.filter(function (c) { return c.key === FROM; })[0];
+      popHead(pop, 'Switch City', list[0] && list[0].km != null ? 'nearest first' : '');
+      (back ? [back] : []).concat(list.filter(function (c) { return c !== back; }).slice(0, back ? 5 : 6)).forEach(function (c) {
+        var far = c.km != null ? Math.max(1, Math.round(unit === 'km' ? c.km : c.km * .621371)) + ' ' + unit + ' ' + ARROWS[Math.round(c.deg / 45) % 8] : '';
+        ul.appendChild(swRow(c, false, far, c === back ? 'Back' : ''));
+      });
+      pop.appendChild(ul);
+      var foot = document.createElement('div'); foot.className = 'lm-foot';
+      var all = document.createElement('button'); all.type = 'button'; all.className = 'lm-site lm-list'; all.textContent = 'All cities…';
+      all.addEventListener('click', function () { closePop(); if (!(H.openCities && H.openCities())) location.assign((window.LQACities && window.LQACities.map) || 'https://here.events/'); }); // the More Cities sheet (app.js); a site without it, the map of every city
+      foot.appendChild(all); pop.appendChild(foot);
+    } else {
+      var fam = family().slice().sort(function (p, q) { return (p.name === p.city ? 0 : 1) - (q.name === q.city ? 0 : 1) || p.name.localeCompare(q.name); }); // the whole city first, then its neighbourhoods
+      popHead(pop, 'Switch Neighbourhood', fam[0] ? fam[0].city : '');
+      fam.forEach(function (c) { ul.appendChild(swRow(c, c.key === CITY.key, '', c.name === c.city ? 'Whole city' : '')); });
+      pop.appendChild(ul);
+    }
+    showPop(pop, b, function () { // to the left of the button, its top level with the button's (a phone takes the sheet from the foot, as a pin's card does)
+      if (window.matchMedia('(max-width: 640px)').matches) return;
+      var r = b.getBoundingClientRect(), w = Math.min(17 * 16, window.innerWidth - 16), foot0 = document.querySelector('footer'), floor = foot0 ? Math.min(window.innerHeight, foot0.getBoundingClientRect().top) : window.innerHeight;
+      pop.style.width = w + 'px'; pop.style.left = Math.max(8, r.left - 8 - w) + 'px';
+      pop.style.top = Math.max(8, Math.min(r.top, floor - 8 - pop.offsetHeight)) + 'px';
+    });
   }
   function goTo(m) { // centre on the spot, in as far as a few blocks if the view is wider than that
     atHome = false; var w = Math.min(view.w, MIN_W() * 4); view = { x: m.x - w / 2, y: m.y - w * ar() / 2, w: w, h: w * ar() }; clamp(); closePop(); schedule();
@@ -492,10 +544,13 @@
   // ---- the pin's card ----
   function closePop() {
     var old = document.querySelector('.lm-pop'); if (old) old.remove();
-    openVenue = null; svg.querySelectorAll('.lm-pin.is-open').forEach(function (g) { g.classList.remove('is-open'); });
+    openVenue = null; openSwitch = null; $('mapView').querySelectorAll('.lm-zoom [aria-expanded="true"]').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); }); svg.querySelectorAll('.lm-pin.is-open').forEach(function (g) { g.classList.remove('is-open'); });
     document.removeEventListener('click', popOff, true); document.removeEventListener('keydown', popOff); window.removeEventListener('scroll', closePop);
   }
-  function popOff(e) { if (e.type === 'keydown' ? e.key === 'Escape' : !e.target.closest('.lm-pop')) closePop(); }
+  function popOff(e) {
+    if (e.type !== 'keydown' && openSwitch && e.target.closest('.lm-zoom button[data-z="' + openSwitch + '"]')) return; // its own button: the button's click folds the card
+    if (e.type === 'keydown' ? e.key === 'Escape' : !e.target.closest('.lm-pop')) closePop();
+  }
   function cardDate(iso) { var m = /^(\d{4})-(\d\d)-(\d\d)/.exec(iso || ''); return m ? new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : ''; } // "Oct 29": the city's calendar day as written, no zone shift
   function eventRows(v, list, max, into) { // a venue's next few events, the day at each row's right end
     list.slice(0, max).forEach(function (e) {
@@ -525,8 +580,8 @@
     var hgt = pop.offsetHeight, top = r.top - 8; if (top + hgt > floor - 8) top = Math.max(8, floor - 8 - hgt);
     pop.style.left = left + 'px'; pop.style.top = top + 'px';
   }
-  function showPop(pop, g) {
-    document.body.appendChild(pop); placePop(pop, g);
+  function showPop(pop, g, place) {
+    document.body.appendChild(pop); if (place) place(); else placePop(pop, g);
     setTimeout(function () { document.addEventListener('click', popOff, true); document.addEventListener('keydown', popOff); window.addEventListener('scroll', closePop, { passive: true }); }, 0);
   }
   function popHead(pop, name, count) {
@@ -585,6 +640,7 @@
 
   // ---- the view itself ----
   function open(on, remember) {
+    if (on) mountSwitch();
     if (on === isOpen()) { if (on) render(); return; }
     document.documentElement.classList.toggle('map-open', on);
     $('mapView').hidden = !on;
@@ -606,5 +662,6 @@
       open(true, false);
       if (carried) load().then(function () { size(); place({ latitude: +carried[1], longitude: +carried[2], accuracy: +carried[3] || 0 }); });
     } else load(); // warm, so the first tap draws at once
+    mountSwitch();
   })();
 })();
