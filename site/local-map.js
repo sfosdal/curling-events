@@ -307,7 +307,7 @@
       el('circle', { cx: me.x, cy: me.y, r: 5 * u, 'class': 'lm-me-dot' }, mg);
       var mt = el('title', {}, mg); mt.textContent = 'You are here';
     }
-    var cap = $('lmCaption'), own = keys.filter(function (v) { return VENUES[v] && t.n[v]; }).length, ownAll = keys.length - CITY_ROOMS.length;
+    var cap = $('lmCaption'), own = keys.filter(function (v) { return (BY_PLACE ? t.geo[v] : VENUES[v]) && t.n[v]; }).length, ownAll = keys.length - CITY_ROOMS.length;  // on a places map (curling, tango) the pins are places, not VENUES keys — counting VENUES gave "0 of N places"
     var filteredOut = !total && ownAll > 0 && !!H.resetFilters && !(H.isDefaultView && H.isDefaultView()); // the filters leave nothing on the map (Steve, 2026-10-31: "#1, yes" — a whole map of hollow rings read as broken)
     if (cap) {
       cap.firstElementChild.textContent = (filteredOut ? 'Nothing upcoming under these filters' : total + ' upcoming at ' + own + ' of ' + ownAll + ' places') + (CITY_ROOMS.length ? ' · ' + cityTotal + ' more across ' + (CITYMAP.city || 'the city') : '');
