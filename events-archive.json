@@ -4623,6 +4623,268 @@
     43.105,
     -88.342
    ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Maine-iac — Belfast, ME",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Belfast, ME",
+   "geo": [
+    44.4262,
+    -69.0065
+   ]
+  },
+  {
+   "venue": "South",
+   "title": "5U Open Qualifier — Irving, TX",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Irving, TX",
+   "geo": [
+    32.8295,
+    -96.9442
+   ]
+  },
+  {
+   "venue": "Evergreen Curling Club",
+   "title": "Rose City Doubles",
+   "url": "https://www.evergreencurling.org/",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Beaverton, OR",
+   "geo": [
+    45.4895,
+    -122.7919
+   ]
+  },
+  {
+   "venue": "Granite Curling Club",
+   "title": "Hot Shots Curling Camp",
+   "url": "https://curlingseattle.org/bonspiels",
+   "type": "community",
+   "status": "cancelled",
+   "date": "2026-11-07",
+   "time": "",
+   "statusSince": "2026-10-22T01:56:53.301Z",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "P&H Masters — Medicine Hat, Alberta",
+   "url": "https://www.thegrandslamofcurling.com/events/p-h-masters-20",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Medicine Hat, Alberta",
+   "geo": [
+    50.043,
+    -110.679
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Showdown — Virden, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9787",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Virden, Manitoba",
+   "geo": [
+    49.8485,
+    -100.9323
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Major Welding Abbotsford Cashspiel — Abbotsford, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9690",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Abbotsford, British Columbia",
+   "geo": [
+    49.0521,
+    -122.3295
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Lodz — Lodz, Poland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9634",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Lodz, Poland",
+   "geo": [
+    51.7728,
+    19.4785
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Chicago Mixed Doubles Dog Dare — Northbrook, IL",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9659",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Northbrook, IL",
+   "geo": [
+    42.1287,
+    -87.8265
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Palmerston Mixed Doubles Spiel — Palmerston, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9551",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Palmerston, Ontario",
+   "geo": [
+    43.8341,
+    -80.8496
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "GOLDLINE Mixed Doubles Riviere-du-Loup — Riviere-du-Loup, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9587",
+   "type": "sports",
+   "date": "2026-11-07",
+   "time": "",
+   "place": "Riviere-du-Loup, Quebec",
+   "geo": [
+    47.8541,
+    -69.5333
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fall Saturday Morning Doubles — Racine, WI",
+   "date": "2026-11-07",
+   "time": "08:00",
+   "url": "https://racinecurlingclub.com/event/fall-saturday-morning-doubles/2026-11-07/",
+   "type": "sports",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Beginner Level 1: Try Curling — Traverse City, MI",
+   "date": "2026-11-07",
+   "time": "10:00",
+   "url": "https://tccurling.org/event/beginner-level-1-try-curling-sat-11-7-10am/",
+   "type": "expo",
+   "place": "Traverse City, MI",
+   "geo": [
+    44.7606,
+    -85.6166
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Learn to Curl — Appleton, WI",
+   "date": "2026-11-07",
+   "time": "10:00",
+   "url": "https://appletoncurling.com/event/learn-to-curl-3/",
+   "type": "expo",
+   "place": "Appleton, WI",
+   "geo": [
+    44.2614,
+    -88.407
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn to Curl 1 — McKees Rocks, PA",
+   "date": "2026-11-07",
+   "time": "13:00",
+   "url": "https://www.pittsburghcurlingclub.com/",
+   "type": "expo",
+   "place": "McKees Rocks, PA",
+   "geo": [
+    40.4656,
+    -80.0656
+   ]
+  },
+  {
+   "venue": "Granite Curling Club",
+   "title": "Individual Try Curling Event",
+   "date": "2026-11-07",
+   "time": "14:00",
+   "url": "https://calendar.curlingseattle.org/",
+   "type": "expo",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Open House November 2026 — Triumph, IL",
+   "date": "2026-11-07",
+   "time": "14:00",
+   "url": "https://walthamcurling.org/event/open-house-copy-2/",
+   "type": "expo",
+   "place": "Triumph, IL",
+   "geo": [
+    41.4996,
+    -89.0219
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Learn to Curl — Appleton, WI",
+   "date": "2026-11-07",
+   "time": "14:00",
+   "url": "https://appletoncurling.com/event/learn-to-curl-4/",
+   "type": "expo",
+   "place": "Appleton, WI",
+   "geo": [
+    44.2614,
+    -88.407
+   ]
+  },
+  {
+   "venue": "South",
+   "title": "Saturday Learn to Curl – November 7 – Registration Full — Austin, TX",
+   "date": "2026-11-07",
+   "time": "14:00",
+   "url": "https://lonestarcurling.com/event/saturday-learn-to-curl-november-7/",
+   "type": "expo",
+   "place": "Austin, TX",
+   "geo": [
+    30.2649,
+    -97.7474
+   ]
+  },
+  {
+   "venue": "Granite Curling Club",
+   "title": "Individual Try Curling Event",
+   "date": "2026-11-07",
+   "time": "17:00",
+   "url": "https://calendar.curlingseattle.org/",
+   "type": "expo",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
   }
  ]
 }
