@@ -4885,6 +4885,159 @@
     47.7224,
     -122.3447
    ]
+  },
+  {
+   "venue": "Granite Curling Club",
+   "title": "Hot Shots Curling Camp",
+   "url": "https://curlingseattle.org/bonspiels",
+   "type": "community",
+   "status": "cancelled",
+   "date": "2026-11-08",
+   "time": "",
+   "statusSince": "2026-10-22T01:56:53.301Z",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "P&H Masters — Medicine Hat, Alberta",
+   "url": "https://www.thegrandslamofcurling.com/events/p-h-masters-20",
+   "type": "sports",
+   "date": "2026-11-08",
+   "time": "",
+   "place": "Medicine Hat, Alberta",
+   "geo": [
+    50.043,
+    -110.679
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Championship Qualifier Men 2026 — Aberdeen",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-08",
+   "time": "",
+   "place": "Aberdeen",
+   "geo": [
+    57.1482,
+    -2.0928
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Showdown — Virden, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9787",
+   "type": "sports",
+   "date": "2026-11-08",
+   "time": "",
+   "place": "Virden, Manitoba",
+   "geo": [
+    49.8485,
+    -100.9323
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Major Welding Abbotsford Cashspiel — Abbotsford, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9690",
+   "type": "sports",
+   "date": "2026-11-08",
+   "time": "",
+   "place": "Abbotsford, British Columbia",
+   "geo": [
+    49.0521,
+    -122.3295
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Lodz — Lodz, Poland",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9634",
+   "type": "sports",
+   "date": "2026-11-08",
+   "time": "",
+   "place": "Lodz, Poland",
+   "geo": [
+    51.7728,
+    19.4785
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Chicago Mixed Doubles Dog Dare — Northbrook, IL",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9659",
+   "type": "sports",
+   "date": "2026-11-08",
+   "time": "",
+   "place": "Northbrook, IL",
+   "geo": [
+    42.1287,
+    -87.8265
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Palmerston Mixed Doubles Spiel — Palmerston, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9551",
+   "type": "sports",
+   "date": "2026-11-08",
+   "time": "",
+   "place": "Palmerston, Ontario",
+   "geo": [
+    43.8341,
+    -80.8496
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "GOLDLINE Mixed Doubles Riviere-du-Loup — Riviere-du-Loup, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9587",
+   "type": "sports",
+   "date": "2026-11-08",
+   "time": "",
+   "place": "Riviere-du-Loup, Quebec",
+   "geo": [
+    47.8541,
+    -69.5333
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Open House November 2026 — Triumph, IL",
+   "date": "2026-11-08",
+   "time": "13:00",
+   "url": "https://walthamcurling.org/event/open-house-copy/2026-11-08/",
+   "type": "expo",
+   "place": "Triumph, IL",
+   "geo": [
+    41.4996,
+    -89.0219
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn to Curl — Rutland, VT",
+   "date": "2026-11-08",
+   "time": "16:30",
+   "url": "https://www.rutlandrocks.com/",
+   "type": "expo",
+   "place": "Rutland, VT",
+   "geo": [
+    43.6085,
+    -72.9725
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Learn-to-Curl — Austin, MN",
+   "date": "2026-11-08",
+   "time": "17:00",
+   "url": "https://www.mowercountycurlingclub.com/calendar/league-curling-4tnlw",
+   "type": "expo"
   }
  ]
 }
