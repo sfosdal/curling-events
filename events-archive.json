@@ -5038,6 +5038,45 @@
    "time": "17:00",
    "url": "https://www.mowercountycurlingclub.com/calendar/league-curling-4tnlw",
    "type": "expo"
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Championship Qualifier Men 2026 — Aberdeen",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-09",
+   "time": "",
+   "place": "Aberdeen",
+   "geo": [
+    57.1482,
+    -2.0928
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fall Monday Night Doubles — Racine, WI",
+   "date": "2026-11-09",
+   "time": "18:00",
+   "url": "https://racinecurlingclub.com/event/fall-monday-night-doubles/2026-11-09/",
+   "type": "sports",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Beginner League — Buffalo, NY",
+   "date": "2026-11-09",
+   "time": "20:00",
+   "url": "https://buffalocurlingclub.org/event/beginner-league/2026-11-09/",
+   "type": "expo",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
   }
  ]
 }
