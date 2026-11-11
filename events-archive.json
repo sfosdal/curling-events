@@ -5077,6 +5077,45 @@
     42.8864,
     -78.8781
    ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Championship Qualifier Men 2026 — Aberdeen",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-10",
+   "time": "",
+   "place": "Aberdeen",
+   "geo": [
+    57.1482,
+    -2.0928
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn-to-Curl - Kpmg LLP — McKees Rocks, PA",
+   "date": "2026-11-10",
+   "time": "14:30",
+   "url": "https://www.pittsburghcurlingclub.com/",
+   "type": "expo",
+   "place": "McKees Rocks, PA",
+   "geo": [
+    40.4656,
+    -80.0656
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Women’s Drop In — Easton, MD",
+   "date": "2026-11-10",
+   "time": "18:30",
+   "url": "http://www.chesapeakecurling.org",
+   "type": "community",
+   "place": "Easton, MD",
+   "geo": [
+    38.7745,
+    -76.0763
+   ]
   }
  ]
 }
