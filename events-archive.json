@@ -5116,6 +5116,58 @@
     38.7745,
     -76.0763
    ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "2026 Arena National Championships — Irving, TX",
+   "url": "https://usacurling.sport80.com/public/events/219/entries/751?bl=locator",
+   "type": "sports",
+   "date": "2026-11-11",
+   "time": "",
+   "place": "Irving, TX",
+   "geo": [
+    32.8295,
+    -96.9442
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Championship Qualifier Men 2026 — Aberdeen",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-11",
+   "time": "",
+   "place": "Aberdeen",
+   "geo": [
+    57.1482,
+    -2.0928
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fall Wednesday Night Veteran-Beginner — Racine, WI",
+   "date": "2026-11-11",
+   "time": "17:30",
+   "url": "https://racinecurlingclub.com/event/fall-wednesday-night-veteran-beginner/2026-11-11/",
+   "type": "expo",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Men’s Drop In — Easton, MD",
+   "date": "2026-11-11",
+   "time": "18:30",
+   "url": "http://www.chesapeakecurling.org",
+   "type": "community",
+   "place": "Easton, MD",
+   "geo": [
+    38.7745,
+    -76.0763
+   ]
   }
  ]
 }
