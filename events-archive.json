@@ -5168,6 +5168,84 @@
     38.7745,
     -76.0763
    ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "2026 Arena National Championships — Irving, TX",
+   "url": "https://usacurling.sport80.com/public/events/219/entries/751?bl=locator",
+   "type": "sports",
+   "date": "2026-11-12",
+   "time": "",
+   "place": "Irving, TX",
+   "geo": [
+    32.8295,
+    -96.9442
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Championship Qualifier Men 2026 — Aberdeen",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-12",
+   "time": "",
+   "place": "Aberdeen",
+   "geo": [
+    57.1482,
+    -2.0928
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Tam — Albany, NY",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-12",
+   "time": "",
+   "place": "Albany, NY",
+   "geo": [
+    42.6512,
+    -73.755
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Ross Tarlton International (Mens) — Ardsley-On-Hudson, NY",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-12",
+   "time": "",
+   "place": "Ardsley-On-Hudson, NY",
+   "geo": [
+    41.0251,
+    -73.8704
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Casual (Drop In) League — Buffalo, NY",
+   "date": "2026-11-12",
+   "time": "10:00",
+   "url": "https://buffalocurlingclub.org/event/casual-drop-in-league/2026-11-12/",
+   "type": "community",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Thursday Doubles — Easton, MD",
+   "date": "2026-11-12",
+   "time": "17:00",
+   "url": "http://www.chesapeakecurling.org",
+   "type": "sports",
+   "place": "Easton, MD",
+   "geo": [
+    38.7745,
+    -76.0763
+   ]
   }
  ]
 }
