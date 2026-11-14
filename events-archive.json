@@ -5246,6 +5246,295 @@
     38.7745,
     -76.0763
    ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "2026 Arena National Championships — Irving, TX",
+   "url": "https://usacurling.sport80.com/public/events/219/entries/751?bl=locator",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Irving, TX",
+   "geo": [
+    32.8295,
+    -96.9442
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Somerville Cystic Fibrosis Charity Bonspiel — Superior, WI",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Superior, WI",
+   "geo": [
+    46.7208,
+    -92.1041
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Mayfield Men's Bonspiel — Warrensville Heights, OH",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Warrensville Heights, OH",
+   "geo": [
+    41.4353,
+    -81.5148
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Tony Colacchio Wheelchair Bonspiel — Falmouth, MA",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Falmouth, MA",
+   "geo": [
+    41.5515,
+    -70.6148
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Potomac Junior Bonspiel — Laurel, MD",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Laurel, MD",
+   "geo": [
+    39.0984,
+    -76.8485
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "The Supper Club Bonspiel — Wausau, WI",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Wausau, WI",
+   "geo": [
+    44.9598,
+    -89.6273
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fargo Cash Spiel — Fargo, ND",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Fargo, ND",
+   "geo": [
+    46.8772,
+    -96.7898
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fargo Cash Spiel. — Fargo, ND",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Fargo, ND",
+   "geo": [
+    46.8772,
+    -96.7898
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Frogtown’s Pride Spiel — Saint Paul, MN",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": ""
+  },
+  {
+   "venue": "Evergreen Curling Club",
+   "title": "PNWCA U18 Playdowns",
+   "url": "https://www.evergreencurling.org/",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Beaverton, OR",
+   "geo": [
+    45.4895,
+    -122.7919
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "15 & 5 Manufacturing - Red Deer Curling Classic — Red Deer, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9493",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Red Deer, Alberta",
+   "geo": [
+    52.2691,
+    -113.8141
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "COMCO Cash Spiel — Stroud, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9809",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Stroud, Ontario",
+   "geo": [
+    44.3244,
+    -79.6193
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Nutana SaskTour Men's Spiel — Saskatoon, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9720",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Saskatoon, Saskatchewan",
+   "geo": [
+    52.1318,
+    -106.6608
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Nutana SaskTour Women's Spiel — Saskatoon, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9719",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Saskatoon, Saskatchewan",
+   "geo": [
+    52.1318,
+    -106.6608
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Aly Jenkins Mixed Doubles Memorial — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9555",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "HARDLINE Sherbrooke Mixed Doubles-Tier 2 — Sherbrooke, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9584",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Sherbrooke, Quebec",
+   "geo": [
+    45.4033,
+    -71.889
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Parksville Double Doubles Spiel — Parksville, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9680",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Parksville, British Columbia",
+   "geo": [
+    49.318,
+    -124.3117
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Rit College Bonspiel — Rochester, NY",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Rochester, NY",
+   "geo": [
+    43.1573,
+    -77.6152
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Tony Colacchio Wheelchair Spiel — Falmouth, MA",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Falmouth, MA",
+   "geo": [
+    41.5515,
+    -70.6148
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Potomac Juniors — Laurel, MD",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": "",
+   "place": "Laurel, MD",
+   "geo": [
+    39.0984,
+    -76.8485
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fmcc Border Cup WCT Spiel",
+   "date": "2026-11-13",
+   "time": "",
+   "url": "",
+   "type": "sports"
+  },
+  {
+   "venue": "Northeast",
+   "title": "Junior Bonspiel — Laurel, MD",
+   "date": "2026-11-13",
+   "time": "",
+   "url": "https://curldc.org/",
+   "type": "sports",
+   "place": "Laurel, MD",
+   "geo": [
+    39.0984,
+    -76.8485
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "2nd/4th Doubles League — Buffalo, NY",
+   "date": "2026-11-13",
+   "time": "20:00",
+   "url": "https://buffalocurlingclub.org/event/2nd-4th-recreational-league-copy/2026-11-13/",
+   "type": "sports",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
   }
  ]
 }
