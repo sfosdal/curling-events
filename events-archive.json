@@ -5328,7 +5328,7 @@
   {
    "venue": "Midwest",
    "title": "Fargo Cash Spiel — Fargo, ND",
-   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9645",
    "type": "sports",
    "date": "2026-11-13",
    "time": "",
@@ -5534,6 +5534,365 @@
    "geo": [
     42.8864,
     -78.8781
+   ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "2026 Arena National Championships — Irving, TX",
+   "url": "https://usacurling.sport80.com/public/events/219/entries/751?bl=locator",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Irving, TX",
+   "geo": [
+    32.8295,
+    -96.9442
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Somerville Cystic Fibrosis Charity Bonspiel — Superior, WI",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Superior, WI",
+   "geo": [
+    46.7208,
+    -92.1041
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Mayfield Men's Bonspiel — Warrensville Heights, OH",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Warrensville Heights, OH",
+   "geo": [
+    41.4353,
+    -81.5148
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Tony Colacchio Wheelchair Bonspiel — Falmouth, MA",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Falmouth, MA",
+   "geo": [
+    41.5515,
+    -70.6148
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Potomac Junior Bonspiel — Laurel, MD",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Laurel, MD",
+   "geo": [
+    39.0984,
+    -76.8485
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "The Supper Club Bonspiel — Wausau, WI",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Wausau, WI",
+   "geo": [
+    44.9598,
+    -89.6273
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fargo Cash Spiel — Fargo, ND",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9645",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Fargo, ND",
+   "geo": [
+    46.8772,
+    -96.7898
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fargo Cash Spiel. — Fargo, ND",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Fargo, ND",
+   "geo": [
+    46.8772,
+    -96.7898
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Frogtown’s Pride Spiel — Saint Paul, MN",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": ""
+  },
+  {
+   "venue": "Evergreen Curling Club",
+   "title": "PNWCA U18 Playdowns",
+   "url": "https://www.evergreencurling.org/",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Beaverton, OR",
+   "geo": [
+    45.4895,
+    -122.7919
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "15 & 5 Manufacturing - Red Deer Curling Classic — Red Deer, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9493",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Red Deer, Alberta",
+   "geo": [
+    52.2691,
+    -113.8141
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "COMCO Cash Spiel — Stroud, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9809",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Stroud, Ontario",
+   "geo": [
+    44.3244,
+    -79.6193
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Nutana SaskTour Men's Spiel — Saskatoon, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9720",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Saskatoon, Saskatchewan",
+   "geo": [
+    52.1318,
+    -106.6608
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Nutana SaskTour Women's Spiel — Saskatoon, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9719",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Saskatoon, Saskatchewan",
+   "geo": [
+    52.1318,
+    -106.6608
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Aly Jenkins Mixed Doubles Memorial — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9555",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "HARDLINE Sherbrooke Mixed Doubles-Tier 2 — Sherbrooke, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9584",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Sherbrooke, Quebec",
+   "geo": [
+    45.4033,
+    -71.889
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Parksville Double Doubles Spiel — Parksville, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9680",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Parksville, British Columbia",
+   "geo": [
+    49.318,
+    -124.3117
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Ilderton Mixed Doubles Spiel — Ilderton, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9605",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": "",
+   "place": "Ilderton, Ontario",
+   "geo": [
+    43.0812,
+    -81.3751
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Midland Friendly — Cedar Springs, MI",
+   "date": "2026-11-14",
+   "time": "",
+   "url": "https://www.grcurling.com/",
+   "type": "sports",
+   "place": "Cedar Springs, MI",
+   "geo": [
+    43.2234,
+    -85.5514
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "2027 Big Stick Spiel — Appleton, WI",
+   "date": "2026-11-14",
+   "time": "",
+   "url": "https://appletoncurling.com/event/big_stick/",
+   "type": "sports",
+   "place": "Appleton, WI",
+   "geo": [
+    44.2614,
+    -88.407
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fall Saturday Morning Doubles — Racine, WI",
+   "date": "2026-11-14",
+   "time": "08:00",
+   "url": "https://racinecurlingclub.com/event/fall-saturday-morning-doubles/2026-11-14/",
+   "type": "sports",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Member Skills Clinic - Sweeping — Ferndale, MI",
+   "date": "2026-11-14",
+   "time": "09:00",
+   "url": "https://detroitcurlingclub.com/",
+   "type": "community",
+   "place": "Ferndale, MI",
+   "geo": [
+    42.4606,
+    -83.1346
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn to Curl 2 — McKees Rocks, PA",
+   "date": "2026-11-14",
+   "time": "09:30",
+   "url": "https://www.pittsburghcurlingclub.com/",
+   "type": "expo",
+   "place": "McKees Rocks, PA",
+   "geo": [
+    40.4656,
+    -80.0656
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Curling 101 - Session #2 — Ferndale, MI",
+   "date": "2026-11-14",
+   "time": "11:00",
+   "url": "https://detroitcurlingclub.com/",
+   "type": "expo",
+   "place": "Ferndale, MI",
+   "geo": [
+    42.4606,
+    -83.1346
+   ]
+  },
+  {
+   "venue": "Granite Curling Club",
+   "title": "Individual Try Curling Event",
+   "date": "2026-11-14",
+   "time": "12:00",
+   "url": "https://calendar.curlingseattle.org/",
+   "type": "expo",
+   "place": "Seattle, WA",
+   "geo": [
+    47.7224,
+    -122.3447
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn to Curl — Easton, MD",
+   "date": "2026-11-14",
+   "time": "12:00",
+   "url": "http://www.chesapeakecurling.org",
+   "type": "expo",
+   "place": "Easton, MD",
+   "geo": [
+    38.7745,
+    -76.0763
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Curling 101 - Session #2 — Ferndale, MI",
+   "date": "2026-11-14",
+   "time": "13:00",
+   "url": "https://detroitcurlingclub.com/",
+   "type": "expo",
+   "place": "Ferndale, MI",
+   "geo": [
+    42.4606,
+    -83.1346
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Learn to Curl 1 — McKees Rocks, PA",
+   "date": "2026-11-14",
+   "time": "13:00",
+   "url": "https://www.pittsburghcurlingclub.com/",
+   "type": "expo",
+   "place": "McKees Rocks, PA",
+   "geo": [
+    40.4656,
+    -80.0656
    ]
   }
  ]
