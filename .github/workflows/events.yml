@@ -61,6 +61,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}   # reads the festival-finder issue in sfosdal/lqa-events (scripts/festivals.mjs)
           ALLOW_NO_ARCHIVE: ${{ vars.ALLOW_NO_ARCHIVE }}   # set to 1 for the very first build only (no live feed, no archive branch yet), then delete the variable
         run: node scripts/fetch-events.mjs
+      - name: Full history of this branch (each page's Last revised date is the day git last saw it change)
+        run: git fetch --unshallow --no-tags origin "$GITHUB_REF" || true
       - name: Sitemap, robots.txt and event structured data
         run: node scripts/seo.mjs && node scripts/seo-places.mjs   # seo-places: curling's rows are all over the map, not in one city
       - name: Keep the archive branch (every past event ever published)
