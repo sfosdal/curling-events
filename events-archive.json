@@ -5894,6 +5894,175 @@
     40.4656,
     -80.0656
    ]
+  },
+  {
+   "venue": "Evergreen Curling Club",
+   "title": "PNWCA U18 Playdowns",
+   "url": "https://www.evergreencurling.org/",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Beaverton, OR",
+   "geo": [
+    45.4895,
+    -122.7919
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "15 & 5 Manufacturing - Red Deer Curling Classic — Red Deer, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9493",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Red Deer, Alberta",
+   "geo": [
+    52.2691,
+    -113.8141
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "COMCO Cash Spiel — Stroud, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9809",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Stroud, Ontario",
+   "geo": [
+    44.3244,
+    -79.6193
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fargo Cash Spiel — Fargo, ND",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9645",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Fargo, ND",
+   "geo": [
+    46.8772,
+    -96.7898
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Nutana SaskTour Men's Spiel — Saskatoon, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9720",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Saskatoon, Saskatchewan",
+   "geo": [
+    52.1318,
+    -106.6608
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Nutana SaskTour Women's Spiel — Saskatoon, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9719",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Saskatoon, Saskatchewan",
+   "geo": [
+    52.1318,
+    -106.6608
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Aly Jenkins Mixed Doubles Memorial — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9555",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "HARDLINE Sherbrooke Mixed Doubles-Tier 2 — Sherbrooke, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9584",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Sherbrooke, Quebec",
+   "geo": [
+    45.4033,
+    -71.889
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Parksville Double Doubles Spiel — Parksville, British Columbia",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9680",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Parksville, British Columbia",
+   "geo": [
+    49.318,
+    -124.3117
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Ilderton Mixed Doubles Spiel — Ilderton, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9605",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": "",
+   "place": "Ilderton, Ontario",
+   "geo": [
+    43.0812,
+    -81.3751
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Novice Drop In — Easton, MD",
+   "date": "2026-11-15",
+   "time": "10:00",
+   "url": "http://www.chesapeakecurling.org",
+   "type": "community",
+   "place": "Easton, MD",
+   "geo": [
+    38.7745,
+    -76.0763
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Open Doubles League — Hartland, WI",
+   "date": "2026-11-15",
+   "time": "11:30",
+   "url": "https://kmcurlingclub.com/event/open-doubles-league-2/2026-11-15/",
+   "type": "sports",
+   "place": "Hartland, WI",
+   "geo": [
+    43.105,
+    -88.342
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Junior Curling 101 - Session #1 — Ferndale, MI",
+   "date": "2026-11-15",
+   "time": "12:00",
+   "url": "https://detroitcurlingclub.com/",
+   "type": "expo",
+   "place": "Ferndale, MI",
+   "geo": [
+    42.4606,
+    -83.1346
+   ]
   }
  ]
 }
