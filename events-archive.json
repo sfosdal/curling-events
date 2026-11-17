@@ -6063,6 +6063,58 @@
     42.4606,
     -83.1346
    ]
+  },
+  {
+   "venue": "Canada",
+   "title": "15 & 5 Manufacturing - Red Deer Curling Classic — Red Deer, Alberta",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9493",
+   "type": "sports",
+   "date": "2026-11-16",
+   "time": "",
+   "place": "Red Deer, Alberta",
+   "geo": [
+    52.2691,
+    -113.8141
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "BHS Curling Class — Bemidji, MN",
+   "date": "2026-11-16",
+   "time": "08:00",
+   "url": "https://www.bemidjicurling.org/",
+   "type": "expo",
+   "place": "Bemidji, MN",
+   "geo": [
+    47.4723,
+    -94.8833
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fall Monday Night Doubles — Racine, WI",
+   "date": "2026-11-16",
+   "time": "18:00",
+   "url": "https://racinecurlingclub.com/event/fall-monday-night-doubles/2026-11-16/",
+   "type": "sports",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Beginner League — Buffalo, NY",
+   "date": "2026-11-16",
+   "time": "20:00",
+   "url": "https://buffalocurlingclub.org/event/beginner-league/2026-11-16/",
+   "type": "expo",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
   }
  ]
 }
