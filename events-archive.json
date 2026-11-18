@@ -6115,6 +6115,32 @@
     42.8864,
     -78.8781
    ]
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "HearingLife National — Sydney, Nova Scotia",
+   "url": "https://www.thegrandslamofcurling.com/events/hearinglife-national-21",
+   "type": "sports",
+   "date": "2026-11-17",
+   "time": "",
+   "place": "Sydney, Nova Scotia",
+   "geo": [
+    46.1382,
+    -60.1942
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "BHS Curling Class — Bemidji, MN",
+   "date": "2026-11-17",
+   "time": "08:00",
+   "url": "https://www.bemidjicurling.org/",
+   "type": "expo",
+   "place": "Bemidji, MN",
+   "geo": [
+    47.4723,
+    -94.8833
+   ]
   }
  ]
 }
