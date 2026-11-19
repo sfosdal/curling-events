@@ -5222,6 +5222,14 @@
    ]
   },
   {
+   "venue": "World Tour",
+   "title": "Hungarian Mixed Doubles Curling Championship — Budapest, HUN",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9907",
+   "type": "sports",
+   "date": "2026-11-12",
+   "time": ""
+  },
+  {
    "venue": "Northeast",
    "title": "Casual (Drop In) League — Buffalo, NY",
    "date": "2026-11-12",
@@ -5524,6 +5532,14 @@
    ]
   },
   {
+   "venue": "World Tour",
+   "title": "Hungarian Mixed Doubles Curling Championship — Budapest, HUN",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9907",
+   "type": "sports",
+   "date": "2026-11-13",
+   "time": ""
+  },
+  {
    "venue": "Northeast",
    "title": "2nd/4th Doubles League — Buffalo, NY",
    "date": "2026-11-13",
@@ -5792,6 +5808,14 @@
    ]
   },
   {
+   "venue": "World Tour",
+   "title": "Hungarian Mixed Doubles Curling Championship — Budapest, HUN",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9907",
+   "type": "sports",
+   "date": "2026-11-14",
+   "time": ""
+  },
+  {
    "venue": "Midwest",
    "title": "Fall Saturday Morning Doubles — Racine, WI",
    "date": "2026-11-14",
@@ -6026,6 +6050,14 @@
    ]
   },
   {
+   "venue": "World Tour",
+   "title": "Hungarian Mixed Doubles Curling Championship — Budapest, HUN",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9907",
+   "type": "sports",
+   "date": "2026-11-15",
+   "time": ""
+  },
+  {
    "venue": "Northeast",
    "title": "Novice Drop In — Easton, MD",
    "date": "2026-11-15",
@@ -6076,6 +6108,14 @@
     52.2691,
     -113.8141
    ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Hungarian Mixed Doubles Curling Championship — Budapest, HUN",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9907",
+   "type": "sports",
+   "date": "2026-11-16",
+   "time": ""
   },
   {
    "venue": "Midwest",
@@ -6130,6 +6170,14 @@
    ]
   },
   {
+   "venue": "World Tour",
+   "title": "Hungarian Mixed Doubles Curling Championship — Budapest, HUN",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9907",
+   "type": "sports",
+   "date": "2026-11-17",
+   "time": ""
+  },
+  {
    "venue": "Midwest",
    "title": "BHS Curling Class — Bemidji, MN",
    "date": "2026-11-17",
@@ -6140,6 +6188,45 @@
    "geo": [
     47.4723,
     -94.8833
+   ]
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "HearingLife National — Sydney, Nova Scotia",
+   "url": "https://www.thegrandslamofcurling.com/events/hearinglife-national-21",
+   "type": "sports",
+   "date": "2026-11-18",
+   "time": "",
+   "place": "Sydney, Nova Scotia",
+   "geo": [
+    46.1382,
+    -60.1942
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "BHS Curling Class — Bemidji, MN",
+   "date": "2026-11-18",
+   "time": "08:00",
+   "url": "https://www.bemidjicurling.org/",
+   "type": "expo",
+   "place": "Bemidji, MN",
+   "geo": [
+    47.4723,
+    -94.8833
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fall Wednesday Night Veteran-Beginner — Racine, WI",
+   "date": "2026-11-18",
+   "time": "17:30",
+   "url": "https://racinecurlingclub.com/event/fall-wednesday-night-veteran-beginner/2026-11-18/",
+   "type": "expo",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
    ]
   }
  ]
