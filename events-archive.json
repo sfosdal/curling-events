@@ -6228,6 +6228,110 @@
     42.7314,
     -87.7835
    ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "U.S Open Mixed Doubles Qualifier — Eveleth, MN",
+   "url": "https://usacurling.sport80.com/public/events/260/entries/931?bl=locator",
+   "type": "sports",
+   "date": "2026-11-19",
+   "time": "",
+   "place": "Eveleth, MN",
+   "geo": [
+    47.4628,
+    -92.5388
+   ]
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "HearingLife National — Sydney, Nova Scotia",
+   "url": "https://www.thegrandslamofcurling.com/events/hearinglife-national-21",
+   "type": "sports",
+   "date": "2026-11-19",
+   "time": "",
+   "place": "Sydney, Nova Scotia",
+   "geo": [
+    46.1382,
+    -60.1942
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Broken Broom Tobacco Belt Cash Spiel — Tillsonburg, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9630",
+   "type": "sports",
+   "date": "2026-11-19",
+   "time": "",
+   "place": "Tillsonburg, Ontario",
+   "geo": [
+    42.8595,
+    -80.7265
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Haugesund — Haugesund, Norway",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9808",
+   "type": "sports",
+   "date": "2026-11-19",
+   "time": "",
+   "place": "Haugesund, Norway",
+   "geo": [
+    59.4682,
+    5.0828
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Achilles Invitational (Mens) — Schenectady, NY",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-19",
+   "time": "",
+   "place": "Schenectady, NY",
+   "geo": [
+    42.8142,
+    -73.9396
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Harvest (Mixed) — Paoli, PA",
+   "url": "https://gncc.org/index.php/calendars/calendar/complete-calendar",
+   "type": "sports",
+   "date": "2026-11-19",
+   "time": "",
+   "place": "Paoli, PA",
+   "geo": [
+    40.0406,
+    -75.4928
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "BHS Curling Class — Bemidji, MN",
+   "date": "2026-11-19",
+   "time": "08:00",
+   "url": "https://www.bemidjicurling.org/",
+   "type": "expo",
+   "place": "Bemidji, MN",
+   "geo": [
+    47.4723,
+    -94.8833
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Casual (Drop In) League — Buffalo, NY",
+   "date": "2026-11-19",
+   "time": "10:00",
+   "url": "https://buffalocurlingclub.org/event/casual-drop-in-league/2026-11-19/",
+   "type": "community",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
   }
  ]
 }
