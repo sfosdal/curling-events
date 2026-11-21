@@ -6309,6 +6309,19 @@
   },
   {
    "venue": "Midwest",
+   "title": "U.S. Open Mixed Doubles - National Qualifier — Eveleth, MN",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9914",
+   "type": "sports",
+   "date": "2026-11-19",
+   "time": "",
+   "place": "Eveleth, MN",
+   "geo": [
+    47.4628,
+    -92.5388
+   ]
+  },
+  {
+   "venue": "Midwest",
    "title": "BHS Curling Class — Bemidji, MN",
    "date": "2026-11-19",
    "time": "08:00",
@@ -6326,6 +6339,170 @@
    "date": "2026-11-19",
    "time": "10:00",
    "url": "https://buffalocurlingclub.org/event/casual-drop-in-league/2026-11-19/",
+   "type": "community",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "U.S Open Mixed Doubles Qualifier — Eveleth, MN",
+   "url": "https://usacurling.sport80.com/public/events/260/entries/931?bl=locator",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Eveleth, MN",
+   "geo": [
+    47.4628,
+    -92.5388
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "2026 Curl the Driftless Junior Bonspiel — Galesville, WI",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Galesville, WI",
+   "geo": [
+    44.0828,
+    -91.3487
+   ]
+  },
+  {
+   "venue": "Evergreen Curling Club",
+   "title": "Diane Keleher Women's Bonspiel",
+   "url": "https://www.evergreencurling.org/",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Beaverton, OR",
+   "geo": [
+    45.4895,
+    -122.7919
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Glacial Ridge Curling Turkey Town Bonspiel — Wilmar, MN",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": ""
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "HearingLife National — Sydney, Nova Scotia",
+   "url": "https://www.thegrandslamofcurling.com/events/hearinglife-national-21",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Sydney, Nova Scotia",
+   "geo": [
+    46.1382,
+    -60.1942
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Broken Broom Tobacco Belt Cash Spiel — Tillsonburg, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9630",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Tillsonburg, Ontario",
+   "geo": [
+    42.8595,
+    -80.7265
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Shootout — Virden, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9789",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Virden, Manitoba",
+   "geo": [
+    49.8485,
+    -100.9323
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Haugesund — Haugesund, Norway",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9808",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Haugesund, Norway",
+   "geo": [
+    59.4682,
+    5.0828
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curling Stadium Martensville Mixed Doubles — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9556",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Hanover Mixed Doubles Spiel — Hanover, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9352",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Hanover, Ontario",
+   "geo": [
+    44.1521,
+    -81.028
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "U.S. Open Mixed Doubles - National Qualifier — Eveleth, MN",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9914",
+   "type": "sports",
+   "date": "2026-11-20",
+   "time": "",
+   "place": "Eveleth, MN",
+   "geo": [
+    47.4628,
+    -92.5388
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "BHS Curling Class — Bemidji, MN",
+   "date": "2026-11-20",
+   "time": "08:00",
+   "url": "https://www.bemidjicurling.org/",
+   "type": "expo",
+   "place": "Bemidji, MN",
+   "geo": [
+    47.4723,
+    -94.8833
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "1st/3rd Stick Curling League — Buffalo, NY",
+   "date": "2026-11-20",
+   "time": "20:00",
+   "url": "https://buffalocurlingclub.org/event/1st-3rd-stick-curling-league/2026-11-20/",
    "type": "community",
    "place": "Buffalo, NY",
    "geo": [
