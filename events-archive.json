@@ -6850,6 +6850,235 @@
     42.4606,
     -83.1346
    ]
+  },
+  {
+   "venue": "USA Curling Nationals",
+   "title": "U.S Open Mixed Doubles Qualifier — Eveleth, MN",
+   "url": "https://usacurling.sport80.com/public/events/260/entries/931?bl=locator",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Eveleth, MN",
+   "geo": [
+    47.4628,
+    -92.5388
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "2026 Curl the Driftless Junior Bonspiel — Galesville, WI",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Galesville, WI",
+   "geo": [
+    44.0828,
+    -91.3487
+   ]
+  },
+  {
+   "venue": "Evergreen Curling Club",
+   "title": "Diane Keleher Women's Bonspiel",
+   "url": "https://www.evergreencurling.org/",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Beaverton, OR",
+   "geo": [
+    45.4895,
+    -122.7919
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Glacial Ridge Curling Turkey Town Bonspiel — Wilmar, MN",
+   "url": "https://www.usacurling.org/bonspiel-calendar",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": ""
+  },
+  {
+   "venue": "Grand Slam of Curling",
+   "title": "HearingLife National — Sydney, Nova Scotia",
+   "url": "https://www.thegrandslamofcurling.com/events/hearinglife-national-21",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Sydney, Nova Scotia",
+   "geo": [
+    46.1382,
+    -60.1942
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Wheelchair-B Curling Championship 2026 — Lohja",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Lohja",
+   "geo": [
+    60.2512,
+    24.0677
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Championship Qualifier Women 2026 — Östersund",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Östersund",
+   "geo": [
+    63.1794,
+    14.6357
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Broken Broom Tobacco Belt Cash Spiel — Tillsonburg, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9630",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Tillsonburg, Ontario",
+   "geo": [
+    42.8595,
+    -80.7265
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "MCT Shootout — Virden, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9789",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Virden, Manitoba",
+   "geo": [
+    49.8485,
+    -100.9323
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Mixed Doubles Haugesund — Haugesund, Norway",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9808",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Haugesund, Norway",
+   "geo": [
+    59.4682,
+    5.0828
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "U.S. Open Mixed Doubles - National Qualifier — Eveleth, MN",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9914",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Eveleth, MN",
+   "geo": [
+    47.4628,
+    -92.5388
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Curling Stadium Martensville Mixed Doubles — Martensville, Saskatchewan",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9556",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Martensville, Saskatchewan",
+   "geo": [
+    52.2903,
+    -106.6626
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Hanover Mixed Doubles Spiel — Hanover, Ontario",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9352",
+   "type": "sports",
+   "date": "2026-11-22",
+   "time": "",
+   "place": "Hanover, Ontario",
+   "geo": [
+    44.1521,
+    -81.028
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Uswca Ladies Playdown — Ferndale, Mi",
+   "date": "2026-11-22",
+   "time": "09:00",
+   "url": "https://detroitcurlingclub.com/",
+   "type": "sports",
+   "place": "Ferndale, MI",
+   "geo": [
+    42.4606,
+    -83.1346
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Open Doubles League — Hartland, WI",
+   "date": "2026-11-22",
+   "time": "11:30",
+   "url": "https://kmcurlingclub.com/event/open-doubles-league-2/2026-11-22/",
+   "type": "sports",
+   "place": "Hartland, WI",
+   "geo": [
+    43.105,
+    -88.342
+   ]
+  },
+  {
+   "venue": "South",
+   "title": "Uswca Bonspiel Playdowns — Charlotte, NC",
+   "date": "2026-11-22",
+   "time": "12:30",
+   "url": "https://charlottecurling.com/index.php",
+   "type": "sports",
+   "place": "Charlotte, NC",
+   "geo": [
+    35.2272,
+    -80.8431
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Junior Level 1: Novice/Beginners Session 2 (4 weeks) — Traverse City, MI",
+   "date": "2026-11-22",
+   "time": "13:00",
+   "url": "https://tccurling.org/event/junior-level-1-novice-beginners-session-2-4-weeks/",
+   "type": "expo",
+   "place": "Traverse City, MI",
+   "geo": [
+    44.7606,
+    -85.6166
+   ]
+  },
+  {
+   "venue": "Mountain & Southwest",
+   "title": "Learn to Curl (Fremont) — San Jose, CA",
+   "date": "2026-11-22",
+   "time": "16:45",
+   "url": "https://siliconvalleycurling.com/event/learn-to-curl-fremont-2026-11-22/",
+   "type": "expo",
+   "place": "San Jose, CA",
+   "geo": [
+    37.3362,
+    -121.8906
+   ]
   }
  ]
 }
