@@ -7079,6 +7079,58 @@
     37.3362,
     -121.8906
    ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Wheelchair-B Curling Championship 2026 — Lohja",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-23",
+   "time": "",
+   "place": "Lohja",
+   "geo": [
+    60.2512,
+    24.0677
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Championship Qualifier Women 2026 — Östersund",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-23",
+   "time": "",
+   "place": "Östersund",
+   "geo": [
+    63.1794,
+    14.6357
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "Fall Monday Night Doubles — Racine, WI",
+   "date": "2026-11-23",
+   "time": "18:00",
+   "url": "https://racinecurlingclub.com/event/fall-monday-night-doubles/2026-11-23/",
+   "type": "sports",
+   "place": "Racine, WI",
+   "geo": [
+    42.7314,
+    -87.7835
+   ]
+  },
+  {
+   "venue": "Northeast",
+   "title": "Beginner League — Buffalo, NY",
+   "date": "2026-11-23",
+   "time": "20:00",
+   "url": "https://buffalocurlingclub.org/event/beginner-league/2026-11-23/",
+   "type": "expo",
+   "place": "Buffalo, NY",
+   "geo": [
+    42.8864,
+    -78.8781
+   ]
   }
  ]
 }
