@@ -7131,6 +7131,45 @@
     42.8864,
     -78.8781
    ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Wheelchair-B Curling Championship 2026 — Lohja",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-24",
+   "time": "",
+   "place": "Lohja",
+   "geo": [
+    60.2512,
+    24.0677
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Championship Qualifier Women 2026 — Östersund",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-24",
+   "time": "",
+   "place": "Östersund",
+   "geo": [
+    63.1794,
+    14.6357
+   ]
+  },
+  {
+   "venue": "Midwest",
+   "title": "BHS Curling Class — Bemidji, MN",
+   "date": "2026-11-24",
+   "time": "08:00",
+   "url": "https://www.bemidjicurling.org/",
+   "type": "expo",
+   "place": "Bemidji, MN",
+   "geo": [
+    47.4723,
+    -94.8833
+   ]
   }
  ]
 }
