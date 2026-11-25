@@ -268,14 +268,14 @@
   var BIG_NIGHT_SEATS = 2000; // the Capacity preset's floor; McCaw Hall (2,900) is the smallest venue in
   var PRESETS = [
     { key: 'default', label: 'Default', title: CITY.words.presetDefault,
-      venuesOff: function () { return DEFAULT_VENUES_OFF.slice(); }, typesOff: ['movie'], holidays: false },
+      venuesOff: function () { return DEFAULT_VENUES_OFF.slice(); }, typesOff: cityTypes(['movie']), holidays: false },
     { key: 'all', label: 'Show All', title: 'Every venue, type and team, holidays too', venuesOff: function () { return []; }, typesOff: [], holidays: true }, // the same words as the groups' Show All · Hide All (Steve, 2026-10-12: "Everything and Nothing … is incongruous")
     { key: 'none', label: 'Hide All', title: 'Everything off — build your own view from scratch',
       venuesOff: function () { return state.venues.slice(); }, typesOff: TYPE_LIST.map(function (t) { return t.key; }), teamsOff: true, holidays: false },
     { key: 'neighborhood', label: 'Neighborhood', title: CITY.words.presetNeighborhood,
-      venuesOff: function () { return DEFAULT_VENUES_OFF.concat(state.venues.filter(function (v) { return venueArea(v) === 'town' && DEFAULT_VENUES_OFF.indexOf(v) < 0; })); }, typesOff: ['movie'] },
+      venuesOff: function () { return DEFAULT_VENUES_OFF.concat(state.venues.filter(function (v) { return venueArea(v) === 'town' && DEFAULT_VENUES_OFF.indexOf(v) < 0; })); }, typesOff: cityTypes(['movie']) },
     { key: 'big', label: 'Capacity > 2K', title: CITY.words.presetBig,
-      venuesOff: function () { return state.venues.filter(function (v) { return (VENUE_CAPACITY[v] || 0) < BIG_NIGHT_SEATS; }); }, typesOff: ['bar'] },
+      venuesOff: function () { return state.venues.filter(function (v) { return (VENUE_CAPACITY[v] || 0) < BIG_NIGHT_SEATS; }); }, typesOff: cityTypes(['bar']) },
     { key: 'near', label: 'Big Nights Near Me', title: CITY.words.presetNear || 'The big venues closest to you — your browser asks where you are',
       needs: function () { return !!nearVenues; },
       venuesOff: function () { return state.venues.filter(function (v) { return !nearVenues || nearVenues.indexOf(v) < 0; }); }, typesOff: cityTypes(['bar']) },
