@@ -7222,6 +7222,71 @@
     42.7314,
     -87.7835
    ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Wheelchair-B Curling Championship 2026 — Lohja",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-26",
+   "time": "",
+   "place": "Lohja",
+   "geo": [
+    60.2512,
+    24.0677
+   ]
+  },
+  {
+   "venue": "World Curling",
+   "title": "World Championship Qualifier Women 2026 — Östersund",
+   "url": "https://results.worldcurling.org/Championship/Year/2026",
+   "type": "sports",
+   "date": "2026-11-26",
+   "time": "",
+   "place": "Östersund",
+   "geo": [
+    63.1794,
+    14.6357
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Challenge de Curling Desjardins Charlevoix — Clermont, Quebec",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9418",
+   "type": "sports",
+   "date": "2026-11-26",
+   "time": "",
+   "place": "Clermont, Quebec",
+   "geo": [
+    47.6945,
+    -70.2262
+   ]
+  },
+  {
+   "venue": "World Tour",
+   "title": "Italian Mixed Doubles Championship — Pinerolo, Italy",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9861",
+   "type": "sports",
+   "date": "2026-11-26",
+   "time": "",
+   "place": "Pinerolo, Italy",
+   "geo": [
+    44.8873,
+    7.3319
+   ]
+  },
+  {
+   "venue": "Canada",
+   "title": "Mixed Doubles Super Series — East St. Paul, Manitoba",
+   "url": "https://www.curlingzone.com/event.php?view=Main&eventid=9560",
+   "type": "sports",
+   "date": "2026-11-26",
+   "time": "",
+   "place": "East St. Paul, Manitoba",
+   "geo": [
+    49.9795,
+    -97.0148
+   ]
   }
  ]
 }
